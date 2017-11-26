@@ -1,4 +1,5 @@
 import React from "react";
+import FontAwesome from "react-fontawesome";
 
 export default class Product extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export default class Product extends React.Component {
           </div>
           <div class="card-footer">
             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            <button class="float-right"><FontAwesome name="cart-plus" /></button>
           </div>
         </div>
       </div>

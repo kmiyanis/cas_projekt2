@@ -18,6 +18,7 @@
     "react": "^0.14.6",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^0.14.6",
+    "react-fontawesome": "^1.6.1",
     "react-redux": "^4.4.5",
     "react-router": "^1.0.3",
     "redux": "^3.5.2",
