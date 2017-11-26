@@ -11,7 +11,6 @@ export default class Layout extends React.Component {
     const containerStyle = {
       marginTop: "1.5rem"
     };
-    console.log("layout");
     return (
       <div>
         <Nav location={location} />

@@ -4,7 +4,6 @@ import { Link } from "react-router";
 export default class CartTable extends React.Component {
 	render() {
 		const { cart } = this.props;
-		console.log(cart)
 		return (
 			<table>
 				<thead>

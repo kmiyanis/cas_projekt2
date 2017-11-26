@@ -16,7 +16,6 @@ export default class Featured extends React.Component {
       marginTop: "1.5rem"
     };
 
-    console.log("featured");
     return <div style={containerStyle} class="row">{ProductsFeatured}</div>
   }
 }

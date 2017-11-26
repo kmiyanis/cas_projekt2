@@ -51,7 +51,6 @@ export function addToCart(productId, quantity) {
 
 		cartAPI.addToCart(productId, quantity)
 			.then((response) => {
-				console.log('###response', response)
 				dispatch({ type: ADD_TO_CART_SUCCESS, cart: { items: response.items } })
 			})
 			.catch((err) => {
