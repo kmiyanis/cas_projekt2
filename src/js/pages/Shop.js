@@ -1,22 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Product from "../components/Product";
+import { fetchProducts } from "../actions/productsActions";
+
+@connect((store) => {
+  return {
+    products: store.products.products,
+    productsFetched: store.products.fetched,
+  };
+})
 
 export default class Shop extends React.Component {
+  componentWillMount() {
+    this.props.dispatch(fetchProducts())
+  }
+
   render() {
-    const Products = [
-      "Tsurezure",
-      "Kisen",
-      "Kasei",
-      "Seiso",
-      "Sencha Gold",
-      "Sencha Gelb",
-      "Bio Sencha",
-      "Bio japanischer Schwarztee",
+    const { products, fetched, params } = this.props;
 
-    ].map((title, i) => <Product key={i} title={title} />);
+    const mappedProducts = products.map((product, i) => {
+      return <Product key={product._id} {...product} />;
+    });
 
-    console.log("featured");
     return (
       <div>
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -45,7 +51,13 @@ export default class Shop extends React.Component {
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <div class="row">{Products}</div>
+        <div class="row">
+          {fetched ? (
+            "Loading..."
+          ) : (
+            <div class="row">{mappedProducts}</div>
+          )}
+        </div>
       </div>
     )
   }

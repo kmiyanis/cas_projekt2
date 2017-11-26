@@ -17,7 +17,7 @@ export default class Recipes extends React.Component {
 	}
 
 	render() {
-		const { recipes, params } = this.props;
+		const { recipes, fetched, params } = this.props;
 
 		const mappedRecipes = recipes.map((recipe, i) => {
 			return <Recipe key={i} {...recipe} />;
@@ -26,7 +26,7 @@ export default class Recipes extends React.Component {
 		return (
 			<div>
 				<h1>Infobox</h1>
-				{this.props.fetched ? (
+				{fetched ? (
 					"Loading..."
 				) : (
 					<div class="row">{mappedRecipes}</div>
