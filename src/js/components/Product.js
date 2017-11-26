@@ -5,6 +5,7 @@ import FontAwesome from "react-fontawesome";
 import { addToCart } from "../actions/cartActions"
 
 @connect((store) => { return {}; })
+
 export default class Product extends React.Component {
   addToCart = (product) => {
     this.props.dispatch(addToCart(product._id, 1));
@@ -24,6 +25,11 @@ export default class Product extends React.Component {
     return (
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
+          {featured &&
+            <div class="card-header" >
+              <FontAwesome spin name="star" /> Featured
+            </div>
+          }
           <a href="#"><img class="card-img-top" src={picture} alt="" /></a>
           <div class="card-body">
             <h4 class="card-title">
