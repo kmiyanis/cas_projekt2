@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router";
 import FontAwesome from "react-fontawesome";
 
 import { addToCart } from "../actions/cartActions"
@@ -13,7 +14,7 @@ export default class Product extends React.Component {
 
   render() {
     const {
-      id,
+      productId,
       featured,
       price,
       picture,
@@ -30,10 +31,10 @@ export default class Product extends React.Component {
               <FontAwesome spin name="star" /> Featured
             </div>
           }
-          <a href="#"><img class="card-img-top" src={picture} alt="" /></a>
+          <Link to={"/shop/" + this.props._id}><img class="card-img-top" src={picture} alt="" /></Link>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">{title}</a>
+              <Link to={"/shop/" + this.props._id}>{title}</Link>
             </h4>
             <h5>CHF {price}</h5>
             <p class="card-text">{text}</p>

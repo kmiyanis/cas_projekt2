@@ -4,6 +4,9 @@ import {
 	FETCH_PRODUCTS,
 	FETCH_PRODUCTS_SUCCESS,
 	FETCH_PRODUCTS_FAILURE,
+	FETCH_PRODUCT,
+	FETCH_PRODUCT_SUCCESS,
+	FETCH_PRODUCT_FAILURE,
 } from "./actionTypes";
 
 export const fetch = async () => fetchStaticProducts();
@@ -27,6 +30,27 @@ export function fetchProducts() {
 		// 			return recipe.featured;
 		// 		})
 		// }
+	}
+}
+
+export function fetchProduct(slug) {
+	return function (dispatch) {
+		dispatch({ type: FETCH_PRODUCT });
+
+		fetch()
+			.then((response) => {
+				console.log('response1', response.payload)
+				// product = response.payload.find(p => p._id === slug)
+				product = response.payload.find((product) => {
+					return product._id == slug;
+				});
+				
+				console.log('produc2t', product)
+				dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: product })
+			})
+			.catch((err) => {
+				dispatch({ type: FETCH_PRODUCT_FAILURE, error: err })
+			})
 	}
 }
 
@@ -58,7 +82,6 @@ export function deleteProduct(id) {
 export function fetchStaticProducts() {
 // export function fetchProducts() {
 	return {
-		type: "FETCH_RECIPES_FULFILLED",
 		payload: [
 			{
 				"_id": "5a1af1425cef68a43eb9f6b9",

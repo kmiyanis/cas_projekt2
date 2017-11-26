@@ -12,6 +12,8 @@ import Featured from "./pages/Featured";
 import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
 
+import ProductDetail from './pages/ProductDetail';
+
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
 
@@ -23,6 +25,7 @@ ReactDOM.render(
       <Route path="/" component={LayoutSidebar}>
         <IndexRoute component={Featured}></IndexRoute>
         <Route path="shop" name="shop" component={Shop}></Route>
+        <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
       </Route>
       <Route path="/" component={Layout}>
         <Route path="recipes" name="recipes" component={Recipes}></Route>
