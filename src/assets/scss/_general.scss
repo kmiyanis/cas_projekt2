@@ -1,0 +1,40 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+::-webkit-selection { background: $pale-red; color: black; text-shadow: none; }
+::-moz-selection { background: $pale-red; color: black; text-shadow: none; }
+::selection { background: $pale-red; color: black; text-shadow: none; }​
+
+body, html {
+	-webkit-backface-visibility: hidden;
+	margin:0;
+	padding:0;
+}
+
+body {
+	color:$black;
+	font-family: $font-regular;
+	font-size:rem($body-font-size);
+	line-height: rem($body-line-height);
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+}
+
+.default-btn {
+	font-size:rem(17px);
+	line-height:rem(24px);
+	color:$red3;
+	font-weight: bold;
+	padding: rem(9px) rem(20px) rem(7px) rem(20px);
+	background: $white;
+	border:2px solid $white;
+
+	&:hover {
+		border-color:$pale-red;
+	}
+}

@@ -1,0 +1,130 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*******************************************************************************
+** Color
+*/
+/* Rectangle 2: */
+/*******************************************************************************
+** img Path
+*/
+/*******************************************************************************
+** functions
+*/
+/*******************************************************************************
+** Mixins
+*/
+/*******************************************************************************
+** Responsiv Breakpoint
+*/
+/*******************************************************************************
+** Fonts
+*/
+@font-face {
+  font-family: 'bariolitalic';
+  src: url(assets/fonts/bariol_regular_italic-webfont.eot);
+  src: url(assets/fonts/bariol_regular_italic-webfont.eot?#iefix) format("embedded-opentype"), url(assets/fonts/bariol_regular_italic-webfont.woff2) format("woff2"), url(assets/fonts/bariol_regular_italic-webfont.woff) format("woff"), url(assets/fonts/bariol_regular_italic-webfont.ttf) format("truetype"), url(assets/fonts/bariol_regular_italic-webfont.svg#bariolitalic) format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'bariol_serifregular';
+  src: url(assets/fonts/bariol_serif_regular-webfont.eot);
+  src: url(assets/fonts/bariol_serif_regular-webfont.eot?#iefix) format("embedded-opentype"), url(assets/fonts/bariol_serif_regular-webfont.woff2) format("woff2"), url(assets/fonts/bariol_serif_regular-webfont.woff) format("woff"), url(assets/fonts/bariol_serif_regular-webfont.ttf) format("truetype"), url(assets/fonts/bariol_serif_regular-webfont.svg#bariol_serifregular) format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
+
+::-webkit-selection {
+  background: rgba(206, 48, 49, 0.3);
+  color: black;
+  text-shadow: none; }
+
+::-moz-selection {
+  background: rgba(206, 48, 49, 0.3);
+  color: black;
+  text-shadow: none; }
+
+::selection {
+  background: rgba(206, 48, 49, 0.3);
+  color: black;
+  text-shadow: none; }
+
+​
+body, html {
+  -webkit-backface-visibility: hidden;
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #000000;
+  font-family: "bariol_serifregular", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5rem;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased; }
+
+.default-btn {
+  font-size: 1.0625rem;
+  line-height: 1.5rem;
+  color: #BB2C2A;
+  font-weight: bold;
+  padding: 0.5625rem 1.25rem 0.4375rem 1.25rem;
+  background: #ffffff;
+  border: 2px solid #ffffff; }
+  .default-btn:hover {
+    border-color: rgba(206, 48, 49, 0.3); }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvY3NzL21haW4uY3NzIiwic291cmNlUm9vdCI6IiJ9*/
