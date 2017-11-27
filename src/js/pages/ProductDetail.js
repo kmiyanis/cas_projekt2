@@ -23,7 +23,7 @@ export default class ProductDetail extends React.Component {
 		const { product, fetched, params } = this.props;
 		return (
 			<div>
-				{product ? <ProductDetailComponent key={product._id} {...product} /> : null}
+				{product ? <ProductDetailComponent {...product} /> : null}
 			</div>
 		)
 	}
