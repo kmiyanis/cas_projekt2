@@ -22,7 +22,8 @@ export default class RecipeDetail extends React.Component {
 
     return (
       <div>
-        <h1>{recipe.name}</h1>
+        <main class="main" role="main">
+        <h1 class="title">{recipe.name}</h1>
         {recipe && recipe.steps && recipe.steps.map((step, i) =>
           <div class="row" key={i}>
             <div class="col-lg-3">
@@ -31,6 +32,7 @@ export default class RecipeDetail extends React.Component {
             <div class="col-lg-9" dangerouslySetInnerHTML={{ __html: step.txt }}></div>
           </div>
         )}
+        </main>
       </div>
     );
   }

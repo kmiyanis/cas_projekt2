@@ -83,9 +83,53 @@ export function fetchStaticProducts() {
 // export function fetchProducts() {
 	return {
 		payload: [
+            {
+                "_id": "5a1af1425cef68a43eb9f6b0",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/gemmacha-mit-maccha.jpg",
+                "title": "Sind Sie Grüntee Anfängerin?",
+                "lead":"Dann werde ich ihnen Gemmaicha mit Maccha Tee emphelen.",
+                "text": "Gar nicht bitter und dank der gerösteter Volkornreiskörner sehr knussplig wie Popkorn. Mit Maccha verschwächen sie nicht Grüntee Geschmack. Der Teewasser ist ganz schöne Grun. Als ich kind war, habe ich nur diesen Tee gerne gehabt. .",
+                "categoryId": 181
+            },
+            {
+                "_id": "5a1af1425cef68a43eb9f6b1",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/sencha.jpg",
+                "title": "Für Sie muss Grüntee \"Bio\" sein, aber muss er auch gut Schmecken? ",
+                "lead": "Dann werde ich ihnen \"Bio Sencha\" aus Shizuoka emphelen.",
+            	"text": "Der Grüntee ist sehr gut für das Gesundheit dank ihrer Katekin (Bitterstoff), Vitamin C. Sie möchten gerne für Ihre Gesundheit trinken und dabei sicher sein, der Tee Pestizide frei ist. Jawohl! Dieser Tee ist Bio Qualität und dazu noch sehr aromatisch und wundervoll. ",
+                "categoryId": 182
+            },
+            {
+                "_id": "5a1af1425cef68a43eb9f6b2",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/maccha.jpg",
+                "title": "Maccha ist jetzt hip und trendy? ",
+                "lead": "Zuerst probieren Sie Koko no Shiro Nieveau",
+                "text": "Es gibt 2 verschiedene Maccha Klasse. Erste ist Usucha (Dünne Tee in Teezeremonie), andere ist Koicha (Dicke Tee in Teezeremonie). Da diese unterschiedliche Konsistent sind, ist der Tee Karakter auch verschieden. Koicha Qualität ist weniger bitter und sehr aromatisch. Usucha Qualität ist frisch. ",
+                "categoryId": 183
+            },
+            {
+                "_id": "5a1af1425cef68a43eb9f6b9",
+                "featured": true,
+                "home": false,
+                "price": 67.93,
+                "picture": "http://placehold.it/700x400",
+                "title": "enim minim pariatur",
+                "text": "Velit in in elit consectetur aute commodo consectetur. Eu nostrud amet id id culpa eu tempor et ad culpa.",
+                "categoryId": 175
+            },
 			{
 				"_id": "5a1af1425cef68a43eb9f6b9",
 				"featured": true,
+                "home": false,
 				"price": 67.93,
 				"picture": "http://placehold.it/700x400",
 				"title": "enim minim pariatur",
@@ -95,6 +139,8 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142be9fe80114b81bf6",
 				"featured": false,
+                "home": false,
+                "home": false,
 				"price": 88.75,
 				"picture": "http://placehold.it/700x400",
 				"title": "irure aute in",
@@ -104,6 +150,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142c7e9fe836151dfa5",
 				"featured": true,
+                "home": false,
 				"price": 34.5,
 				"picture": "http://placehold.it/700x400",
 				"title": "magna aliquip deserunt",
@@ -113,6 +160,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af14267bfee0135779e25",
 				"featured": false,
+                "home": false,
 				"price": 24.68,
 				"picture": "http://placehold.it/700x400",
 				"title": "sit occaecat ex",
@@ -122,6 +170,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af14284b9e22415fbbe5b",
 				"featured": true,
+                "home": false,
 				"price": 52.15,
 				"picture": "http://placehold.it/700x400",
 				"title": "quis ex occaecat",
@@ -131,6 +180,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142e2b5e6135bd0a4ca",
 				"featured": true,
+                "home": false,
 				"price": 29.12,
 				"picture": "http://placehold.it/700x400",
 				"title": "esse eu sint",
@@ -140,6 +190,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142aa14bb562c0132b5",
 				"featured": false,
+                "home": false,
 				"price": 50.07,
 				"picture": "http://placehold.it/700x400",
 				"title": "id in aliquip",
@@ -149,6 +200,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142e82ee18b875f55a8",
 				"featured": true,
+                "home": false,
 				"price": 65.02,
 				"picture": "http://placehold.it/700x400",
 				"title": "labore minim minim",
@@ -158,6 +210,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af1427fe54f5885d9a122",
 				"featured": false,
+                "home": false,
 				"price": 29.86,
 				"picture": "http://placehold.it/700x400",
 				"title": "id excepteur fugiat",
@@ -167,6 +220,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142a977523f956ebb1e",
 				"featured": false,
+                "home": false,
 				"price": 80.97,
 				"picture": "http://placehold.it/700x400",
 				"title": "et labore qui",
@@ -176,6 +230,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142456b0071b337c39b",
 				"featured": false,
+                "home": false,
 				"price": 91.29,
 				"picture": "http://placehold.it/700x400",
 				"title": "id proident sint",
@@ -185,6 +240,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142bcedd5a51a4573ff",
 				"featured": true,
+                "home": false,
 				"price": 95.54,
 				"picture": "http://placehold.it/700x400",
 				"title": "anim sint enim",
@@ -194,6 +250,7 @@ export function fetchStaticProducts() {
 			{
 				"_id": "5a1af142e584603fe474954d",
 				"featured": true,
+                "home": false,
 				"price": 57.05,
 				"picture": "http://placehold.it/700x400",
 				"title": "laboris ipsum ut",

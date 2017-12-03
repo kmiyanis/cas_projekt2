@@ -1,5 +1,10 @@
 import React from "react";
 import { IndexLink, Link } from "react-router";
+import styled from 'styled-components';
+
+const Navbar = styled.nav`
+	box-shadow: 0 6px 4px 0 rgba(0,0,0,0.15);
+`;
 
 export default class Nav extends React.Component {
   constructor() {
@@ -25,9 +30,9 @@ export default class Nav extends React.Component {
     const navClass = collapsed ? "collapse" : "";
 
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">Start Bootstrap</a>
+          <a class="navbar-brand" href="#">MIYA JAPAN TEE</a>
           <button onClick={this.toggleCollapse.bind(this)} class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -36,11 +41,12 @@ export default class Nav extends React.Component {
               <li class={"nav-item " + indexClass}>
                 <IndexLink class="nav-link" to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
               </li>
-              <li class={"nav-item " + recipesClass}>
-                <Link to="recipes" class="nav-link"onClick={this.toggleCollapse.bind(this)}>Rezepte</Link>
-              </li>
+
               <li class={"nav-item " + shopClass}>
                 <Link to="shop" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Shop</Link>
+              </li>
+              <li class={"nav-item " + recipesClass}>
+                <Link to="recipes" class="nav-link"onClick={this.toggleCollapse.bind(this)}>Rezepte</Link>
               </li>
               <li class={"nav-item " + coursesClass}>
                 <Link to="courses" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kurse</Link>
@@ -51,7 +57,7 @@ export default class Nav extends React.Component {
             </ul>
           </div>
         </div>
-      </nav>
+      </Navbar>
     );
 
 //    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

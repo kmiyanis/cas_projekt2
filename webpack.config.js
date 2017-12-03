@@ -26,7 +26,7 @@ module.exports = {
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                loader: 'file-loader?name=assets/fonts/[name].[ext]'
+                loader: 'file-loader?name=../fonts/[name].[ext]'
             },
             {
                 test: /\.scss$/,
@@ -34,10 +34,12 @@ module.exports = {
 
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
+
                     use: [
                         {
                             loader: "css-loader"
                         },
+
                         {
                             loader: 'postcss-loader',
                             options: {
@@ -48,6 +50,7 @@ module.exports = {
                                 ]
                             },
                         },
+
                         {
                             loader: 'sass-loader',
                             options: {
@@ -57,6 +60,8 @@ module.exports = {
                     ]
                 })
             },
+
+
             {
                 test: /\.ejs$/,
                 loader: 'ejs-compiled-loader'
@@ -68,11 +73,13 @@ module.exports = {
         filename: "client.min.js"
     },
     plugins: debug ? [
-        new ExtractTextPlugin({filename: 'assets/css/[name].css', allChunks: true})
+        new ExtractTextPlugin({filename: 'assets/css/[name].css', allChunks: true}),
+        new webpack.HotModuleReplacementPlugin(),
     ] : [
+        new ExtractTextPlugin({filename: 'assets/css/[name].css', allChunks: true}),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
-        new ExtractTextPlugin({filename: 'assets/css/[name].css', allChunks: true})
+
     ],
 };

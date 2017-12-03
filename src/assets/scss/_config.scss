@@ -121,10 +121,10 @@ $phone-s: 340px;
 
 $base-font-size:    16px;
 
-$font-regular: 				'bariol_serifregular',Arial, sans-serif;
-$font-italic:       		'bariolitalic', Arial, sans-serif;
+$font-regular: 	'bariol_serifregular',Arial, sans-serif;
+$font-italic:    'bariolitalic', Arial, sans-serif;
 
-$body-font-size: 	17px;
+$body-font-size: 	16px;
 $body-line-height: 	24px;
 
 
@@ -132,17 +132,17 @@ $body-line-height: 	24px;
 @mixin font-h1() {
 	font-size:rem(28px);
 	line-height:rem(36px);
-	font-family:$font-bold;
+	font-weight:bold;
 
 	@include respond-to($desktop-s ) {
-		font-size:rem(48px);
-		line-height:rem(56px);
+		font-size:rem(36px);
+		line-height:rem(42px);
 	}
 }
 @mixin font-h2() {
 	font-size:rem(24px);
 	line-height:rem(32px);
-	font-family:$font-bold;
+	font-weight:bold;
 
 	@include respond-to($desktop-s ) {
 		font-size:rem(36px);
@@ -152,23 +152,23 @@ $body-line-height: 	24px;
 @mixin font-h3() {
 	font-size:rem(20px);
 	line-height:rem(28px);
-	font-family:$font-bold;
+	font-weight:bold;
 
 	@include respond-to($desktop-s ) {
-		font-size:rem(24px);
-		line-height:rem(32px);
+		font-size:rem(28px);
+		line-height:rem(34px);
 	}
 }
 @mixin font-h4() {
 	font-size:rem(17px);
 	line-height:rem(24px);
-	font-family:$font-bold;
+	font-weight:bold;
 }
 
 @mixin font-lead() {
 	font-size:rem(17px);
 	line-height:rem(24px);
-	font-family:$font-bold;
+	font-weight:bold;
 
 	@include respond-to($desktop-s ) {
 		font-size:rem(24px);
@@ -176,26 +176,13 @@ $body-line-height: 	24px;
 	}
 }
 @mixin font-body() {
-	font-size:rem(17px);
+	font-size:rem(16px);
 	line-height:rem(24px);
-	font-family:$font-regular;
 }
-@mixin font-body-catalog() {
-	font-size:rem(17px);
-	line-height:rem(24px);
-	font-family:$font-condenced-regular;
-	color:$dark-grey;
-}
+
 @mixin font-sml() {
 	font-size:rem(15px);
 	line-height:rem(20px);
-	font-family:$font-regular;
-}
-@mixin font-sml-catalog() {
-	font-size:rem(15px);
-	line-height:rem(20px);
-	font-family:$font-condenced-regular;
-	color:$dark-grey;
 }
 
 

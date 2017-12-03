@@ -11,6 +11,7 @@ import LayoutSidebar from "./pages/LayoutSidebar";
 import Featured from "./pages/Featured";
 import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
+import Home from "./pages/Home";
 
 import ProductDetail from './pages/ProductDetail';
 
@@ -22,6 +23,8 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
+      <Route path="/" component={Home}>
+      </Route>
       <Route path="/" component={LayoutSidebar}>
         <IndexRoute component={Featured}></IndexRoute>
         <Route path="shop" name="shop" component={Shop}></Route>

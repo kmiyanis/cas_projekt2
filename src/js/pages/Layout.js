@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Footer from "../components/layout/Footer";
 import Nav from "../components/layout/Nav";
 import Sidebar from "../components/layout/Sidebar";
+import PageBg from "../components/layout/PageBg";
 
 export default class Layout extends React.Component {
   render() {
@@ -13,6 +14,7 @@ export default class Layout extends React.Component {
     };
     return (
       <div>
+          <PageBg/>
         <Nav location={location} />
 
         <div class="container">
