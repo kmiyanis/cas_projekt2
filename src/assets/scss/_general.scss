@@ -44,11 +44,47 @@ body {
 	height: 100%;
 	z-index: 1;
 }
+.box__link {
+	color: $red1;
+	border-bottom:1px solid $red1;
+	font-weight: bold;
+	margin:rem(24px) 0;
+	display: inline-block;
 
+	&:hover {
+		border-bottom:2px solid $red1;
+		text-decoration: none;
+		color: $red1;
+
+	}
+	&:after {
+		content:'->';
+		margin-left:10px;
+	}
+}
+
+.icon__cart-plus {
+	color: white;
+	border: 0;
+	border-radius: rem(40px);
+	background: $red2;
+	width: rem(60px);
+	height: rem(40px);
+	margin:rem(24px) 0;
+	font-size:rem(22px);
+	cursor: pointer;
+	&:hover {
+		background: $red1-hover;
+	}
+}
 .page-bg__item {
 	width:50%;
-	height: 49vw;
+	height: 50%;
 	float: left;
+	@include respond-to($desktop-s ) {
+		width:50%;
+		height: 49vw;
+	}
 
 	&:nth-of-type(4n){
 		background: $red1;
@@ -115,17 +151,17 @@ body {
 	}
 }
 .lead {
-	font-size:24px;
-	line-height: 28px;
-	margin-bottom:20px;
+	font-size:rem(24px);
+	line-height: rem(28px);
+	margin-bottom:rem(20px);
 }
 .home-teaser__text-img {
 	float: left;
-	border-radius: 300px;
+	border-radius: rem(300px);
 	width: 300px;
 	overflow: hidden;
-	margin-right: 30px;
-	margin-bottom: 30px;
+	margin-right: rem(30px);
+	margin-bottom: rem(30px);
 }
 .img--block {
 	width: 100%;
@@ -134,24 +170,24 @@ body {
 .footer {
 	position: relative;
 	z-index: 3;
-	padding: 10px 15px;
+	padding: rem(10px) rem(15px);
 	text-align: center;
 }
 .footer__logo {
-	padding: 10px 15px;
+	padding: rem(10px) rem(15px);
 }
 
 .footer-logo__text {
 	display: inline-block;;
-	padding-top:11px;
-	height:30px
+	padding-top:rem(11px);
+	height:rem(30px)
 }
 .footer__info {
 	display: inline-block;
-	margin:0 20px;
+	margin:0 rem(20px);
 }
 .footer-info__item {
 	display: inline-block;
-	margin:0 20px;
+	margin:0 rem(20px);
 }
 

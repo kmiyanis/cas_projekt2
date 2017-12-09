@@ -12,6 +12,7 @@ export default class Product extends React.Component {
     this.props.dispatch(addToCart(product._id, 1));
   }
 
+
   render() {
     const {
       productId,

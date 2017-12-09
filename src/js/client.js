@@ -23,10 +23,9 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Home}>
-      </Route>
+      <Route path="/" component={Home}></Route>
       <Route path="/" component={LayoutSidebar}>
-        <IndexRoute component={Featured}></IndexRoute>
+        <Route component={Featured}></Route>
         <Route path="shop" name="shop" component={Shop}></Route>
         <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
       </Route>

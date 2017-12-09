@@ -49,6 +49,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "watch": "webpack --watch",
     "dev": "webpack-dev-server -w --content-base src --inline --hot"
   },
   "author": "",

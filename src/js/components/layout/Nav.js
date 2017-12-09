@@ -2,10 +2,18 @@ import React from "react";
 import { IndexLink, Link } from "react-router";
 import styled from 'styled-components';
 
+
 const Navbar = styled.nav`
 	box-shadow: 0 6px 4px 0 rgba(0,0,0,0.15);
+	background:rgba(52,58,64,0.95) !important;
 `;
 
+const buttonStyle = {
+    border: 'none',
+    padding: '16px',
+    margin:'0 -16px 0 0',
+    cursor: 'pointer'
+};
 export default class Nav extends React.Component {
   constructor() {
     super()
@@ -27,16 +35,19 @@ export default class Nav extends React.Component {
     const shopClass     = location.pathname.match(/^\/shop/) ? "active" : "";
     const coursesClass  = location.pathname.match(/^\/courses/) ? "active" : "";
     const contactClass  = location.pathname.match(/^\/contact/) ? "active" : "";
-    const navClass = collapsed ? "collapse" : "";
+    const navClass = collapsed ? "collapsed" : "open";
+    const navUlClass = collapsed ? "" : "show";
 
     return (
       <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#">MIYA JAPAN TEE</a>
-          <button onClick={this.toggleCollapse.bind(this)} class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button style={ buttonStyle } onClick={this.toggleCollapse.bind(this)} class={'navbar-toggler ' + navClass } type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hamburger__bar1"></span>
+            <span class="hamburger__bar2"></span>
+
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div class={'collapse navbar-collapse ' + navUlClass} id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class={"nav-item " + indexClass}>
                 <IndexLink class="nav-link" to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
