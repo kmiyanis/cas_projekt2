@@ -1,0 +1,190 @@
+// VARIABLES
+
+/*******************************************************************************
+** Color
+*/
+$white: 			#ffffff;
+$black: 			#000000;
+$red1: #C42E2E;
+$red2: #CE3031;
+$red3: #BB2C2A;
+$red4: #C02C2E;
+$pale-red: 	rgba(206, 48, 49, 0.3);
+$pale-white: 		rgba(255, 255, 255, 0.5);
+$red1-hover:rgba(196,46,46, 0.8);
+$header-bg: rgba(52,58,64,0.9);
+/* Rectangle 2: */
+
+/*******************************************************************************
+** img Path
+*/
+
+$img-path:     '..';
+
+/*******************************************************************************
+** functions
+*/
+
+@function rem($target) {
+	@return ($target / $base-font-size) * 1rem;
+}
+
+/*******************************************************************************
+** Mixins
+*/
+
+@mixin font-smoothing {
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin ulreset {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+@mixin flexbox {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin flex($values) {
+	-webkit-box-flex: $values;
+	-moz-box-flex:  $values;
+	-webkit-flex:  $values;
+	-ms-flex:  $values;
+	flex:  $values;
+}
+
+@mixin rotate($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+@mixin box-shadow($content) {
+	-webkit-box-shadow:$content;
+	-ms-box-shadow: $content;
+	-moz-box-shadow: $content;
+	box-shadow: $content;
+}
+@mixin vendor-prefixes($property, $value...) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+@mixin transition-transform	($value) {
+	-o-transition: -o-transform $value;
+	-ms-transition: -ms-transform $value;
+	-moz-transition: -moz-transform $value;
+	-webkit-transition: -webkit-transform $value;
+	transition:transform $value;
+}
+
+
+// https://stackoverflow.com/a/13708929
+@mixin prevent-selecting-text {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
+}
+
+
+@mixin respond-to($media) {
+	@media only screen and (min-width: $media ) { @content; }
+}
+
+
+/*******************************************************************************
+** Responsiv Breakpoint
+*/
+$phone-l: 576px;
+$desktop-s: 768px;
+$desktop-m: 1024px;
+$desktop-l: 1200px;
+$phone-s: 340px;
+
+
+/*******************************************************************************
+** Fonts
+*/
+
+$base-font-size:    16px;
+
+$font-regular: 	'bariol_serifregular',Arial, sans-serif;
+$font-italic:    'bariolitalic', Arial, sans-serif;
+
+$body-font-size: 	16px;
+$body-line-height: 	24px;
+
+
+
+@mixin font-h1() {
+	font-size:rem(28px);
+	line-height:rem(36px);
+	font-weight:bold;
+
+	@include respond-to($desktop-s ) {
+		font-size:rem(36px);
+		line-height:rem(42px);
+	}
+}
+@mixin font-h2() {
+	font-size:rem(24px);
+	line-height:rem(32px);
+	font-weight:bold;
+
+	@include respond-to($desktop-s ) {
+		font-size:rem(36px);
+		line-height:rem(48px);
+	}
+}
+@mixin font-h3() {
+	font-size:rem(20px);
+	line-height:rem(28px);
+	font-weight:bold;
+
+	@include respond-to($desktop-s ) {
+		font-size:rem(28px);
+		line-height:rem(34px);
+	}
+}
+@mixin font-h4() {
+	font-size:rem(17px);
+	line-height:rem(24px);
+	font-weight:bold;
+}
+
+@mixin font-lead() {
+	font-size:rem(17px);
+	line-height:rem(24px);
+	font-weight:bold;
+
+	@include respond-to($desktop-s ) {
+		font-size:rem(24px);
+		line-height:rem(32px);
+	}
+}
+@mixin font-body() {
+	font-size:rem(16px);
+	line-height:rem(24px);
+}
+
+@mixin font-sml() {
+	font-size:rem(15px);
+	line-height:rem(20px);
+}
+
+
