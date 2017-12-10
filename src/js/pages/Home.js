@@ -10,13 +10,16 @@ import styled from 'styled-components';
 import Article from "../components/Article";
 import {fetchArticle} from "../actions/articleActions";
 
+import {rem, media} from '../style/styleUtils';
+
+
 const HomeMain = styled.main`
   position: relative;
   z-index: 2;
-  padding: 6.25rem 0.9375rem;
+  padding: 6.25rem ${rem(20)};
   margin: 0 auto; 
   @media only screen and (min-width: 768px) {
-      padding: 6.25rem 2.5rem;
+      padding: 6.25rem ${rem(40)};
       max-width: 64rem; 
    } 
 `;
@@ -87,7 +90,6 @@ console.log('location',location);
 
                 <PageBg/>
                 <HomeMain class="main" role="main">
-
                     <div class="content">
                         <HomeTitle>Tee ist wie Wein<br/>Tee ist Geschmacksache<br/>ich bin gespannt, ob meine Geschmack
                             Ihnen zusagt oder ... </HomeTitle>

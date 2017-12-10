@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
 import FontAwesome from "react-fontawesome";
+import {rem, media, theme} from '../style/styleUtils';
 
 import {addToCart} from "../actions/cartActions"
 
@@ -11,7 +12,7 @@ import styled from 'styled-components';
 const HomeArticle = styled.article`
   margin: 2.5rem auto;
   padding: 1.25rem 1.56rem;
-  background: rgba(255, 255, 255, 0.9);
+ background: #FFFFFF;
   -webkit-box-shadow: 0 6px 4px 0 rgba(0, 0, 0, 0.15);
           box-shadow: 0 6px 4px 0 rgba(0, 0, 0, 0.15); 
           
@@ -43,7 +44,7 @@ const HomeTeaserImg = styled.div`
     border-radius:18.75rem;
     max-width: 18.75rem;
     overflow: hidden;
-    width:100%;
+    width:80%;
     
      @media only screen and (min-width: 768px) {
         float: left;
@@ -57,7 +58,21 @@ const HomeTeaserLead = styled.p`
   margin-bottom: 1.25rem;  
  `;
 
-
+const ButtonSml = styled.button`
+	color: white;
+	border: 0;
+	border-radius: ${rem(40)};
+	background: ${theme.red2};
+	width: ${rem(60)};
+	height: ${rem(40)};
+	margin:${rem(24)} 0;
+	font-size:${rem(22)};
+	cursor: pointer;
+	float:right;
+	&:hover {
+		background: ${theme.red1_hover};
+	}
+ `;
 
 
 @connect((store) => {
@@ -92,8 +107,8 @@ export default class Article extends React.Component {
                     <p>{text} </p>
                 </div>
                 <Link class="box__link" to={"/shop/" + this.props._id}>Detail Site</Link>
-                <button onClick={() => this.addToCart(this.props)} class="float-right icon__cart-plus"><FontAwesome  name="cart-plus"/>
-                </button>
+                <ButtonSml onClick={() => this.addToCart(this.props)} ><FontAwesome  name="cart-plus"/>
+                </ButtonSml>
             </HomeArticle>
 
         );

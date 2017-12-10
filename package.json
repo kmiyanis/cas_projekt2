@@ -14,6 +14,7 @@
     "react": "^0.14.6",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^0.14.6",
+    "react-encoded-mailto": "0.0.6",
     "react-fontawesome": "^1.6.1",
     "react-redux": "^4.4.5",
     "react-router": "^1.0.3",
@@ -21,6 +22,9 @@
     "redux-logger": "^2.6.1",
     "redux-promise-middleware": "^3.2.0",
     "redux-thunk": "^2.1.0",
+    "sass-extract": "^2.0.0",
+    "sass-extract-js": "^0.3.0",
+    "true-case-path": "^1.0.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^1.14.1"
   },

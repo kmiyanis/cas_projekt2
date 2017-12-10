@@ -81,7 +81,40 @@ export function fetchStaticProducts() {
     return {
         payload: [
             {
-                "_id": "5a1af1425cef68a43eb9f6b9",
+                "_id": "gemmacha-mit-maccha_01",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/gemmacha-mit-maccha.jpg",
+                "title": "Sind Sie Grüntee Anfängerin?",
+                "lead":"Dann werde ich ihnen Gemmaicha mit Maccha Tee emphelen.",
+                "text": "Gar nicht bitter und dank der gerösteter Volkornreiskörner sehr knussplig wie Popkorn. Mit Maccha verschwächen sie nicht Grüntee Geschmack. Der Teewasser ist ganz schöne Grun. Als ich kind war, habe ich nur diesen Tee gerne gehabt. .",
+                "categoryId": 181
+            },
+            {
+                "_id": "sencha_01",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/sencha.jpg",
+                "title": "Für Sie muss Grüntee  ",
+                "lead": "Dann werde ich ihnen \"Bio Sencha\" aus Shizuoka emphelen.",
+                "text": "Der Grüntee ist sehr gut für das Gesundheit dank ihrer Katekin (Bitterstoff), Vitamin C. Sie möchten gerne für Ihre Gesundheit trinken und dabei sicher sein, der Tee Pestizide frei ist. Jawohl! Dieser Tee ist Bio Qualität und dazu noch sehr aromatisch und wundervoll. ",
+                "categoryId": 182
+            },
+            {
+                "_id": "maccha_01",
+                "featured": false,
+                "home": true,
+                "price": 67.93,
+                "picture": "assets/img/tee/maccha.jpg",
+                "title": "Maccha ist jetzt hip und trendy? ",
+                "lead": "Zuerst probieren Sie Koko no Shiro Nieveau",
+                "text": "Es gibt 2 verschiedene Maccha Klasse. Erste ist Usucha (Dünne Tee in Teezeremonie), andere ist Koicha (Dicke Tee in Teezeremonie). Da diese unterschiedliche Konsistent sind, ist der Tee Karakter auch verschieden. Koicha Qualität ist weniger bitter und sehr aromatisch. Usucha Qualität ist frisch. ",
+                "categoryId": 183
+            },
+            {
+                "_id": "5a1af1425cef68a43eb9f6b3",
                 "featured": true,
                 "price": 67.93,
                 "picture": "http://placehold.it/700x400",

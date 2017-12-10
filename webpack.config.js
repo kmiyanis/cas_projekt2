@@ -70,7 +70,9 @@ module.exports = {
     },
     output: {
         path: __dirname + "/src/",
-        filename: "client.min.js"
+        filename: "client.min.js",
+        hotUpdateChunkFilename: 'hot/hot-update.js',
+        hotUpdateMainFilename: 'hot/hot-update.json'
     },
     plugins: debug ? [
         new ExtractTextPlugin({filename: 'assets/css/[name].css', allChunks: true}),

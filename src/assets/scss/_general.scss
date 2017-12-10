@@ -87,6 +87,7 @@ body {
 	}
 
 	&:nth-of-type(4n){
+
 		background: $red1;
 	}
 	&:nth-of-type(4n + 1){
@@ -107,11 +108,11 @@ body {
 .main {
 	position: relative;
 	z-index: 2;
-	padding: rem(100px) rem(15px);
+	padding: rem(100px) rem(20px);
 	margin: 0 auto;
 
-	@include respond-to($desktop-s ) {
-		padding: rem(100px) rem(40px);
+	@include respond-to($phone-l ) {
+		padding: rem(130px) rem(40px);
 		max-width:rem(1024px);
 	}
 }
@@ -121,6 +122,7 @@ body {
 		margin: 0 auto;
 	}
 }
+
 .title,
 .home__title {
 	color: white;
@@ -128,6 +130,7 @@ body {
 	font-weight: bold;
 	margin-bottom: rem(40px);
 }
+
 .home-teaser__block {
 	margin:rem(40px) auto;
 	padding: rem(15px) rem(20px);
@@ -191,3 +194,91 @@ body {
 	margin:0 rem(20px);
 }
 
+.detail__content {
+
+	@include respond-to($phone-l ) {
+		display: flex;
+	}
+}
+.detail__img-block {
+	max-width:rem(320px);
+	margin: 0 auto rem(30px) auto;
+	@include respond-to($phone-l ) {
+		flex: 0 0 40%;
+		margin-right:5%;
+	}
+}
+.detail__text-block {
+
+	@include respond-to($phone-l) {
+		flex: 0 0 50%;
+		margin-left:5%;
+	}
+}
+
+.detail__title {
+	@extend .home__title;
+	text-align:center;
+	margin-bottom: rem(26px);
+	@include respond-to($phone-l) {
+		text-align: left;
+	}
+}
+.detail_preis {
+	color: white;
+	margin-top: rem(30px);
+	@include font-h4();
+}
+.detail__button {
+	background: $white;
+	color:$red1;
+	@include font-body();
+	width: auto;
+	display: inline-block;
+	padding-left:rem(20px);
+	padding-right:rem(20px);
+	font-weight: bold;
+	transform: scale(1);
+	transition: transform 0.3s;
+	margin-top: rem(30px);
+&:hover,
+&:focus{
+	background: $white;
+	color:$red1;
+	box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+	transform: scale(1.2);
+
+}
+}
+.detail-button__icon {
+	color:$red1;
+	margin-left:rem(15px);
+	font-size:rem(24px)
+}
+.detail__text {
+	color:$white;
+	font-weight: bold;
+}
+//button:focus{ outline: 1px solid $red1; }
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.grid__item {
+	flex:0 0 30%;
+	background: $white;
+	margin: rem(20px) 0;
+	padding: rem(30px);
+}
+.img--circle-mask {
+	border-radius: 50%;
+	overflow: hidden;
+	width: calc(100% - 40px);
+	margin: rem(20px);
+}
+.grid__img-box {height: rem(250px); }
+.grid__img {
+	max-height: 100%;
+	max-width:100%;
+}
