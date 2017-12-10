@@ -46,15 +46,18 @@ body {
 }
 .box__link {
 	color: $red1;
-	border-bottom:1px solid $red1;
+	border-bottom:2px solid $red1;
 	font-weight: bold;
 	margin:rem(24px) 0;
 	display: inline-block;
-
+	transform: translate3d(0,0,0);
+	transition:0.3s;
 	&:hover {
 		border-bottom:2px solid $red1;
 		text-decoration: none;
 		color: $red1;
+		transform: translate3d(5px,0,0);
+
 
 	}
 	&:after {
@@ -222,6 +225,7 @@ body {
 	margin-bottom: rem(26px);
 	@include respond-to($phone-l) {
 		text-align: left;
+
 	}
 }
 .detail_preis {

@@ -69,9 +69,18 @@ const ButtonSml = styled.button`
 	font-size:${rem(22)};
 	cursor: pointer;
 	float:right;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+  
 	&:hover {
-		background: ${theme.red1_hover};
+		 -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 	}
+
+
+  
  `;
 
 
@@ -101,7 +110,7 @@ export default class Article extends React.Component {
 
             <HomeArticle>
                 <HomeTeaserTitle>{title}  </HomeTeaserTitle>
-                <HomeTeaserImg><img class="img--block" src={picture} alt="Foto Gemmaicha mit Maccha"/></HomeTeaserImg>
+                <HomeTeaserImg><Link  to={"/shop/" + this.props._id}><img class="img--block" src={picture} alt="Foto Gemmaicha mit Maccha"/></Link></HomeTeaserImg>
                 <div class="home-teaser__text-block">
                     <HomeTeaserLead>{lead} </HomeTeaserLead>
                     <p>{text} </p>
