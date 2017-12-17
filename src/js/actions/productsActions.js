@@ -1,4 +1,5 @@
 import axios from "axios";
+import database from "../fire";
 
 import {
     FETCH_PRODUCTS,
@@ -6,27 +7,18 @@ import {
     FETCH_PRODUCTS_FAILURE,
 } from "./actionTypes";
 
-export const fetch = async () => fetchStaticProducts();
 
 export function fetchProducts() {
     return function (dispatch) {
         dispatch({type: FETCH_PRODUCTS});
 
-        fetch()
-            .then((response) => {
-                dispatch({type: FETCH_PRODUCTS_SUCCESS, payload: response.payload})
-            })
-            .catch((err) => {
-                dispatch({type: FETCH_PRODUCTS_FAILURE, error: err})
-            })
-
-        // return {
-        // 	type: FETCH_CART,
-        // 	payload: fetchRecipes().payload
-        // 		.filter((recipe) => {
-        // 			return recipe.featured;
-        // 		})
-        // }
+        database.ref('/').once('value', snap => {
+            const db = snap.val();
+            dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: db.products })
+        })
+        .catch((err) => {
+            dispatch({type: FETCH_PRODUCTS_FAILURE, error: err})
+        })
     }
 }
 
@@ -36,13 +28,9 @@ export function fetchProduct(slug) {
 
         fetch()
             .then((response) => {
-                console.log('response1', response.payload)
-                // product = response.payload.find(p => p._id === slug)
                 product = response.payload.find((product) => {
                     return product._id == slug;
                 });
-
-                console.log('produc2t', product)
                 dispatch({type: FETCH_PRODUCT_SUCCESS, payload: product})
             })
             .catch((err) => {
