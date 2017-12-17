@@ -43,6 +43,7 @@ export const fetchCartFailure = (error) => ({
 
 export function addToCart(productId, quantity) {
 	return function (dispatch) {
+		console.log('productId',productId);
 		dispatch({
 			type: ADD_TO_CART,
 			productId,

@@ -5,6 +5,7 @@ import Footer from "../components/layout/Footer";
 import Nav from "../components/layout/Nav";
 import Sidebar from "../components/layout/Sidebar";
 import PageBg from "../components/layout/PageBg";
+import CartMini from "../components/CartMini";
 
 export default class Layout extends React.Component {
   render() {
@@ -15,11 +16,12 @@ export default class Layout extends React.Component {
     return (
       <div>
           <PageBg/>
-        <Nav location={location} />
-
+          <Nav location={location} />
+          <CartMini />
         <div class="container">
 
           <div class="row">
+              <Sidebar />
             <div class="col-lg-12" style={containerStyle}>
               {this.props.children}
             </div>

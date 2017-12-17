@@ -15,9 +15,9 @@ export default class Layout extends React.Component {
         return (
             <div>
                 <PageBg/>
-                <Nav location={location}/>
+                <Nav location={location}/> 4
 
-                <div class="container">
+                <main role="main" class="main">
 
                     <div class="row">
                         <Sidebar />
@@ -25,7 +25,7 @@ export default class Layout extends React.Component {
                             {this.props.children}
                         </div>
                     </div>
-                </div>
+                </main>
                 <Footer />
             </div>
         );

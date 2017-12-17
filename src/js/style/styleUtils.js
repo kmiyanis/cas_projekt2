@@ -54,7 +54,7 @@ export function font_h1() {
         line-height:${rem(36)};
         font-weight:bold;
     
-        @include respond-to({$tablet}) {
+        @include respond-to({$sizes.tablet}) {
             font-size:${rem(36)};
             line-height:${rem(42)};
         }
@@ -67,7 +67,7 @@ export function font_h1() {
     line-height:${rem(32)};
     font-weight:bold;
 
-    @include respond-to($desktop-s ) {
+    @include respond-to({$sizes.tablet}) {
         font-size:${rem(36)};
         line-height:${rem(48)};
     }
@@ -79,7 +79,7 @@ return `
     line-height:${rem(28)};
     font-weight:bold;
 
-    @include respond-to($desktop-s ) {
+    @include respond-to({$sizes.tablet}) {
         font-size:${rem(28)};
         line-height:${rem(34)};
     }
@@ -99,7 +99,7 @@ return `
     line-height:${rem(24)};
     font-weight:bold;
 
-    @include respond-to($desktop-s ) {
+    @include respond-to({$sizes.tablet}) {
         font-size:${rem(24)};
         line-height:${rem(32)};
     }
@@ -123,6 +123,7 @@ export function font_sml() {
 Beispiel How to use
 
 import {rem, clearfix} from '../../style/styleUtils';
+import * as styleUtils from '../style/styleUtils';
 
 ${media.tablet`padding: 0 10px;`}
 height:${rem(1000)}

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
 import FontAwesome from "react-fontawesome";
-import {rem, media, theme} from '../style/styleUtils';
+import {rem, media, theme, font_h3} from '../style/styleUtils';
 
 import {addToCart} from "../actions/cartActions"
 
@@ -29,8 +29,13 @@ const HomeArticle = styled.article`
    }
  `;
 const HomeTeaserTitle = styled.h2`
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+    ${font_h3()}
+    margin-bottom:${rem(20)};
+
+  ${media.tablet`
+       margin-bottom:${rem(30)};
+  `}
+  
   font-weight: bold;
   margin-bottom: 1.25rem; 
   @media only screen and (min-width: 768px) {

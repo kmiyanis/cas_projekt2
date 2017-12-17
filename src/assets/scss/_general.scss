@@ -115,7 +115,11 @@ body {
 	margin: 0 auto;
 
 	@include respond-to($phone-l ) {
-		padding: rem(130px) rem(40px);
+
+		&.main--home {
+			padding: rem(130px) rem(40px);
+		}
+		padding: rem(70px) rem(40px);
 		max-width:rem(1024px);
 	}
 }
@@ -285,4 +289,35 @@ body {
 .grid__img {
 	max-height: 100%;
 	max-width:100%;
+}
+
+.filternav {
+	border-top:1px solid $white;
+	border-bottom:1px solid $white;
+	padding: rem(16px);
+}
+.filternav__title {
+	color:$white;
+	margin-right:20px;
+}
+.filternav__item {
+	margin-right:rem(25px);
+	display: inline-block;
+	color:$white;
+	font-weight: bold;
+	opacity: 0.8;
+}
+.filternav__item.checked {
+	opacity: 1;
+	&:before {
+		content: "\f00c";
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: inherit;
+		margin-right: rem(10px);
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
 }

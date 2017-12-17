@@ -26,7 +26,12 @@ module.exports = {
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                exclude: [/img/],
                 loader: 'file-loader?name=../fonts/[name].[ext]'
+            },
+            {
+                test: /\.(svg|png|jpg|jpeg|gif)$/,
+                loader: 'file-loader?name=../img/[name].[ext]'
             },
             {
                 test: /\.scss$/,
