@@ -19,8 +19,17 @@ export default class Shop extends React.Component {
   render() {
     const { products, fetched, params } = this.props;
 
-    const mappedProducts = products.map((product, i) => {
-      return <Product key={product._id} {...product} />;
+    if (products.length === 0 && !fetched) {
+      if (fetched) {
+        return <p>No items!</p>;
+      } else {
+        return <p>Loading...</p>;
+      }
+    }
+
+
+    const mappedProducts = Object.keys(products).map((key, index) => {
+      return <Product key={products[key]._id} {...products[key]} />;
     });
 
     return (

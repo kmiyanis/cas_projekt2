@@ -32,7 +32,7 @@ export default class Cart extends React.Component {
 			<div class="col-lg-3">
 				<h1 class="my-4">Warenkorb</h1>
 				<div class="list-group">
-					{fetched ? (
+					{products.length === 0 && !fetched ? (
 						"Loading..."
 					) : (
 							<CartTable
@@ -45,12 +45,10 @@ export default class Cart extends React.Component {
 	}
 }
 
-const getProductById = (products, productId) => products.find(p => p._id === productId);
-
 const populateCartItems = (cart, products) => ({
 	...cart,
 	items: cart.items.map(item => ({
 		...item,
-		product: getProductById(products, item.productId),
+		product: products[item.productId],
 	})),
 });
