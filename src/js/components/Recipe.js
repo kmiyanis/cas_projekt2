@@ -4,7 +4,6 @@ import { Link } from "react-router";
 export default class Recipe extends React.Component {
   render() {
     const { name, img, slug } = this.props;
-
     return (
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">

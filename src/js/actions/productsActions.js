@@ -1,5 +1,5 @@
 import axios from "axios";
-import database from "../fire";
+import { database, snapshotToArray } from "../fire";
 
 import {
     FETCH_PRODUCTS,
@@ -12,9 +12,9 @@ export function fetchProducts() {
     return function (dispatch) {
         dispatch({type: FETCH_PRODUCTS});
 
-        database.ref('/').once('value', snap => {
+        database.ref('products').once('value', snap => {
             const db = snap.val();
-            dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: db.products })
+            dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: db })
         })
         .catch((err) => {
             dispatch({type: FETCH_PRODUCTS_FAILURE, error: err})

@@ -18,8 +18,6 @@ export default class RecipeDetail extends React.Component {
   render() {
     const { recipe, recipesFetched } = this.props;
 
-
-
     return (
       <div>
         <main class="main" role="main">

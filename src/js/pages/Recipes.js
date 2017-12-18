@@ -18,9 +18,8 @@ export default class Recipes extends React.Component {
 
 	render() {
 		const { recipes, fetched, params } = this.props;
-
-		const mappedRecipes = recipes.map((recipe, i) => {
-			return <Recipe key={i} {...recipe} />;
+		const mappedRecipes = Object.entries(recipes).map(([k, v]) => {
+			return <Recipe key={v.slug} {...v} />;
 		});
 
 		return (
