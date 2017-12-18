@@ -1,3 +1,12 @@
+import {
+	FETCH_RECIPES,
+	FETCH_RECIPE,
+	FETCH_RECIPES_SUCCESS,
+	FETCH_RECIPE_SUCCESS,
+	FETCH_RECIPES_FAILURE,
+	FETCH_FEATURED_RECIPES_FULFILLED,
+} from "../actions/actionTypes";
+
 export default function reducer(state = {
 	recipes: [],
 	recipe: [],
@@ -7,13 +16,13 @@ export default function reducer(state = {
 }, action) {
 
 	switch (action.type) {
-		case "FETCH_RECIPES": {
+		case FETCH_RECIPES: {
 			return { ...state, fetching: true }
 		}
-		case "FETCH_RECIPES_REJECTED": {
+		case FETCH_RECIPES_FAILURE: {
 			return { ...state, fetching: false, error: action.payload }
 		}
-		case "FETCH_RECIPES_FULFILLED": {
+		case FETCH_RECIPES_SUCCESS: {
 			return {
 				...state,
 				fetching: false,
@@ -22,7 +31,7 @@ export default function reducer(state = {
 			}
 		}
 		// FEATURED
-		case "FETCH_FEATURED_RECIPES_FULFILLED": {
+		case FETCH_FEATURED_RECIPES_FULFILLED: {
 			return {
 				...state,
 				fetching: false,
@@ -32,7 +41,7 @@ export default function reducer(state = {
 		}
 
 		// SINGLE RECIPE
-		case "FETCH_RECIPE_FULFILLED": {
+		case FETCH_RECIPE_SUCCESS: {
 			return {
 				...state,
 				fetching: false,

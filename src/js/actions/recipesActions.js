@@ -1,21 +1,41 @@
+import axios from "axios";
+import {database, snapshotToArray} from "../fire";
+
+import {
+	FETCH_RECIPES,
+	FETCH_RECIPE,
+	FETCH_RECIPES_SUCCESS,
+	FETCH_RECIPE_SUCCESS,
+	FETCH_RECIPES_FAILURE,
+	FETCH_FEATURED_RECIPES_FULFILLED,
+} from "./actionTypes";
+
 export function fetchFeaturedRecipes() {
-    return {
-        type: "FETCH_FEATURED_RECIPES_FULFILLED",
-        payload: fetchRecipes().payload
-            .filter((recipe) => {
-                return recipe.featured;
-            })
-    }
+	return function (dispatch) {
+		dispatch({ type: FETCH_RECIPES });
+
+		database.ref('recipes').orderByChild('featured').equalTo(true).once('value', snap => {
+			const db = snap.val();
+			dispatch({type: FETCH_RECIPES_SUCCESS, payload: db})
+		})
+		.catch((err) => {
+			dispatch({ type: FETCH_RECIPES_FAILURE, error: err })
+		})
+	}
 }
 
 export function fetchRecipe(slug) {
-    return {
-        type: "FETCH_RECIPE_FULFILLED",
-        payload: fetchRecipes().payload
-            .find((recipe) => {
-                return recipe.slug == slug;
-            })
-    }
+	return function (dispatch) {
+		dispatch({ type: FETCH_RECIPE });
+		database.ref('recipes').orderByChild('slug').equalTo(slug).on('value', snap => {
+
+			const db = snapshotToArray(snap);
+			dispatch({ type: FETCH_RECIPE_SUCCESS, payload: db[0] })
+		})
+		// .catch((err) => {
+		// 	dispatch({ type: FETCH_RECIPE_FAILURE, error: err })
+		// });
+	}
 }
 
 export function setRecipeName(name) {
@@ -34,57 +54,8 @@ export function setRecipeAge(age) {
 
 // export function fetchRecipes() {
 export function fetchRecipes() {
-	return {
-		type: "FETCH_RECIPES_FULFILLED",
-		payload: [
-			{
-				name: "Maccha Vanille Eis",
-				slug: "Maccha-Vanille-Eis",
-				img: 'http://miya.ch/img/dringo.jpg',
-				featured: true,
-				steps: [
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_1.jpg',
-						'txt': 'Du kannst Maccha Tee zubereiten. <br />1 gestrichener Teelöffel Maccha + 40 –50 ml Wasser(80 – 90Grad)<br />Bambus-Besen hin und her schnell bewegen und schaumig schlagen'
-					},
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_2.jpg',
-						'txt': 'Dazu Vanille Eis oder sonst anderen Eis rein tun, <br />Frucht Sorbet ist keine gute Idee...<br />Schnell! Schmeckt!!'
-					}
-				]
-			},
-			{
-				name: "Maccha Eis",
-				slug: "Maccha-Eis",
-				img: 'http://miya.ch/img/maccha_eis.jpg',
-				featured: false,
-				steps: [
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_1.jpg',
-						'txt': 'Du kannst Maccha Tee zubereiten. <br />1 gestrichener Teelöffel Maccha + 40 –50 ml Wasser(80 – 90Grad)<br />Bambus-Besen hin und her schnell bewegen und schaumig schlagen'
-					},
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_2.jpg',
-						'txt': 'Dazu Vanille Eis oder sonst anderen Eis rein tun, <br />Frucht Sorbet ist keine gute Idee...<br />Schnell! Schmeckt!!'
-					}
-				]
-			},
-			{
-				name: "Maccha Financier",
-				slug: "Maccha-Financier",
-				img: 'http://miya.ch/img/financier.jpg',
-				featured: true,
-				steps: [
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_1.jpg',
-						'txt': 'Du kannst Maccha Tee zubereiten. <br />1 gestrichener Teelöffel Maccha + 40 –50 ml Wasser(80 – 90Grad)<br />Bambus-Besen hin und her schnell bewegen und schaumig schlagen'
-					},
-					{
-						img: 'http://miya.ch/d/img_rezept/maccha_vanille_2.jpg',
-						'txt': 'Dazu Vanille Eis oder sonst anderen Eis rein tun, <br />Frucht Sorbet ist keine gute Idee...<br />Schnell! Schmeckt!!'
-					}
-				]
-			},
-		],
-	}
+	return database.ref('/').once('value', snap => {
+		const db = snap.val();
+		dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: snapshotToArray(db.recipes) })
+	});
 }

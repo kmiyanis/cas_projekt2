@@ -11,6 +11,16 @@ var config = {
 };
 
 firebase.initializeApp(config);
-const database = firebase.database();
+export const database = firebase.database();
 
-export default database;
+export const snapshotToArray = snapshot => {
+    let returnArr = [];
+
+    snapshot.forEach(childSnapshot => {
+        let item = childSnapshot.val();
+        item.key = childSnapshot.key;
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};
