@@ -1,5 +1,5 @@
 import axios from "axios";
-import database from "../fire";
+import { database, snapshotToArray } from "../fire";
 
 import {
     FETCH_PRODUCTS,
