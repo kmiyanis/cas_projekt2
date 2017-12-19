@@ -32,7 +32,7 @@ export default class Cart extends React.Component {
 			<div class="col-lg-3">
 				<h1 class="my-4">Warenkorb</h1>
 				<div class="list-group">
-					{products.length === 0 && !fetched ? (
+					{products.length > 0 && fetched ? (
 						"Loading..."
 					) : (
 							<CartTable

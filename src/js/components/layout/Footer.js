@@ -1,6 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 
+import CartMini from "../CartMini";
+
 const FooterTag = styled.footer`
 	text-align:center;
 	font-weight:bold;
@@ -19,6 +21,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <FooterTag class="py-5 bg-dark">
+        <CartMini />
         <div class="container">
           <ul class="footer__info text-center text-white">
               <li  class="footer-info__item">MIYA JAPAN TEE</li>

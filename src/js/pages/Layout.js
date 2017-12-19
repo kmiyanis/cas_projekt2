@@ -17,12 +17,12 @@ export default class Layout extends React.Component {
       <div>
           <PageBg/>
           <Nav location={location} />
-          <CartMini />
+          {/* <CartMini /> */}
         <div class="container">
 
           <div class="row">
               <Sidebar />
-            <div class="col-lg-12" style={containerStyle}>
+            <div class="col-lg-9" style={containerStyle}>
               {this.props.children}
             </div>
           </div>

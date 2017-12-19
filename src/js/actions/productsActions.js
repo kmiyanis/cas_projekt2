@@ -5,37 +5,52 @@ import {
     FETCH_PRODUCTS,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
+    FETCH_PRODUCT,
+    FETCH_PRODUCT_SUCCESS,
+    FETCH_PRODUCT_FAILURE,
+    FETCH_CATEGORIES,
+    FETCH_CATEGORIES_SUCCESS,
+    FETCH_CATEGORIES_FAILURE,
 } from "./actionTypes";
 
 
+export function fetchCategories() {
+    return function (dispatch) {
+        dispatch({type: FETCH_CATEGORIES});
+
+        database.ref('products_categories').once('value', snap => {
+            dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: snapshotToArray(snap) })
+        })
+        .catch((err) => {
+            dispatch({type: FETCH_CATEGORIES_FAILURE, error: err})
+        })
+    }
+}
+
 export function fetchProducts() {
     return function (dispatch) {
-        dispatch({type: FETCH_PRODUCTS});
+        dispatch({ type: FETCH_PRODUCTS });
 
         database.ref('products').once('value', snap => {
             const db = snap.val();
             dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: db })
         })
-        .catch((err) => {
-            dispatch({type: FETCH_PRODUCTS_FAILURE, error: err})
-        })
+            .catch((err) => {
+                dispatch({ type: FETCH_PRODUCTS_FAILURE, error: err })
+            })
     }
 }
 
 export function fetchProduct(slug) {
     return function (dispatch) {
         dispatch({type: FETCH_PRODUCT});
-
-        fetch()
-            .then((response) => {
-                product = response.payload.find((product) => {
-                    return product._id == slug;
-                });
-                dispatch({type: FETCH_PRODUCT_SUCCESS, payload: product})
-            })
-            .catch((err) => {
-                dispatch({type: FETCH_PRODUCT_FAILURE, error: err})
-            })
+        
+        database.ref(`/products/${slug}`).once('value', snap => {
+            dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: snap.val() })
+        })
+        .catch((err) => {
+            dispatch({ type: FETCH_PRODUCT_FAILURE, error: err })
+        })
     }
 }
 

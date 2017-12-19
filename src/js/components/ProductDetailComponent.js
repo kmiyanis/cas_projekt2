@@ -35,7 +35,6 @@ export default class Product extends React.Component {
             text,
             categoryId,
         } = this.props;
-
         return (
             <div class="detail__content">
                 <div class="detail__img-block"><img class="img--block" src={picture}

@@ -15,34 +15,40 @@ import {fetchCart} from "../actions/cartActions"
 })
 
 export default class CartMini extends React.Component {
-
     constructor(props) {
-        super(props);
+			super(props);
 
-        this.state = {
-            opened: false,
-        };
-        this.toggleClass = this.toggleClass.bind(this);
-    }
+			this.state = {
+				opened: false,
+			};
+			this.toggleClass = this.toggleClass.bind(this);
+		}
+		
     toggleClass() {
-        this.setState({ opened: !this.state.opened });
+			this.setState({ opened: !this.state.opened });
     };
 
     componentWillMount() {
-        this.props.dispatch(fetchProducts())
-        this.props.dispatch(fetchCart())
+			this.props.dispatch(fetchProducts())
+			this.props.dispatch(fetchCart())
     }
+
+		componentWillReceiveProps(nextProps) {
+			if(nextProps.cart.items.length === 0) {
+				this.setState({ opened: false })
+			}
+		}
 
     render() {
         const {
-            products,
-            productsFetched,
-            cart,
-            fetched
+					products,
+					productsFetched,
+					cart,
+					fetched
         } = this.props;
-        console.log('items.length = ', cart.items.length);
+
         return (
-            <div class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>
+						<div class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>
                 <a onClick={this.toggleClass} class="cd-cart-trigger">
                     Warenkorb
                     <ul class="count">
@@ -57,25 +63,14 @@ export default class CartMini extends React.Component {
                             <h2>Cart</h2>
                             <span class="undo">Item removed. <a >Undo</a></span>
                         </header>
-
-                        <div class="body">
-
-
-                            {fetched ? (
-                                "Loading..."
-                            ) : (
-
+												{products.length === 0 && fetched && this.toggleClass}
+                        {products.length === 0 && !fetched ? (
+                            ""
+                        ) : (
                                 <CartTable
                                     cart={cart}
                                 />
-
                             )}
-
-                        </div>
-
-                        <footer>
-                            <a href="#" class="checkout"><em>Checkout - CHF <span>0</span></em></a>
-                        </footer>
                     </div>
                 </div>
             </div>
@@ -84,12 +79,10 @@ export default class CartMini extends React.Component {
     }
 }
 
-const getProductById = (products, productId) => products.find(p => p._id === productId);
-
 const populateCartItems = (cart, products) => ({
     ...cart,
     items: cart.items.map(item => ({
         ...item,
-        product: getProductById(products, item.productId),
+        product: products[item.productId],
     })),
 });

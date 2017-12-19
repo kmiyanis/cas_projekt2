@@ -8,7 +8,7 @@ import PageBg from "../components/layout/PageBg";
 import styled from 'styled-components';
 
 import Article from "../components/Article";
-import {fetchArticle} from "../actions/articleActions";
+import {fetchArticles} from "../actions/articleActions";
 import CartMini from "../components/CartMini";
 
 
@@ -42,7 +42,7 @@ const HomeTitle = styled.h1`
 
 export default class Home extends React.Component {
     componentWillMount() {
-        this.props.dispatch(fetchArticle())
+        this.props.dispatch(fetchArticles())
     }
 
     render() {
@@ -60,7 +60,7 @@ console.log('location',location);
             <div>
                 <Nav location={location}/>
                 <PageBg/>
-                <CartMini />
+                {/* <CartMini /> */}
                 <HomeMain class="main" role="main">
                     <div class="content">
                         <HomeTitle>Tee ist wie Wein<br/>Tee ist Geschmacksache<br/>ich bin gespannt, ob meine Geschmack

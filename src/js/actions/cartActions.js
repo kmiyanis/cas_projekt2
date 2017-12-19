@@ -20,14 +20,6 @@ export function fetchCart() {
 			.catch((err) => {
 				dispatch({ type: FETCH_CART_FAILURE, error: err })
 			})
-
-		// return {
-		// 	type: FETCH_CART,
-		// 	payload: fetchRecipes().payload
-		// 		.filter((recipe) => {
-		// 			return recipe.featured;
-		// 		})
-		// }
 	}
 }
 
@@ -43,7 +35,6 @@ export const fetchCartFailure = (error) => ({
 
 export function addToCart(productId, quantity) {
 	return function (dispatch) {
-		console.log('productId',productId);
 		dispatch({
 			type: ADD_TO_CART,
 			productId,
@@ -51,6 +42,24 @@ export function addToCart(productId, quantity) {
 		});
 
 		cartAPI.addToCart(productId, quantity)
+			.then((response) => {
+				dispatch({ type: ADD_TO_CART_SUCCESS, cart: { items: response.items } })
+			})
+			.catch((err) => {
+				dispatch({ type: ADD_TO_CART_FAILURE, error: err })
+			})
+	}
+}
+
+export function removeFromCart(productId, quantity) {
+	return function (dispatch) {
+		dispatch({
+			type: ADD_TO_CART,
+			productId,
+			quantity,
+		});
+
+		cartAPI.removeFromCart(productId, quantity)
 			.then((response) => {
 				dispatch({ type: ADD_TO_CART_SUCCESS, cart: { items: response.items } })
 			})
