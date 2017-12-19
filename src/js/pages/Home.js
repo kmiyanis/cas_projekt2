@@ -8,7 +8,7 @@ import PageBg from "../components/layout/PageBg";
 import styled from 'styled-components';
 
 import Article from "../components/Article";
-import {fetchArticle} from "../actions/articleActions";
+import {fetchArticles} from "../actions/articleActions";
 
 import {rem, media} from '../style/styleUtils';
 
@@ -70,7 +70,7 @@ const HomeArticle = styled.article`
 
 export default class Home extends React.Component {
     componentWillMount() {
-        this.props.dispatch(fetchArticle())
+        this.props.dispatch(fetchArticles())
     }
 
     render() {
@@ -95,7 +95,6 @@ console.log('location',location);
                             Ihnen zusagt oder ... </HomeTitle>
                     </div>
                     {mappedProducts}
-
 
                 </HomeMain>
                 <Footer />
