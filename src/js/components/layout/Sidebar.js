@@ -1,8 +1,17 @@
 import React from "react";
+import { connect } from "react-redux"
+
 import { IndexLink, Link } from "react-router";
+import { fetchCategories } from "../../actions/productsActions"
 
 import Cart from '../Cart';
 
+@connect((store, props) => {
+    return {
+        categories: store.products.categories,
+        categoriesFetched: store.products.fetched,
+    };
+})
 export default class Sidebar extends React.Component {
     constructor() {
         super()
@@ -11,17 +20,22 @@ export default class Sidebar extends React.Component {
         };
     }
 
+    filterCat(c) {
+        alert('filter by ' + c.name)
+    }
+
     toggleCollapse() {
         const collapsed = !this.state.collapsed;
         this.setState({ collapsed });
     }
 
+    componentWillMount() {
+        this.props.dispatch(fetchCategories())
+    }
+
     render() {
-        const SiderbarLinks = [
-            "Tee",
-            "Socken",
-            "Nierenwärmer"
-        ].map((title, i) => <a href="#" class="list-group-item" key={i} alt={title}>{title}</a>);
+        const { categories, fetched } = this.props;
+        const SiderbarLinks = categories.map((c) => <a onClick={() => this.filterCat(c)} class="list-group-item">{c.name}</a>);
         return (
             <div class="col-lg-3">
                 <h1 class="my-4">Miya Japan Tee</h1>
