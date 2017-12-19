@@ -1,22 +1,20 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchProducts } from "../actions/productsActions"
+import { fetchProduct } from "../actions/productsActions"
 
 import ProductDetailComponent from "../components/ProductDetailComponent";
 
 @connect((store, props) => {
 	return {
-		product: store.products.products.find((product) => {
-			return product._id == props.params.product;
-		}),
+		product: store.products.product,
 		productsFetched: store.products.fetched,
 	};
 })
 
 export default class ProductDetail extends React.Component {
 	componentWillMount() {
-		this.props.dispatch(fetchProducts())
+		this.props.dispatch(fetchProduct(this.props.params.product))
 	}
 
 	render() {

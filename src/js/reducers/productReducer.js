@@ -2,6 +2,9 @@ import {
     FETCH_PRODUCTS,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
+    FETCH_PRODUCT,
+    FETCH_PRODUCT_SUCCESS,
+    FETCH_PRODUCT_FAILURE,
 } from "../actions/actionTypes";
 
 
@@ -13,13 +16,27 @@ export default function reducer(state = {
 }, action) {
 
     switch (action.type) {
-        case FETCH_PRODUCTS: {
+        case FETCH_PRODUCT: 
+        case FETCH_PRODUCTS: 
+        {
             return { ...state, fetching: true }
         }
-        case FETCH_PRODUCTS_FAILURE: {
+        case FETCH_PRODUCT_FAILURE: 
+        case FETCH_PRODUCTS_FAILURE: 
+        {
             return { ...state, fetching: false, error: action.payload }
         }
-        case FETCH_PRODUCTS_SUCCESS: {
+        case FETCH_PRODUCT_SUCCESS:
+        {
+            return {
+                ...state,
+                fetching: false,
+                fetched: true,
+                product: action.payload,
+            }
+        }
+        case FETCH_PRODUCTS_SUCCESS: 
+        {
             return {
                 ...state,
                 fetching: false,

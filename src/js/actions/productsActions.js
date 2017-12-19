@@ -5,6 +5,9 @@ import {
     FETCH_PRODUCTS,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
+    FETCH_PRODUCT,
+    FETCH_PRODUCT_SUCCESS,
+    FETCH_PRODUCT_FAILURE,
 } from "./actionTypes";
 
 
@@ -25,17 +28,12 @@ export function fetchProducts() {
 export function fetchProduct(slug) {
     return function (dispatch) {
         dispatch({type: FETCH_PRODUCT});
-
-        fetch()
-            .then((response) => {
-                product = response.payload.find((product) => {
-                    return product._id == slug;
-                });
-                dispatch({type: FETCH_PRODUCT_SUCCESS, payload: product})
-            })
-            .catch((err) => {
-                dispatch({type: FETCH_PRODUCT_FAILURE, error: err})
-            })
+        database.ref(`/products/${slug}`).once('value', snap => {
+            dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: snap.val() })
+        })
+        .catch((err) => {
+            dispatch({ type: FETCH_PRODUCT_FAILURE, error: err })
+        })
     }
 }
 
