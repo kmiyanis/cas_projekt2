@@ -1,4 +1,4 @@
 module.exports = {
-    "firebase": "YOUR_KEY_HERE",
-    "messagingSenderId": "YOUR_SENDER_ID_HERE",
+  "firebase": "AIzaSyCLKwhxGI7izwNwg7sssRX-ZaUAUaVO6tg",
+  "messagingSenderId": "771686572944"
 }

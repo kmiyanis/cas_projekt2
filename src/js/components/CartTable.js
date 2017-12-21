@@ -7,7 +7,7 @@ import { addToCart, removeFromCart } from "../actions/cartActions"
 export default class CartTable extends React.Component {
 	onclick(type, product) {
 		const newQty = type === 'sub' ? product.quantity - 1 : product.quantity + 1;
-		if(newQty <= 0) {
+		if (newQty <= 0) {
 			this.removeFromCart(product);
 		} else {
 			this.props.dispatch(addToCart(product.productId, newQty));
@@ -62,7 +62,7 @@ export default class CartTable extends React.Component {
 					</ul>
 				</div >
 				<footer>
-					<a href="#" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></a>
+					<Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
 				</footer>
 			</div >
 		);

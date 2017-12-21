@@ -12,7 +12,7 @@ require("babel-polyfill");
 module.exports = {
     context: path.join(__dirname, "src"),
     devtool: debug ? "inline-sourcemap" : null,
-    entry: ['babel-polyfill', "./js/client.js", "./assets/scss/style.scss"],
+    entry: ['babel-polyfill', "./js/index.js", "./assets/scss/style.scss"],
     module: {
         rules: [
             {
@@ -75,7 +75,7 @@ module.exports = {
     },
     output: {
         path: __dirname + "/src/",
-        filename: "client.min.js",
+        filename: "index.min.js",
         hotUpdateChunkFilename: 'hot/hot-update.js',
         hotUpdateMainFilename: 'hot/hot-update.json'
     },
