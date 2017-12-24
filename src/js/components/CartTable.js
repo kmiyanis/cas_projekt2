@@ -30,7 +30,7 @@ export default class CartTable extends React.Component {
 								</div>
 								<div class="product-details">
 									<h3 class="cd-product-title"><a>{item.product.title}</a></h3>
-									<span class="price">CHF {item.product.price}</span>
+									<span class="price">{(item.product.price * item.quantity).toFixed(2)}</span>
 									<div class="actions">
 										<div class="quantity-pill">
 											<button onClick={this.onclick.bind(this, 'sub', item.quantity, item.productId, item)} class="quantity-pill__left">
@@ -56,11 +56,12 @@ export default class CartTable extends React.Component {
 							</li>
 						))}
 					</ul>
-				</div >
+				</div>
 				<footer>
 					<a href="#" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></a>
 				</footer>
-			</div >
+			</div>
 		);
-	}
+    }
+
 }

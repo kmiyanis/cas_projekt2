@@ -25,10 +25,12 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}></Route>
-            <Route path="/" component={Layout}>
+            <Route path="/" component={LayoutSidebar}>
                 <Route path="shop" name="shop" component={Shop}></Route>
-                <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
+            </Route>
+            <Route path="/" component={Layout}>
                 <Route path="recipes" name="recipes" component={Recipes}></Route>
+                <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
                 <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>
                 <Route path="contact" name="contact" component={Contact}></Route>
             </Route>

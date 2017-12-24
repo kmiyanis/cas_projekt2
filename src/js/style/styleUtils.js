@@ -38,7 +38,7 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
     // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
     const remSize = sizes[label] / 16
     accumulator[label] = (...args) => css`
-    @media (max-width: ${remSize}rem) {
+    @media (min-width: ${remSize}rem) {
       ${css(...args)}
     }
   `
@@ -52,7 +52,6 @@ export function font_h1() {
     return `
         font-size:${rem(28)};
         line-height:${rem(36)};
-        font-weight:bold;
     
         @include respond-to({$sizes.tablet}) {
             font-size:${rem(36)};
@@ -65,7 +64,6 @@ export function font_h1() {
      return `
     font-size:${rem(24)};
     line-height:${rem(32)};
-    font-weight:bold;
 
     @include respond-to({$sizes.tablet}) {
         font-size:${rem(36)};
@@ -77,7 +75,6 @@ export function font_h3() {
 return `
     font-size:${rem(20)};
     line-height:${rem(28)};
-    font-weight:bold;
 
     @include respond-to({$sizes.tablet}) {
         font-size:${rem(28)};

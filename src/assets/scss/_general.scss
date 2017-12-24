@@ -47,10 +47,10 @@ body {
 .box__link {
 	color: $red1;
 	border-bottom:2px solid $red1;
-	font-weight: bold;
 	margin:rem(24px) 0;
 	display: inline-block;
 	transform: translate3d(0,0,0);
+	text-decoration: none;
 	transition:0.3s;
 	&:hover {
 		border-bottom:2px solid $red1;
@@ -67,19 +67,39 @@ body {
 }
 
 .icon__cart-plus {
-	color: white;
+	color: $white;
 	border: 0;
-	border-radius: rem(40px);
-	background: $red2;
-	width: rem(60px);
-	height: rem(40px);
+	border-radius: rem(30px);
+	background: $red1;
+	padding: 0 rem(10px);
 	margin:rem(24px) 0;
 	font-size:rem(22px);
 	cursor: pointer;
-	&:hover {
-		background: $red1-hover;
+	transition: 0.3s;
+
+	.fa {
+		transform: translate3d(0,0,0);
+		transition: transform 0.5s;
+		color: $white;
+		display: block;
+		height:rem(40px);
+		width:rem(40px);
+		line-height: rem(40px);
+	}
+
+	&:hover,
+	&:focus{
+
+		padding-right:rem(30px);
+		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		/*transform: scale(1.2);*/
+		.fa {
+			transform: translate3d(60%,0,0);
+		}
 	}
 }
+
+
 .page-bg__item {
 	width:50%;
 	height: 50%;
@@ -114,13 +134,15 @@ body {
 	padding: rem(100px) rem(20px);
 	margin: 0 auto;
 
-	@include respond-to($phone-l ) {
+	@include respond-to($desktop-s ) {
 
-		&.main--home {
-			padding: rem(130px) rem(40px);
-		}
-		padding: rem(70px) rem(40px);
+		padding: rem(130px) rem(40px);
 		max-width:rem(1024px);
+
+
+		&.main--overview {
+			padding-top:rem(100px);
+		}
 	}
 }
 .content {
@@ -186,7 +208,12 @@ body {
 .footer__logo {
 	padding: rem(10px) rem(15px);
 }
-
+footer .container {
+	text-align:center;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+	color:#FFFFFF;
+	padding:rem(48px) rem(20px);
+}
 .footer-logo__text {
 	display: inline-block;;
 	padding-top:rem(11px);
@@ -199,6 +226,7 @@ body {
 .footer-info__item {
 	display: inline-block;
 	margin:0 rem(20px);
+	letter-spacing:0.5px;
 }
 
 .detail__content {
@@ -225,38 +253,56 @@ body {
 
 .detail__title {
 	@extend .home__title;
-	text-align:center;
 	margin-bottom: rem(26px);
+	text-align:center;
 	@include respond-to($phone-l) {
 		text-align: left;
-
 	}
 }
 .detail_preis {
 	color: white;
 	margin-top: rem(30px);
 	@include font-h4();
+	text-align:center;
+	@include respond-to($phone-l) {
+		text-align: left;
+	}
 }
+
 .detail__button {
 	background: $white;
 	color:$red1;
 	@include font-body();
 	width: auto;
-	display: inline-block;
+	display: block;
 	padding-left:rem(20px);
 	padding-right:rem(20px);
-	font-weight: bold;
-	transform: scale(1);
-	transition: transform 0.3s;
-	margin-top: rem(30px);
-&:hover,
-&:focus{
-	background: $white;
-	color:$red1;
-	box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
-	transform: scale(1.2);
+	/*transform: scale(1);*/
+	transition: 0.3s;
+	margin: rem(30px) auto;
+	.fa {
+		transform: translate3d(0,0,0);
+		transition: transform 0.5s;
+	}
 
-}
+	@include respond-to($phone-l) {
+		text-align: left;
+		display: inline-block;
+		transform-origin: left;
+	}
+
+	&:hover,
+	&:focus{
+		background: $white;
+		color:$red1;
+		padding-right:rem(30px);
+		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		/*transform: scale(1.2);*/
+		.fa {
+			transform: translate3d(60%,0,0);
+		}
+
+	}
 }
 .detail-button__icon {
 	color:$red1;
@@ -271,30 +317,79 @@ body {
 .grid {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	@include respond-to($phone-l) {
+		width:calc(100% + 10px);
+		margin-left: rem(-10px);
+	}
 }
 .grid__item {
-	flex:0 0 30%;
+	width: 100%;
 	background: $white;
-	margin: rem(20px) 0;
-	padding: rem(30px);
+	margin: rem(16px);
+	padding: rem(16px) rem(16px) rem(60px) rem(16px);
+	position: relative;
+	@include font-body();
+	@include respond-to($phone-l) {
+		flex:0 0 calc(50% - 20px);
+		margin:rem(16px) rem(10px);
+	}
+	@include respond-to($desktop-s) {
+		flex:0 0 calc(33.3% - 20px);
+	}
+}
+.grid__header {
+	position: absolute;
+	top:rem(12px);
+	left:rem(8px);
+	transform:rotate(-5deg);
+	padding: 0 rem(5px);
+	background: rgba(226, 53, 53, 0.9);
+	color:$white;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.grid__title {
+
+	a {
+		text-decoration: none;
+		color:$red1;
+		@include font-title();
+	}
+}
+.grid__button {
+	position: absolute;
+	bottom:0;
+	left:calc(100% - 90px);
+}
+.grid__preis {
+	margin-top: rem(20px);
+}
+.grid__text {
+	margin-top: rem(24px);
 }
 .img--circle-mask {
 	border-radius: 50%;
 	overflow: hidden;
-	width: calc(100% - 40px);
-	margin: rem(20px);
+	width: 100%;
+
 }
-.grid__img-box {height: rem(250px); }
+.grid__img-box {
+	max-width: rem(250px);
+	max-height: rem(250px);
+	overflow: hidden;
+	margin: rem(4px) auto rem(20px) auto;
+}
 .grid__img {
-	max-height: 100%;
-	max-width:100%;
+	display: block;
+	width: 100%;
+
 }
 
 .filternav {
 	border-top:1px solid $white;
 	border-bottom:1px solid $white;
 	padding: rem(16px);
+	margin-bottom:rem(16px);
 }
 .filternav__title {
 	color:$white;
@@ -320,4 +415,16 @@ body {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
+}
+
+.message-loader,
+.alert-message {
+	width:rem(200px);
+	margin:rem(200px) auto;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+	color:$white;
+	@include font-h4();
+}
+.message-loader {
+	background: url('../img/ajax-loader.gif') top right no-repeat;
 }

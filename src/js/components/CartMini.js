@@ -16,43 +16,48 @@ import {fetchCart} from "../actions/cartActions"
 
 export default class CartMini extends React.Component {
     constructor(props) {
-			super(props);
+        super(props);
 
-			this.state = {
-				opened: false,
-			};
-			this.toggleClass = this.toggleClass.bind(this);
-		}
-		
+        this.state = {
+            opened: false,
+        };
+        this.toggleClass = this.toggleClass.bind(this);
+    }
+
     toggleClass() {
-			this.setState({ opened: !this.state.opened });
+        this.setState({opened: !this.state.opened});
+    };
+
+    countItem() {
+        return this.props.cart.items.reduce((sum, item) => sum + (item.quantity), 0);
     };
 
     componentWillMount() {
-			this.props.dispatch(fetchProducts())
-			this.props.dispatch(fetchCart())
+        this.props.dispatch(fetchProducts())
+        this.props.dispatch(fetchCart())
     }
 
-		componentWillReceiveProps(nextProps) {
-			if(nextProps.cart.items.length === 0) {
-				this.setState({ opened: false })
-			}
-		}
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.cart.items.length === 0) {
+            this.setState({opened: false})
+        }
+    }
 
     render() {
         const {
-					products,
-					productsFetched,
-					cart,
-					fetched
+            products,
+            productsFetched,
+            cart,
+            fetched
         } = this.props;
 
         return (
-						<div class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>
+            <div
+                class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>
                 <a onClick={this.toggleClass} class="cd-cart-trigger">
                     Warenkorb
                     <ul class="count">
-                        <li>{cart.items.length}</li>
+                        <li>{this.countItem()}</li>
                         <li>0</li>
                     </ul>
                 </a>
@@ -63,14 +68,14 @@ export default class CartMini extends React.Component {
                             <h2>Cart</h2>
                             <span class="undo">Item removed. <a >Undo</a></span>
                         </header>
-												{products.length === 0 && fetched && this.toggleClass}
+                        {products.length === 0 && fetched && this.toggleClass}
                         {products.length === 0 && !fetched ? (
                             ""
                         ) : (
-                                <CartTable
-                                    cart={cart}
-                                />
-                            )}
+                            <CartTable
+                                cart={cart}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

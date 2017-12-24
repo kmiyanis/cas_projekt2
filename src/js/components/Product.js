@@ -1,50 +1,54 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router";
+import {connect} from "react-redux";
+import {Link} from "react-router";
 import FontAwesome from "react-fontawesome";
 
-import { addToCart } from "../actions/cartActions"
+import {addToCart} from "../actions/cartActions"
 
-@connect((store) => { return {}; })
+@connect((store) => {
+    return {};
+})
 
 export default class Product extends React.Component {
-  addToCart = (product) => {
-    this.props.dispatch(addToCart(product._id, 1));
-  }
+    addToCart = (product) => {
+        this.props.dispatch(addToCart(product._id, 1));
+    }
 
-  render() {
-    const {
-      productId,
-      featured,
-      price,
-      picture,
-      title,
-      text,
-      categoryId,
-     } = this.props;
+    render() {
+        const {
+            productId,
+            featured,
+            price,
+            picture,
+            title,
+            text,
+            categoryId,
+        } = this.props;
 
-    return (
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          {featured &&
-            <div class="card-header" >
-              <FontAwesome spin name="star" /> Featured
+
+        return (
+            <div class="grid__item">
+
+                { featured &&
+                <div class="grid__header">
+                    <FontAwesome spin name="star"/> Miyas empfelung
+                </div>
+                }
+                <Link to={"/shop/" + this.props._id}>
+                    <div class="grid__img-box"><img class="grid__img" src={picture} alt={title}/></div>
+                </Link>
+
+                <div class="grid__text-block">
+                    <h2 class="grid__title">
+                        <Link to={"/shop/" + this.props._id}>{title}</Link>
+                    </h2>
+                    <p class="grid__preis">100g CHF {price}</p>
+                    <p class="grid__text">{text}</p>
+                </div>
+
+                <button onClick={() => this.addToCart(this.props)} class="icon__cart-plus grid__button">
+                    <FontAwesome name="cart-plus"/></button>
             </div>
-          }
-          <Link to={"/shop/" + this.props._id}><img class="card-img-top" src={picture} alt="" /></Link>
-          <div class="card-body">
-            <h4 class="card-title">
-              <Link to={"/shop/" + this.props._id}>{title}</Link>
-            </h4>
-            <h5>CHF {price}</h5>
-            <p class="card-text">{text}</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            <button onClick={() => this.addToCart(this.props)} class="float-right"><FontAwesome name="cart-plus" /></button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }

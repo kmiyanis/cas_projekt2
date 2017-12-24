@@ -29,7 +29,7 @@ const HomeMain = styled.main`
 const HomeTitle = styled.h1`
   color: white;
   ${font_h1()}
-  margin-bottom: ${rem(40)}; 
+  margin-bottom: ${rem(40)};
 `;
 
 

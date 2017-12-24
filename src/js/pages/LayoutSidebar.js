@@ -5,26 +5,22 @@ import Footer from "../components/layout/Footer";
 import Nav from "../components/layout/Nav";
 import Sidebar from "../components/layout/Sidebar";
 import PageBg from "../components/layout/PageBg";
+import CartMini from "../components/CartMini";
 
 export default class Layout extends React.Component {
     render() {
         const {location} = this.props;
-        const containerStyle = {
-            marginTop: "4.5rem"
-        };
+
         return (
             <div>
                 <PageBg/>
-                <Nav location={location}/> 4
+                <Nav location={location}/>
+                {/* <CartMini /> */}
+                <main class="main main--overview" role="main">
+                    <Sidebar />
 
-                <main role="main" class="main">
+                    {this.props.children}
 
-                    <div class="row">
-                        <Sidebar />
-                        <div class="col-lg-9" style={containerStyle}>
-                            {this.props.children}
-                        </div>
-                    </div>
                 </main>
                 <Footer />
             </div>

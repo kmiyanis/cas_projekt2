@@ -35,13 +35,14 @@ export default class Sidebar extends React.Component {
 
     render() {
         const { categories, fetched } = this.props;
-        const SiderbarLinks = categories.map((c) => <a onClick={() => this.filterCat(c)} class="list-group-item" key={c._id}>{c.name}</a>);
+        const SiderbarLinks = categories.map((c) => <a onClick={() => this.filterCat(c)} class="filternav__item" key={c._id}>{c.name}</a>);
         return (
-            <div class="col-lg-3">
-                <h1 class="my-4">Miya Japan Tee</h1>
-                <div class="list-group">
+
+            <div class="filternav">
+                <span class="filternav__title">Anzeige: </span>
+                <a class="filternav__item checked" href="">Alle</a>
                     {SiderbarLinks}
-                </div>
+
             </div>
         );
     }

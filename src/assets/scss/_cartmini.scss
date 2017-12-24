@@ -218,14 +218,14 @@ Main Components
 		opacity: 0;
 		visibility: hidden;
 		transition: opacity .2s, visibility .2s;
-		color: tint($color-1, 40%);
+		color: tint($black, 40%);
 
 		a {
 			text-decoration: underline;
-			color: $color-1;
+			color: $black;
 
 			&:hover {
-				color: $color-2;
+				color: $red1;
 			}
 		}
 
@@ -241,7 +241,7 @@ Main Components
 		line-height: 72px;
 		margin-right: 72px;
 		background: $red1;
-		color: rgba($color-3, 0);
+		color: rgba($white, 0);
 		text-align: center;
 		font-size: 1.4rem;
 		font-weight: 600;
@@ -274,7 +274,7 @@ Main Components
 	.body {
 		position: relative;
 		z-index: 1;
-		height: calc(100% - 40px);
+		height: calc(400px - 40px);
 		padding: 20px 0 10px;
 		margin: 40px 0 10px;
 		overflow: auto;
@@ -355,10 +355,10 @@ Main Components
 		overflow: hidden;
 
 		a {
-			color: $color-1;
+			color: $black;
 
 			&:hover {
-				color: $color-2;
+				color: $red1;
 			}
 		}
 	}
@@ -390,7 +390,7 @@ Main Components
 		transition: opacity .2s;
 
 		&:hover {
-			color: $color-5;
+			color: $red1;
 			opacity:1;
 		}
 	}
@@ -434,11 +434,11 @@ Main Components
 		border-radius: 0;
 		font-size: 1.4rem;
 		margin: 0;
-		color: tint($color-1, 40%);
+		color: tint($black, 40%);
 
 		&:focus {
 			outline: none;
-			color: $color-1;
+			color: $black;
 			box-shadow: 0 1px 0 currentColor;
 		}
 	}
@@ -487,7 +487,7 @@ Main Components
 	}
 
 	.cart-open & .checkout {
-		color: $color-3;
+		color: $white;
 		transition: color .2s .3s;
 
 		em {

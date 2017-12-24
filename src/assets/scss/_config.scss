@@ -5,20 +5,16 @@
 */
 $white: 			#ffffff;
 $black: 			#000000;
+$red: #FF0000;
 $red1: #C42E2E;
 $red2: #CE3031;
 $red3: #BB2C2A;
 $red4: #C02C2E;
 $pale-red: 	rgba(206, 48, 49, 0.3);
-$pale-white: 		rgba(255, 255, 255, 0.5);
+$pale-white: rgba(255, 255, 255, 0.5);
 $red1-hover:rgba(196,46,46, 0.8);
 $header-bg: rgba(52,58,64,0.9);
 
-$color-1: #2b3e51; // Pickled Bluewood
-$color-2: #2c97de; // Curious Blue
-$color-3: #ffffff; // White
-$color-4: #ecf0f1; // Porcelain
-$color-5: #e94b35; // Cinnabar
 
 /* Rectangle 2: */
 
@@ -193,7 +189,10 @@ $body-line-height: 	24px;
 	line-height:rem(24px);
 	font-weight:bold;
 }
-
+@mixin font-title() {
+	font-size:rem(22px);
+	line-height:rem(26px);
+}
 @mixin font-lead() {
 	font-size:rem(17px);
 	line-height:rem(24px);

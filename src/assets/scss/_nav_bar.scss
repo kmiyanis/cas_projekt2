@@ -1,48 +1,185 @@
 
-.navbar-dark .navbar-brand {
-	color: #fff;
+.navbar {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	box-shadow: 0 6px 4px 0 rgba(0,0,0,0.15);
+	background:rgba(52,58,64,0.95);
+
+	@include respond-to($desktop-s ) {
+		padding: 0.5rem rem(40px);
+	}
 }
 
-.navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
-	color: #fff;
+.navbar > .container {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.navbar a {
+	color: #FFF;
+	text-decoration: none;
+	transition: 0.3s;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-	color: rgba(255, 255, 255, 0.5);
+.navbar-brand {
+	display: inline-block;
+	padding-top: 0.3125rem;
+	padding-bottom: 0.3125rem;
+	margin-right: 1rem;
+	font-size: 1.25rem;
+	line-height: inherit;
+	white-space: nowrap;
+
 }
 
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-	color: rgba(255, 255, 255, 0.75);
+.navbar-brand:focus, .navbar-brand:hover {
+	text-decoration: none;
 }
 
-.navbar-dark .navbar-nav .nav-link.disabled {
-	color: rgba(255, 255, 255, 0.25);
+.navbar-nav {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	list-style: none;
 }
 
-.navbar-dark .navbar-nav .show > .nav-link,
-.navbar-dark .navbar-nav .active > .nav-link,
-.navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .nav-link.active {
-	color: #fff;
+.nav-link {
+	padding-top: rem(8px);
+	padding-bottom: rem(8px);
+	display: inline-block;
+}
+.navbar a:hover {
+	color: $red1;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.nav-item.active .nav-link {
+	color:$red;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+	text-transform: uppercase;
+}
+.navbar-collapse.show {
+	.nav-item {
+		border-top:1px solid $red1;
+
+		@include respond-to($desktop-s ) {
+			border-top:0;
+		}
+	}
+	.navbar-nav  {
+		margin-top: rem(10px);
+		@include respond-to($desktop-s ) {
+			margin-top:0;
+		}
+	}
 }
 
-.navbar-dark .navbar-toggler {
-	color: rgba(255, 255, 255, 0.5);
-	border-color: rgba(255, 255, 255, 0.1);
+.collapse {
+	display: none;
 }
 
-.navbar-dark .navbar-toggler-icon {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.collapse.show {
+	display: block;
 }
 
-.navbar-dark .navbar-text {
-	color: rgba(255, 255, 255, 0.5);
+.navbar-nav .dropdown-menu {
+	position: static;
+	float: none;
 }
 
-.navbar-dark .navbar-text a {
-	color: #fff;
+.navbar-text {
+	display: inline-block;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 
-.navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text a:hover {
-	color: #fff;
+.navbar-collapse {
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+
+.navbar-toggler {
+	background: transparent;
+	position: absolute;
+	top:rem(-8px);
+	right: 0;
+	border: none;
+	padding: rem(16px) rem(16px) rem(8px) rem(12px);
+	margin:0 rem(-16px) 0 0;
+	cursor: pointer;
+}
+@include respond-to($desktop-s ) {
+
+	.navbar {
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+	.navbar .navbar-nav {
+		-ms-flex-direction: row;
+		flex-direction: row;
+	}
+	.navbar .navbar-nav .dropdown-menu {
+		position: absolute;
+	}
+	.navbar .navbar-nav .dropdown-menu-right {
+		right: 0;
+		left: auto;
+	}
+	.navbar .navbar-nav .nav-link {
+		padding-right: .5rem;
+		padding-left: .5rem;
+		line-height: rem(24px);
+		padding:rem(8px);
+	}
+	.navbar > .container {
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+	.navbar .navbar-collapse {
+		display: -ms-flexbox !important;
+		display: flex !important;
+		-ms-flex-preferred-size: auto;
+		flex-basis: auto;
+	}
+	.navbar .navbar-toggler {
+		display: none;
+	}
+	.navbar .dropup .dropdown-menu {
+		top: auto;
+		bottom: 100%;
+	}
 }

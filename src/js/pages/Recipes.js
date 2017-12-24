@@ -24,14 +24,12 @@ export default class Recipes extends React.Component {
 
 		return (
 			<div>
-				<main class="main" role="main">
 				<h1 class="title">Infobox</h1>
 				{fetched ? (
 					"Loading..."
 				) : (
-					<div class="row">{mappedRecipes}</div>
+					<div class="grid">{mappedRecipes}</div>
 				)}
-				</main>
 			</div>
 		);
 

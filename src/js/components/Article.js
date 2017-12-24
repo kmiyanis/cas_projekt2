@@ -2,9 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
 import FontAwesome from "react-fontawesome";
-import {rem, media, theme, font_h3} from '../style/styleUtils';
+import {rem, media, theme, font_h2,font_h3} from '../style/styleUtils';
 
-import {addToCart} from "../actions/cartActions"
+import {addToCart, fetchCart} from "../actions/cartActions"
 
 import styled from 'styled-components';
 
@@ -29,14 +29,13 @@ const HomeArticle = styled.article`
    }
  `;
 const HomeTeaserTitle = styled.h2`
-    ${font_h3()}
+    ${font_h2()}
     margin-bottom:${rem(20)};
 
   ${media.tablet`
        margin-bottom:${rem(30)};
   `}
-  
-  font-weight: bold;
+
   margin-bottom: 1.25rem; 
   @media only screen and (min-width: 768px) {
       font-size: 1.75rem;
@@ -58,8 +57,7 @@ const HomeTeaserImg = styled.div`
  `;
 
 const HomeTeaserLead = styled.p`
-    font-size: 1.5rem;
-  line-height: 1.75rem;
+    ${font_h3()}
   margin-bottom: 1.25rem;  
  `;
 
@@ -81,11 +79,9 @@ const ButtonSml = styled.button`
   
 	&:hover {
 		 -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+        transform: scale(1.1);
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
 	}
-
-
-  
  `;
 
 
@@ -94,7 +90,10 @@ const ButtonSml = styled.button`
 })
 
 export default class Article extends React.Component {
+
     addToCart = (product) => {
+        /* todo: quantity should be add + 1  */
+
         this.props.dispatch(addToCart(product._id, 1));
     }
 
@@ -108,9 +107,10 @@ export default class Article extends React.Component {
             title,
             lead,
             text,
+            cart,
             categoryId,
         } = this.props;
-
+        console.log(cart);
         return (
 
             <HomeArticle>
