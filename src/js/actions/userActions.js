@@ -9,12 +9,13 @@ import {
 
 
 export function fetch() {
+  console.log('fetch called')
   return function (dispatch) {
     dispatch({ type: FETCH_USER });
     auth.onAuthStateChanged((user) => {
-      console.log(user)
+      console.log('onAuthStateChanged', user)
       dispatch({
-        type: USER_FETCHED,
+        type: LOGGED_IN_USER,
         payload: user
       });
     });

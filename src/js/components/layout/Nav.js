@@ -65,8 +65,11 @@ export default class Nav extends React.Component {
     return (
       <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          {loggedin ?
-            <button onClick={this.logout}>Log Out {user.name}</button>
+          {loggedin && user ?
+            <div className='user-profile'>
+              <img src={user.photoURL} width="25" height="25" />
+              <button onClick={this.logout}>Log Out {user.displayName}</button>
+            </div>
             :
             <button onClick={() => this.loginHandler(this.props)}>Log In</button>
           }
