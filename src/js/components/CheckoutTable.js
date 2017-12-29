@@ -2,9 +2,14 @@ import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux"
 import { addToCart, removeFromCart } from "../actions/cartActions"
+import * as userActions from "../actions/userActions"
 
-
-@connect((store) => { return {}; })
+@connect((store) => {
+  return {
+    user: store.user.user,
+    loggedin: store.user.loggedin
+  };
+})
 export default class CartTable extends React.Component {
   onclick(type, product) {
     const newQty = type === 'sub' ? product.quantity - 1 : product.quantity + 1;
@@ -15,12 +20,21 @@ export default class CartTable extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.props.dispatch(userActions.fetch())
+  }
+
   removeFromCart(product) {
     this.props.dispatch(removeFromCart(product.productId));
   }
 
+  loginHandler() {
+    this.props.dispatch(userActions.login());
+  }
+
+
   render() {
-    const { cart } = this.props;
+    const { cart, user, loggedin } = this.props;
     return (
       <div>
         <div class="body">
@@ -60,7 +74,14 @@ export default class CartTable extends React.Component {
           ))}
         </div >
         <footer>
-          <Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
+          {loggedin && user ?
+              <Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
+            :
+              <div>
+                <button onClick={() => this.loginHandler(this.props)}>Log In</button>
+                <Link to="#" class="checkout">Ohne Registrierung fortfahren</Link>
+              </div>
+          }
         </footer>
       </div >
     );

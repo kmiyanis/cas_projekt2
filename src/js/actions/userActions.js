@@ -12,9 +12,8 @@ export function fetch() {
   return function (dispatch) {
     dispatch({ type: FETCH_USER });
     auth.onAuthStateChanged((user) => {
-      console.log(user)
       dispatch({
-        type: USER_FETCHED,
+        type: LOGGED_IN_USER,
         payload: user
       });
     });
@@ -26,7 +25,6 @@ export function login() {
     dispatch({ type: LOGIN_USER });
     auth.signInWithPopup(provider)
       .then((result) => {
-        console.log(result)
         dispatch({ type: LOGGED_IN_USER, payload: result.additionalUserInfo.profile })
       });
   }
