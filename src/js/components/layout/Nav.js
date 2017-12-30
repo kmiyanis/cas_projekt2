@@ -1,8 +1,27 @@
 import React from "react";
+import { connect } from "react-redux"
 import { IndexLink, Link } from "react-router";
 import styled from 'styled-components';
+import * as userActions from "../../actions/userActions"
 
+const Navbar = styled.nav`
+	box-shadow: 0 6px 4px 0 rgba(0,0,0,0.15);
+	background:rgba(52,58,64,0.95) !important;
+`;
 
+const buttonStyle = {
+    border: 'none',
+    padding: '16px',
+    margin:'0 -16px 0 0',
+    cursor: 'pointer'
+};
+
+@connect((store) => {
+  return {
+    user: store.user.user,
+    loggedin: store.user.loggedin
+  };
+})
 export default class Nav extends React.Component {
   constructor() {
     super()
@@ -11,13 +30,29 @@ export default class Nav extends React.Component {
     };
   }
 
+  loginHandler() {
+    this.props.dispatch(userActions.login());
+  }
+
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({collapsed});
   }
 
+  componentWillMount() {
+    this.props.dispatch(userActions.fetch())
+  }
+
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.user.loading === false && nextProps.user.email === undefined) {
+  //     this.props.history.replace('/Login');
+  //   }
+  // }
+
+
   render() {
-    const { location } = this.props;
+    const { location, user, loggedin } = this.props;
     const { collapsed } = this.state;
     const indexClass  	= location.pathname === "/" ? "active" : "";
     const recipesClass  = location.pathname.match(/^\/recipes/) ? "active" : "";
@@ -26,20 +61,26 @@ export default class Nav extends React.Component {
     const contactClass  = location.pathname.match(/^\/contact/) ? "active" : "";
     const navClass = collapsed ? "collapsed" : "open";
     const navUlClass = collapsed ? "" : "show";
-    const expanded = collapsed ? false : true;
 
     return (
-      <header class="navbar">
+      <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
+          {loggedin && user ?
+            <div className='user-profile'>
+              <img src={user.photoURL} width="25" height="25" />
+              <button onClick={this.logout}>Log Out {user.displayName}</button>
+            </div>
+            :
+            <button onClick={() => this.loginHandler(this.props)}>Log In</button>
+          }
           <a class="navbar-brand" href="#">MIYA JAPAN TEE</a>
-
-          <button onClick={ this.toggleCollapse.bind(this) } class={ 'navbar-toggler ' + navClass } type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded={ expanded } aria-label="Toggle navigation">
+          <button style={ buttonStyle } onClick={this.toggleCollapse.bind(this)} class={'navbar-toggler ' + navClass } type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="hamburger__bar1"></span>
             <span class="hamburger__bar2"></span>
-          </button>
 
+          </button>
           <div class={'collapse navbar-collapse ' + navUlClass} id="navbarResponsive">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
               <li class={"nav-item " + indexClass}>
                 <IndexLink class="nav-link" to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
               </li>
@@ -59,7 +100,7 @@ export default class Nav extends React.Component {
             </ul>
           </div>
         </div>
-      </header>
+      </Navbar>
     );
 
 //    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

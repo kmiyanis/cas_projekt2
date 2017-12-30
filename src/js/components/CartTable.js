@@ -5,9 +5,13 @@ import { addToCart, removeFromCart } from "../actions/cartActions"
 
 @connect((store) => { return {}; })
 export default class CartTable extends React.Component {
-	onclick(type, qty, id, item) {
-		const newQty = type === 'sub' ? qty - 1 : qty + 1;
-		this.props.dispatch(addToCart(id, newQty));
+	onclick(type, product) {
+		const newQty = type === 'sub' ? product.quantity - 1 : product.quantity + 1;
+		if (newQty <= 0) {
+			this.removeFromCart(product);
+		} else {
+			this.props.dispatch(addToCart(product.productId, newQty));
+		}
 	}
 
 	removeFromCart(product) {
@@ -33,7 +37,7 @@ export default class CartTable extends React.Component {
 									<span class="price">{(item.product.price * item.quantity).toFixed(2)}</span>
 									<div class="actions">
 										<div class="quantity-pill">
-											<button onClick={this.onclick.bind(this, 'sub', item.quantity, item.productId, item)} class="quantity-pill__left">
+											<button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left">
 												<i class="fa fa-minus" aria-hidden="true"></i>
 											</button>
 											<input
@@ -46,7 +50,7 @@ export default class CartTable extends React.Component {
 												value={item.quantity}
 
 											/>
-											<button onClick={this.onclick.bind(this, 'add', item.quantity, item.productId)} class="quantity-pill__right"
+											<button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right"
 											><i class="fa fa-plus" aria-hidden="true"></i>
 											</button>
 										</div>
@@ -58,7 +62,7 @@ export default class CartTable extends React.Component {
 					</ul>
 				</div>
 				<footer>
-					<a href="#" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></a>
+					<Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
 				</footer>
 			</div>
 		);

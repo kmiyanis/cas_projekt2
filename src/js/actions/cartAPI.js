@@ -21,6 +21,9 @@ export const addToCart = async (productId, quantity = 1) => {
 	let newCart = {};
 
 	if(index > -1) {
+    if(quantity == 1) {
+      quantity = cart.items[index].quantity + 1;
+    }
 		newCart = {
 			...cart,
 			items: [
