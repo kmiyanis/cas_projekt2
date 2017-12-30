@@ -259,7 +259,7 @@ footer .container {
 		text-align: left;
 	}
 }
-.detail_preis {
+.detail__preis {
 	color: white;
 	margin-top: rem(30px);
 	@include font-h4();
@@ -277,6 +277,11 @@ footer .container {
 	display: block;
 	padding-left:rem(20px);
 	padding-right:rem(20px);
+	border-radius: rem(30px);
+	padding: 0 rem(10px);
+	margin:rem(24px) 0;
+	cursor: pointer;
+
 	/*transform: scale(1);*/
 	transition: 0.3s;
 	margin: rem(30px) auto;

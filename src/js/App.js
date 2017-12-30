@@ -24,8 +24,10 @@ class App extends Component {
       <Provider store={store}>
         <Router history={browserHistory}>
           <Route path="/" component={Home}></Route>
-          <Route path="/" component={Layout} login={this.login} logout={this.logout}>
+          <Route path="/" component={LayoutSidebar} login={this.login} logout={this.logout}>
             <Route path="shop" name="shop" component={Shop}></Route>
+          </Route>
+          <Route path="/" component={Layout} login={this.login} logout={this.logout}>
             <Route path="shop/checkout" name="checkout" component={Checkout}></Route>
             <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
             <Route path="recipes" name="recipes" component={Recipes}></Route>
