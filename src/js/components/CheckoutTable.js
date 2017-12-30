@@ -36,21 +36,21 @@ export default class CartTable extends React.Component {
   render() {
     const { cart, user, loggedin } = this.props;
     return (
-      <div>
-        <div class="body">
+      <div class="checkout-content">
+        <div class="checkout__products">
           {cart.items.map((item, index) => (
             <div class="product" key={item.productId}>
-              <div class="product-image col-lg-1">
+              <div class="product-image">
                 <a href="#0">
                   <img src={item.product.picture} alt={item.product.title} />
                 </a>
               </div>
-              <div class="product-details col-lg-2">
+              <div class="product-details">
                 <h3 class="cd-product-title"><a>{item.product.title}</a></h3>
                 <span class="price">CHF {item.product.price}</span>
                 <div class="actions">
                   <div class="quantity-pill">
-                    <button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left">
+                    <button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left" title="-1">
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </button>
                     <input
@@ -63,7 +63,7 @@ export default class CartTable extends React.Component {
                       value={item.quantity}
 
                     />
-                    <button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right">
+                    <button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right" title="+1">
                       <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -72,8 +72,8 @@ export default class CartTable extends React.Component {
               </div>
             </div>
           ))}
-        </div >
-        <footer>
+        </div>
+        <div class="checkout__bottom">
           {loggedin && user ?
               <Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
             :
@@ -82,8 +82,8 @@ export default class CartTable extends React.Component {
                 <Link to="#" class="checkout">Ohne Registrierung fortfahren</Link>
               </div>
           }
-        </footer>
-      </div >
+        </div>
+      </div>
     );
   }
 }

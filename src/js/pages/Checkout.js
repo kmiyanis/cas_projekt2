@@ -32,10 +32,10 @@ export default class Checkout extends React.Component {
 
     if (cart.items.length === 0 && productsFetched) {
       return (
-        <main class="main" role="main">
+        <div>
           <h1 class="title">Checkout</h1>
           <b>Keine Artikel im Warenkorb</b>
-        </main>
+        </div>
       )
     }
 
@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
           __html: `
           .cd-cart-container { display: none }
         `}} />
-				<main class="main" role="main">
+
 					<h1 class="title">Checkout</h1>
           {products.length === 0 && !fetched ? (
 						""
@@ -54,7 +54,7 @@ export default class Checkout extends React.Component {
 							cart={cart}
 						/>
 					)}
-				</main>
+
 			</div>
 		);
 	}

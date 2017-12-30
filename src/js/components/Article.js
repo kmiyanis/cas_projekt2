@@ -61,28 +61,7 @@ const HomeTeaserLead = styled.p`
   margin-bottom: 1.25rem;  
  `;
 
-const ButtonSml = styled.button`
-	color: white;
-	border: 0;
-	border-radius: ${rem(40)};
-	background: ${theme.red2};
-	width: ${rem(60)};
-	height: ${rem(40)};
-	margin:${rem(24)} 0;
-	font-size:${rem(22)};
-	cursor: pointer;
-	float:right;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-  
-	&:hover {
-		 -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-	}
- `;
+
 
 
 @connect((store) => {
@@ -120,9 +99,12 @@ export default class Article extends React.Component {
                     <HomeTeaserLead>{lead} </HomeTeaserLead>
                     <p>{text} </p>
                 </div>
-                <Link class="box__link" to={"/shop/" + this.props._id}>Detail Site</Link>
-                <ButtonSml onClick={() => this.addToCart(this.props)} ><FontAwesome  name="cart-plus"/>
-                </ButtonSml>
+                <div class="home-teaser__footer">
+                    <Link class="box__link" to={"/shop/" + this.props._id}>Detail Site</Link>
+                    <div class="home__cart-plus icon__cart-plus" onClick={() => this.addToCart(this.props)} >
+                        <FontAwesome  name="cart-plus"/>
+                    </div>
+                </div>
             </HomeArticle>
 
         );

@@ -21,7 +21,7 @@ export default class CartTable extends React.Component {
 	render() {
 		const { cart } = this.props;
 		return (
-			<div>
+			<div class="cart-content">
 				<div class="body">
 					<ul>
 						{cart.items.map((item, index) => (
@@ -37,7 +37,7 @@ export default class CartTable extends React.Component {
 									<span class="price">{(item.product.price * item.quantity).toFixed(2)}</span>
 									<div class="actions">
 										<div class="quantity-pill">
-											<button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left">
+											<button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left" title="-1">
 												<i class="fa fa-minus" aria-hidden="true"></i>
 											</button>
 											<input
@@ -50,7 +50,7 @@ export default class CartTable extends React.Component {
 												value={item.quantity}
 
 											/>
-											<button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right"
+											<button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right" title="+1"
 											><i class="fa fa-plus" aria-hidden="true"></i>
 											</button>
 										</div>

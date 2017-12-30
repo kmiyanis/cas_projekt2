@@ -377,7 +377,7 @@ Main Components
 	}
 
 	.delete-item, .quantity {
-		float: left;
+		float: right;
 		font-size: 1rem;
 		color: rgba(0,0,0,0.5);
 		-webkit-backface-visibility: hidden;
@@ -386,7 +386,7 @@ Main Components
 
 	.delete-item {
 		margin-left: 1.5rem;
-		opacity:0.5;
+		opacity:0.6;
 		transition: opacity .2s;
 
 		&:hover {
@@ -402,7 +402,7 @@ Main Components
 	}
 	.quantity__input {
 		width: 35px;
-		font-size: 1rem;
+		font-size: rem(14px);
 		padding: 0 5px;
 	}
 	.select {
@@ -635,17 +635,19 @@ Main Components
 		float: left;
 		text-align: center;
 		border: none;
-		font-size:16px;
+		font-size:14px;
 		line-height: 30px;
 
 	}
 	&__right,
 	&__left {
-		color:$white;
+		color:$red1;
 		padding: 0;
-		background: $red1;
+		background: $white;
+		cursor: pointer;
 		&:hover {
-			background: #A30C0C;
+			background: $red1;
+			color:$white;
 		}
 	}
 

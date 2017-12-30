@@ -55,14 +55,7 @@ export default class Nav extends React.Component {
     return (
       <header class="navbar">
         <div class="container">
-          {loggedin && user ?
-            <div className='user-profile'>
-              <img src={user.photoURL} width="25" height="25" />
-              <button onClick={this.logout}>Log Out {user.displayName}</button>
-            </div>
-            :
-            <button onClick={() => this.loginHandler(this.props)}>Log In</button>
-          }
+
           <a class="navbar-brand" href="#">MIYA JAPAN TEE</a>
           <button onClick={ this.toggleCollapse.bind(this) } class={ 'navbar-toggler ' + navClass } type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded={ expanded } aria-label="Toggle navigation">
             <span class="hamburger__bar1"></span>
@@ -89,6 +82,14 @@ export default class Nav extends React.Component {
               </li>
             </ul>
           </div>
+            {loggedin && user ?
+                <div className='user-profile'>
+                  <img src={user.photoURL} width="25" height="25" />
+                  <button onClick={this.logout}>Log Out {user.displayName}</button>
+                </div>
+                :
+                <button onClick={() => this.loginHandler(this.props)}>Log In</button>
+            }
         </div>
       </header>
     );
