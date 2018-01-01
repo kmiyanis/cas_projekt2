@@ -732,7 +732,9 @@ footer .container {
 		opacity: 0;
 		transition: opacity .2s;
 	}
-
+	&:disabled {
+		background: #dddddd;
+	}
 }
 .input--text {
 	width: 100%;

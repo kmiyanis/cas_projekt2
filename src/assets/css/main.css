@@ -817,6 +817,8 @@ footer .container {
     opacity: 0;
     -webkit-transition: opacity .2s;
     transition: opacity .2s; }
+  .checkout-btn:disabled {
+    background: #dddddd; }
 
 .input--text {
   width: 100%;
