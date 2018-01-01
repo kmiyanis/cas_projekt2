@@ -2,10 +2,16 @@ import {
   ADD_ORDER,
   ADD_ORDER_SUCCESS,
   ADD_ORDER_FAILURE,
+  FETCH_ORDERS,
+  FETCH_ORDERS_SUCCESS,
+  FETCH_ORDERS_FAILURE,
 } from "../actions/actionTypes";
 
 
 export default function reducer(state = {
+  orders: [],
+  fetching: false,
+  fetched: false,
   pushing: false,
   pushed: false,
   error: null,
@@ -33,6 +39,31 @@ export default function reducer(state = {
           ...state,
           pushing: false,
           pushed: true,
+        }
+      }
+
+      case FETCH_ORDERS:
+      {
+        return {
+          ...state,
+          fetching: true
+        }
+      }
+    case FETCH_ORDERS_FAILURE:
+      {
+        return {
+          ...state,
+          fetching: false,
+          error: action.payload
+        }
+      }
+    case FETCH_ORDERS_SUCCESS:
+      {
+        return {
+          ...state,
+          fetching: false,
+          fetched: true,
+          orders: action.payload
         }
       }
   }
