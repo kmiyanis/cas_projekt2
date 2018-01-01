@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { Provider } from "react-redux"
 
-import firebase, { auth, provider } from './fire.js';
+// import firebase, { auth, provider } from './fire.js';
 
 import store from "./store"
 
@@ -18,8 +18,10 @@ import ProductDetail from './pages/ProductDetail';
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
 import Order from "./pages/Order";
+import MyOrders from "./pages/MyOrders";
 
-class App extends Component { 
+
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -35,6 +37,7 @@ class App extends Component {
             <Route path="recipes" name="recipes" component={Recipes}></Route>
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>
             <Route path="contact" name="contact" component={Contact}></Route>
+            <Route path="myorders" name="myorders" component={MyOrders}></Route>
           </Route>
         </Router>
       </Provider>
