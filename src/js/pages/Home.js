@@ -47,7 +47,6 @@ export default class Home extends React.Component {
 
   render() {
     const { location } = this.props;
-    console.log('location', location);
     const { products, fetched, params } = this.props;
     const mappedProducts = products
       .filter(p => p.home)

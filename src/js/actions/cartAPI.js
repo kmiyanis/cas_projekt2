@@ -12,6 +12,9 @@ const getFromLocalStorage = () => {
 	return cart || emptyCart;
  }
 
+export const emptyCart = () => {
+  localStorage.removeItem('cart');
+}
 
 export const fetch = async () => getFromLocalStorage();
 

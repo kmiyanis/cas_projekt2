@@ -48,7 +48,7 @@ export default class CartTable extends React.Component {
               <div class="product-details">
                 <h3 class="cd-product-title"><a>{item.product.title}</a></h3>
                 <span class="price">CHF {item.product.price}</span>
-                <div class="actions">
+                <div class="actdsfions">
                   <div class="quantity-pill">
                     <button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left" title="-1">
                       <i class="fa fa-minus" aria-hidden="true"></i>
@@ -75,12 +75,12 @@ export default class CartTable extends React.Component {
         </div>
         <div class="checkout__bottom">
           {loggedin && user ?
-              <Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
+            <Link to="/shop/checkout/order" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
             :
-              <div>
-                <button onClick={() => this.loginHandler(this.props)}>Log In</button>
-                <Link to="#" class="checkout">Ohne Registrierung fortfahren</Link>
-              </div>
+            <div>
+              <button onClick={() => this.loginHandler(this.props)}>Log In</button>
+              <Link to="#" class="checkout">Ohne Registrierung fortfahren</Link>
+            </div>
           }
         </div>
       </div>

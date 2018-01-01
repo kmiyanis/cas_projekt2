@@ -5,6 +5,9 @@ import {
 	ADD_TO_CART,
 	ADD_TO_CART_SUCCESS,
 	ADD_TO_CART_FAILURE,
+	EMPTY_CART,
+	EMPTY_CART_SUCCESS,
+	EMPTY_CART_FAILURE,
 } from "./actionTypes";
 
 import * as cartAPI from "./cartAPI";
@@ -68,6 +71,24 @@ export function removeFromCart(productId, quantity) {
 			})
 	}
 }
+
+export function emptyCart() {
+	return function (dispatch) {
+		dispatch({
+			type: EMPTY_CART,
+		});
+
+		cartAPI.removeFromCart(productId, quantity)
+			.then((response) => {
+				dispatch({ type: EMPTY_CART_SUCCESS})
+			})
+			.catch((err) => {
+				dispatch({ type: EMPTY_CART_FAILURE, error: err })
+			})
+	}
+}
+
+
 
 export const addToCartSuccess = (cart) => ({
 	type: ADD_TO_CART_SUCCESS,

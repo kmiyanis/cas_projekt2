@@ -17,6 +17,7 @@ import Home from "./pages/Home";
 import ProductDetail from './pages/ProductDetail';
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
+import Order from "./pages/Order";
 
 class App extends Component { 
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           </Route>
           <Route path="/" component={Layout} login={this.login} logout={this.logout}>
             <Route path="shop/checkout" name="checkout" component={Checkout}></Route>
+            <Route path="shop/checkout/order" name="checkout" component={Order}></Route>
             <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
             <Route path="recipes" name="recipes" component={Recipes}></Route>
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>

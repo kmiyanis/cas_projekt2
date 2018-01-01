@@ -54,7 +54,6 @@ export function fetchProduct(slug) {
     }
 }
 
-
 export function addProduct(id, text) {
     return {
         type: 'ADD_PRODUCT',
