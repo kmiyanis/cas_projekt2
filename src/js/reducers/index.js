@@ -5,6 +5,7 @@ import products from "./productReducer"
 import recipes from "./recipesReducer"
 import articles from "./articleReducer"
 import user from "./userReducer"
+import order from "./orderReducer"
 
 export default combineReducers({
     cart,
@@ -12,4 +13,5 @@ export default combineReducers({
     recipes,
     articles,
     user,
+    order,
 })

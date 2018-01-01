@@ -5,6 +5,9 @@ import {
 	ADD_TO_CART,
 	ADD_TO_CART_SUCCESS,
 	ADD_TO_CART_FAILURE,
+  EMPTY_CART,
+  EMPTY_CART_SUCCESS,
+  EMPTY_CART_FAILURE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -18,6 +21,12 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_CART:
 		case ADD_TO_CART:
+		case EMPTY_CART:
+			return {
+				...state,
+				isLoading: true,
+			}
+		case EMPTY_CART:
 			return {
 				...state,
 				isLoading: true,
@@ -31,9 +40,17 @@ export default (state = initialState, action) => {
 				fetched: true,
 				cart: action.cart,
 			}
+	
+		case EMPTY_CART_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				fetched: true,
+			}
 
 		case FETCH_CART_FAILURE:
-		case ADD_TO_CART_FAILURE:
+		case FETCH_CART_FAILURE:
+		case EMPTY_CART_FAILURE:
 			return {
 				...state,
 				isLoading: false,

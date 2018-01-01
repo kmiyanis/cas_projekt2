@@ -51,7 +51,7 @@ export default class Checkout extends React.Component {
 						""
 					) : (
 						<CheckoutTable
-							cart={cart}
+              cart={cart}
 						/>
 					)}
 
