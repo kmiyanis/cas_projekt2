@@ -62,7 +62,7 @@ export default class CartTable extends React.Component {
 					</ul>
 				</div>
 				<footer>
-					<Link to="/shop/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
+					<Link to="/checkout" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
 				</footer>
 			</div>
 		);

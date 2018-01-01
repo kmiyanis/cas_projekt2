@@ -103,22 +103,6 @@
 	transform: rotate(0) translate(0, 0);
 }
 
-
-/*
- * Transform all the slices of hamburger
- * into a crossmark.
-
-.collasped .hamburger__bar1
-{
-	transform-origin: 0% 0%;
-}
-
-.collasped .hamburger__bar2
-{
-
-	transform-origin: 0% 100%;
-}
- */
 .menu--open.menu {
 	position: absolute;
 	width: 300px;

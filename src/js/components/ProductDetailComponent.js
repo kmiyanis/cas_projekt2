@@ -51,7 +51,7 @@ export default class Product extends React.Component {
                     <p class="detail__text">{text} </p>
 
                     <div class="detail__preis">100g CHF {price}</div>
-                    <button onClick={() => this.addToCart(this.props)} class="detail__button">Warenkorb hinzufügen<i
+                    <button onClick={() => this.addToCart(this.props)} class="detail__button"><em>Warenkorb hinzufügen</em><i
                         class="fa fa-cart-plus detail-button__icon" aria-hidden="true"></i>
                     </button>
 

@@ -52,6 +52,7 @@ export default class Nav extends React.Component {
     const shopClass = location.pathname.match(/^\/shop/) ? "active" : "";
     const coursesClass = location.pathname.match(/^\/courses/) ? "active" : "";
     const contactClass = location.pathname.match(/^\/contact/) ? "active" : "";
+    const checkoutClass = location.pathname.match(/^\/checkout/) ? "active" : "";
     const navClass = collapsed ? "collapsed" : "open";
     const navUlClass = collapsed ? "" : "show";
     const expanded = collapsed ? false : true;
@@ -83,24 +84,24 @@ export default class Nav extends React.Component {
               <li class={"nav-item " + contactClass}>
                 <Link to="contact" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kontakt</Link>
               </li>
-              <li class={"nav-item " + contactClass}>
-                <Link to="contact" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kontakt</Link>
+              <li class={"nav-item " + checkoutClass}>
+                <Link to="checkout" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Warenkorb</Link>
               </li>
-
               {user ?
-                <li>
-                  <ul>
-                    <li class={"nav-item " + contactClass}>
-                      <img class="user-profile__img" src={user.photoURL} width="25" height="25" />
-                      <a href="#" onClick={() => this.logoutHandler(this.props)}>Log Out <span class="user-profile__name">{user.displayName}</span></a>
+                  <li class="nav-item user-profile">
+                    <img class="user-profile__img" src={user.photoURL} width="25" height="25" />
+
+                    <ul class="nav-item__user">
+                    <li class="user__item">
+                      <a class="user-profile__link" href="#" onClick={() => this.logoutHandler(this.props)}>Log Out <span class="user-profile__name">{user.displayName}</span></a>
                     </li>
-                    <li class={"nav-item " + contactClass}>
-                      <Link to="/myorders" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
+                    <li class="user__item">
+                      <Link to="/myorders" class="user-item__link" onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
                     </li>
                   </ul>
                 </li>
                 :
-                  <li><a href="#" onClick={() => this.loginHandler(this.props)}>Log In</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#" onClick={() => this.loginHandler(this.props)}>Log In</a></li>
               }
             </ul>
           </div>

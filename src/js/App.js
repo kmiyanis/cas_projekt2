@@ -31,8 +31,8 @@ class App extends Component {
             <Route path="shop" name="shop" component={Shop}></Route>
           </Route>
           <Route path="/" component={Layout} login={this.login} logout={this.logout}>
-            <Route path="shop/checkout" name="checkout" component={Checkout}></Route>
-            <Route path="shop/checkout/order" name="checkout" component={Order}></Route>
+            <Route path="checkout" name="checkout" component={Checkout}></Route>
+            <Route path="checkout/order" name="checkout" component={Order}></Route>
             <Route path="shop/:product" name="ProductDetail" component={ProductDetail}></Route>
             <Route path="recipes" name="recipes" component={Recipes}></Route>
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>

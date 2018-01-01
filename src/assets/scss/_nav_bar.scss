@@ -101,33 +101,14 @@
 	}
 }
 
-.navbar__user {
-	border-top:1px solid $red1;
-
-
-	@include respond-to($desktop-s ) {
-		border-top:0;
+.navbar {
+	.nav-item.user-profile {
+		display: flex;
 	}
-	.btn-login,
-	.btn-logout {
-		color:$white;
-		line-height:rem(24px);
-		font-size:rem(16px);
-		background: transparent;
-		border: none;
-		box-shadow: none;
-		padding: rem(8px) 0;
 
-
-		&:hover {
-			color:$red;
-			text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
-			text-transform: uppercase;
-		}
-	}
-	.btn-logout {
+	.user__item {
 		@include respond-to($desktop-s ) {
-			padding-left: 0;
+			border-top:0;
 		}
 	}
 	.user-profile__name {
@@ -135,9 +116,52 @@
 			font-size: rem(12px);
 		}
 	}
+	.user-item__link {
+		padding: rem(8px) 0;
+		display: inline-block;
+
+	}
+	.user-profile__link {
+		padding: rem(8px) 0;
+		border-bottom:1px solid $red1;
+		display: inline-block;
+		width: 100%;
+		@include respond-to($desktop-s ) {
+			width: auto;
+		}
+	}
 	.user-profile__img {
-		margin:0 rem(10px) 0 0;
 		vertical-align: middle;
+		margin: rem(15px) rem(15px) 0 0;
+		@include respond-to($desktop-s ) {
+			margin: rem(8px) 0 0 rem(8px);
+			float: none;
+		}
+
+	}
+	.nav-item__user {
+		width: 100%;
+		@include respond-to($desktop-s ) {
+			width: auto;
+			position: absolute;
+			top:rem(55px);
+			padding: 0 rem(10px);
+			right:rem(-20px);
+			box-shadow: 0 6px 4px 0 rgba(0,0,0,0.15);
+			background:rgba(52,58,64,0.95);
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: -10px;
+				right:20px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 10px 10px 10px;
+				border-color: transparent transparent rgba(52,58,64,0.95) transparent;
+			}
+		}
 	}
 }
 

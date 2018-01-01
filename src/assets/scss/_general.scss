@@ -258,10 +258,6 @@ footer .container {
 	/*transform: scale(1);*/
 	transition: 0.3s;
 	margin: rem(30px) auto;
-	.fa {
-		transform: translate3d(0,0,0);
-		transition: transform 0.5s;
-	}
 
 	@include respond-to($phone-l) {
 		text-align: left;
@@ -273,18 +269,40 @@ footer .container {
 	&:focus{
 		background: $white;
 		color:$red1;
-		padding-right:rem(30px);
+		//padding-right:rem(30px);
 		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
-		/*transform: scale(1.2);*/
-		.fa {
-			transform: translate3d(60%,0,0);
-		}
-
 	}
+	em {
+		transform: translateX(0);
+		transition: transform .2s .3s, padding .2s 0s;
+		position: relative;
+		display: inline-block;
+	}
+
+	&:hover em {
+		padding-right: 30px;
+
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	em::after {
+		position: absolute;
+		@include center(y);
+		right: 0;
+		content: '';
+		height: 24px;
+		width: 24px;
+		background: url(../img/cd-icon-arrow-next-red.svg) no-repeat center center;
+		opacity: 0;
+		transition: opacity .2s;
+	}
+
 }
 .detail-button__icon {
 	color:$red1;
-	margin-left:rem(15px);
+	margin-left:rem(8px);
 	font-size:rem(24px)
 }
 .detail__text {
