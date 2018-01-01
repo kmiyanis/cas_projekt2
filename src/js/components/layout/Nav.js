@@ -23,6 +23,10 @@ export default class Nav extends React.Component {
     this.props.dispatch(userActions.login());
   }
 
+  logoutHandler() {
+    this.props.dispatch(userActions.logout());
+  }
+
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({collapsed});
@@ -81,15 +85,18 @@ export default class Nav extends React.Component {
                 <Link to="contact" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kontakt</Link>
               </li>
             </ul>
-          </div>
+            <div class="navbar__user">
+
             {loggedin && user ?
                 <div className='user-profile'>
-                  <img src={user.photoURL} width="25" height="25" />
-                  <button onClick={this.logout}>Log Out {user.displayName}</button>
+                  <img class="user-profile__img" src={user.photoURL} width="25" height="25" />
+                  <button class="btn-logout" onClick={() => this.logoutHandler(this.props)}>Log Out <span class="user-profile__name"> {user.displayName}</span></button>
                 </div>
                 :
-                <button onClick={() => this.loginHandler(this.props)}>Log In</button>
+                <button class="btn-login" onClick={() => this.loginHandler(this.props)}>Log In</button>
             }
+            </div>
+          </div>
         </div>
       </header>
     );

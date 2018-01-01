@@ -101,6 +101,46 @@
 	}
 }
 
+.navbar__user {
+	border-top:1px solid $red1;
+
+
+	@include respond-to($desktop-s ) {
+		border-top:0;
+	}
+	.btn-login,
+	.btn-logout {
+		color:$white;
+		line-height:rem(24px);
+		font-size:rem(16px);
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		padding: rem(8px) 0;
+
+
+		&:hover {
+			color:$red;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
+			text-transform: uppercase;
+		}
+	}
+	.btn-logout {
+		@include respond-to($desktop-s ) {
+			padding-left: 0;
+		}
+	}
+	.user-profile__name {
+		@include respond-to($desktop-s ) {
+			font-size: rem(12px);
+		}
+	}
+	.user-profile__img {
+		margin:0 rem(10px) 0 0;
+		vertical-align: middle;
+	}
+}
+
 .collapse {
 	display: none;
 }
@@ -160,8 +200,6 @@
 		left: auto;
 	}
 	.navbar .navbar-nav .nav-link {
-		padding-right: .5rem;
-		padding-left: .5rem;
 		line-height: rem(24px);
 		padding:rem(8px);
 	}

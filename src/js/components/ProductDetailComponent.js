@@ -37,10 +37,16 @@ export default class Product extends React.Component {
         } = this.props;
         return (
             <div class="detail__content">
+
                 <div class="detail__img-block"><img class="img--block" src={picture}
-                    alt="Foto Gemmaicha mit Maccha" /></div>
+                    alt={"Foto von " + title} /></div>
 
                 <div class="detail__text-block">
+                    {featured &&
+                    <div class="card-header">
+                        <FontAwesome spin name="star" /> Featured
+                    </div>
+                    }
                     <h1 class="detail__title">{title}</h1>
                     <p class="detail__text">{text} </p>
 
@@ -48,11 +54,7 @@ export default class Product extends React.Component {
                     <button onClick={() => this.addToCart(this.props)} class="detail__button">Warenkorb hinzufügen<i
                         class="fa fa-cart-plus detail-button__icon" aria-hidden="true"></i>
                     </button>
-                    {featured &&
-                        <div class="card-header">
-                            <FontAwesome spin name="star" /> Featured
-                    </div>
-                    }
+
                 </div>
             </div>
         );

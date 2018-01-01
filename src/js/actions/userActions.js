@@ -2,7 +2,7 @@ import { auth, provider } from '../fire';
 import {
   FETCH_USER,
   LOGIN_USER,
-  LOGOUT_USE,
+  LOGOUT_USER,
   LOGGED_IN_USER,
   USER_FETCHED,
 } from "../actions/actionTypes";
@@ -33,11 +33,11 @@ export function login() {
 //   dispatch({ type: LOGIN_USER });
 //   return dispatch => auth.signInWithEmailAndPassword(email, password);
 // }
-
 export function logout() {
-  dispatch({ type: LOGOUT_USER });
-
-  return dispatch => auth.signOut();
+    return function (dispatch) {
+      dispatch({ type: LOGOUT_USER });
+       auth.signOut();
+    }
 }
 
 export function createAccount(email, password) {

@@ -13,7 +13,7 @@ body, html {
 	margin:0;
 	padding:0;
 }
-
+table, button, select, input, textarea,
 body {
 	color:$black;
 	font-family: $font-regular;
@@ -113,6 +113,15 @@ body {
 	@include respond-to($desktop-s ) {
 		max-width:rem(800px);
 		margin: 0 auto;
+	}
+
+	&.content--bg-white {
+		background: $white;
+		max-width:none;
+		padding:rem(20px);
+		@include respond-to($desktop-s ) {
+			padding: rem(30px);
+		}
 	}
 }
 
@@ -413,6 +422,9 @@ footer .container {
 	}
 	.product {
 		@include clearfix();
+		padding: rem(8px) rem(10px) rem(16px) 0;
+		border-bottom:1px solid rgba(52,58,64,0.5);
+
 	}
 	.product-image {
 		display: inline-block;
@@ -479,13 +491,12 @@ footer .container {
 
 
 	.checkout__bottom {
-		margin-top: rem(30px);
+		margin-top: rem(10px);
+		margin-bottom: rem(10px);
 		padding-top:rem(20px);
 		text-align: right;
-		border-top:1px solid rgba(52,58,64,0.5);
 	}
 	.checkout {
-		margin-top: rem(20px);
 		color:$white;
 		background:$red1;
 		padding:rem(10px) rem(20px);
@@ -527,7 +538,46 @@ footer .container {
 		}
 	}
 }
+.checkout__login {
+	color:$red1;
+	background:$white;
+	border:2px solid $red1;
+	padding:rem(6px) rem(16px);
+	border-radius: rem(30px);
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
+	margin-right: rem(20px);
 
+	&:hover{
+		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+	}
+	em {
+		transform: translateX(0);
+		transition: transform .2s .3s, padding .2s 0s;
+		position: relative;
+		display: inline-block;
+	}
+
+	&:hover em {
+		padding-right: 30px;
+
+		&::after {
+			opacity: 1;
+		}
+	}
+	em::after {
+		position: absolute;
+		@include center(y);
+		right: 0;
+		content: '';
+		height: 24px;
+		width: 24px;
+		background: url(../img/cd-icon-arrow-next-red.svg) no-repeat center center;
+		opacity: 0;
+		transition: opacity .2s;
+	}
+}
 
 .icon__cart-plus {
 	color: $white;
@@ -592,4 +642,20 @@ footer .container {
 }
 .home-teaser__footer {
 	position:relative;
+}
+
+.content__row {
+	display: flex;
+	margin-bottom:rem(20px);
+	padding-bottom:rem(20px);
+	border-bottom:1px solid $red1;
+	width: 100%;
+}
+.content__img-col {
+	flex: 0 0 30%;
+
+}
+.content__text-col {
+	flex: 0 0 70%;
+	padding-left:rem(20px)
 }
