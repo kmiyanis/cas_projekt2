@@ -79,7 +79,7 @@ export default class CartTable extends React.Component {
             :
             <div>
               <button onClick={() => this.loginHandler(this.props)}>Log In</button>
-              <Link to="#" class="checkout">Ohne Registrierung fortfahren</Link>
+              <Link to="/shop/checkout/order" class="checkout">Ohne Registrierung fortfahren</Link>
             </div>
           }
         </div>

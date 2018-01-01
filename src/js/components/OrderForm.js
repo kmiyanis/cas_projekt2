@@ -18,7 +18,7 @@ export default class OrderForm extends React.Component {
       street: '',
       town: '',
       zip: '',
-      email: props.user.email || props.user.displayName || '',
+      email: '',
       phone: '',
       formErrors: { email: '', default: '' },
       emailValid: false,
