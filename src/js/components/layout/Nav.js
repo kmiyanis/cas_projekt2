@@ -23,6 +23,10 @@ export default class Nav extends React.Component {
     this.props.dispatch(userActions.login());
   }
 
+  logoutHandler() {
+      this.props.dispatch(userActions.logout());
+  }
+
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({ collapsed });
@@ -82,18 +86,21 @@ export default class Nav extends React.Component {
               <li class={"nav-item " + contactClass}>
                 <Link to="contact" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kontakt</Link>
               </li>
+
               {user ?
-                <div>
-                  <li class={"nav-item " + contactClass}>
-                    <img src={user.photoURL} width="25" height="25" />
-                    <a href="#" onClick={this.logout}>Log Out {user.displayName}</a>
-                  </li>
-                  <li class={"nav-item " + contactClass}>
-                    <Link to="/myorders" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
-                  </li>
-                </div>
+                <li>
+                  <ul>
+                    <li class={"nav-item " + contactClass}>
+                      <img class="user-profile__img" src={user.photoURL} width="25" height="25" />
+                      <a href="#" onClick={() => this.logoutHandler(this.props)}>Log Out <span class="user-profile__name">{user.displayName}</span></a>
+                    </li>
+                    <li class={"nav-item " + contactClass}>
+                      <Link to="/myorders" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
+                    </li>
+                  </ul>
+                </li>
                 :
-                <a href="#" onClick={() => this.loginHandler(this.props)}>Log In</a>
+                  <li><a href="#" onClick={() => this.loginHandler(this.props)}>Log In</a></li>
               }
             </ul>
           </div>
