@@ -70,14 +70,16 @@ export default class Order extends React.Component {
                       </div>
                       <div class="product-details">
                         <h3 class="cd-product-title"><a>{item.quantity} x {item.product.title}</a></h3>
-                        <span class="price">CHF {item.product.price}</span>
+
+                        <span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
+                        <span class="product-price">CHF {item.product.price}</span>
                       </div>
                     </div>
                   ))}
-                  <b>Total: {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</b>
+                  <p class="shipping">versandkosten CHF 8</p>
+                  <p class="order-total">Total: CHF {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 8).toFixed(2)}</p>
                 </div>
                 <br /><br />
-                <hr />
                 {loggedin ? (
                   <OrderForm user={user} cart={cart} />
                 ) : (

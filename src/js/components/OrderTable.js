@@ -20,11 +20,12 @@ export default class OrderTable extends React.Component {
               </div>
               <div class="product-details">
                 <h3 class="cd-product-title"><a>{item.quantity} x {item.product.title}</a></h3>
-                <span class="price">CHF {item.product.price}</span>
+                    <span class="product-price">CHF {item.product.price}</span>
+                  <span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
               </div>
             </div>
           ))}
-          <b>Total: {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</b>
+          <p class="order-total">Total: {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</p>
         </div>
       </div>
     );

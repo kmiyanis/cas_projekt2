@@ -430,6 +430,11 @@ footer .container {
 	appearance: none;
 	-moz-appearance: textfield;
 }
+.shipping {
+	padding: rem(8px) rem(10px) rem(16px) 0;
+	border-bottom:1px solid rgba(52,58,64,0.5);
+	text-align: right;
+}
 .checkout-content{
 	background: $white;
 	padding:rem(16px);
@@ -508,12 +513,7 @@ footer .container {
 	}
 
 
-	.checkout__bottom {
-		margin-top: rem(10px);
-		margin-bottom: rem(10px);
-		padding-top:rem(20px);
-		text-align: right;
-	}
+
 	.checkout {
 		color:$white;
 		background:$red1;
@@ -555,6 +555,12 @@ footer .container {
 			transition: opacity .2s;
 		}
 	}
+}
+.checkout__bottom {
+	margin-top: rem(10px);
+	margin-bottom: rem(10px);
+	padding-top:rem(20px);
+	text-align: right;
 }
 .checkout__login {
 	color:$red1;
@@ -643,7 +649,6 @@ footer .container {
 			opacity: 1;
 			transition: opacity .3s .1s;
 		}
-
 	}
 }
 
@@ -676,4 +681,90 @@ footer .container {
 .content__text-col {
 	flex: 0 0 70%;
 	padding-left:rem(20px)
+}
+
+.order-total {
+	text-align: right;
+	padding:rem(8px) rem(10px);
+	@include font-h4();
+
+}
+
+.checkout-btn {
+	border:0;
+	color:$white;
+	background:$red1;
+	padding:rem(10px) rem(20px);
+	line-height: rem(21px);
+	border-radius: rem(30px);
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
+	transform: scale(1);
+	&:hover{
+		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		transform: scale(1.2);
+	}
+
+	em {
+		transform: translateX(0);
+		transition: transform .2s .3s, padding .2s 0s;
+		position: relative;
+		display: inline-block;
+	}
+
+	&:hover em {
+		padding-right: 30px;
+
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	em::after {
+		position: absolute;
+		@include center(y);
+		right: 0;
+		content: '';
+		height: 24px;
+		width: 24px;
+		background: url(../img/cd-icon-arrow-next.svg) no-repeat center center;
+		opacity: 0;
+		transition: opacity .2s;
+	}
+
+}
+.input--text {
+	width: 100%;
+	border:1px solid rgba(52,58,64,0.5);
+	@include respond-to($desktop-s) {
+		max-width:rem(300px);
+	}
+}
+.input--text-sml {
+	width: 48%;
+	border:1px solid rgba(52,58,64,0.5);
+}
+.order-form {
+	label {
+		display: flex;
+		margin: rem(15px) 0;
+		@include respond-to($desktop-s) {
+			max-width:rem(400px);
+		}
+	}
+	.label-text {
+		flex-basis: 30%;
+	}
+	.form__row {
+		display: flex;
+	}
+	.input--text {
+		padding: rem(2px) rem(5px);
+	}
+	filedset {
+		margin-bottom:rem(40px);
+		display: block;
+	}
+
 }
