@@ -73,11 +73,11 @@ export default class RecipeDetail extends React.Component {
     const { recipe, recipesFetched, user, loggedin, ratings } = this.props;
 
     let renderedRatings = []
-    Object.keys(ratings).map(function (key) {
-      renderedRatings.push(<RatingTable rating={ratings[key]} key={key} />)
-    })
-
-    if (renderedRatings.length === 0) {
+    if (ratings && recipesFetched) {
+      Object.keys(ratings).map(function (key) {
+        renderedRatings.push(<RatingTable rating={ratings[key]} key={key} />)
+      })
+    } else {
       renderedRatings = 'Bisher keine Bewertungen abgegeben';
     }
 
