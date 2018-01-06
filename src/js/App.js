@@ -19,6 +19,7 @@ import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
 import Order from "./pages/Order";
 import MyOrders from "./pages/MyOrders";
+import MyRatings from "./pages/MyRatings";
 
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>
             <Route path="contact" name="contact" component={Contact}></Route>
             <Route path="myorders" name="myorders" component={MyOrders}></Route>
+            <Route path="myratings" name="myorders" component={MyRatings}></Route>
           </Route>
         </Router>
       </Provider>

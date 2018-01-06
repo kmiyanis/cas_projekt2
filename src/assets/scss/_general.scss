@@ -123,6 +123,16 @@ body {
 			padding: rem(30px);
 		}
 	}
+	&.content--bg-green {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+		max-width:none;
+		padding:rem(20px);
+		@include respond-to($desktop-s ) {
+			padding: rem(30px);
+		}
+	}
 }
 
 .title,
