@@ -1,6 +1,18 @@
 {
   "rules": {
     ".read": "true",
-    ".write": "true"
+    ".write": "false",
+    "recipes": {
+      ".indexOn": [
+        "featured",
+        "slug"
+      ]
+    },
+    "orders": {
+      ".indexOn": [
+        "email"
+      ],
+      ".write": "true"
+    }
   }
 }

@@ -97,6 +97,9 @@ export default class Nav extends React.Component {
                     <li class={"nav-item " + contactClass}>
                       <Link to="/myorders" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
                     </li>
+                    <li class={"nav-item " + contactClass}>
+                      <Link to="/myratings" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Meine Bewertungen</Link>
+                    </li>
                   </ul>
                 </li>
                 :
