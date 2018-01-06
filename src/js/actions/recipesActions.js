@@ -38,7 +38,7 @@ export function fetchFeaturedRecipes() {
 export function fetchRecipe(slug) {
   return function (dispatch) {
     dispatch({ type: FETCH_RECIPE });
-    database.ref('recipes').orderByChild('slug').equalTo(slug).on('value', snap => {
+    database.ref('recipes').orderByChild('slug').equalTo(slug).once('value', snap => {
 
       const db = snapshotToArray(snap);
       dispatch({ type: FETCH_RECIPE_SUCCESS, payload: db[0] })
@@ -60,23 +60,13 @@ export function fetchRecipes() {
 
 export function fetchRatings(slug) {
   return function (dispatch) {
-    dispatch({ type: FETCH_RATINGS_BY_USER });
+    dispatch({ type: FETCH_RATINGS });
+
     database.ref('ratings').orderByChild('slug').equalTo(slug).on('value', snap => {
       const db = snap.val();
-      dispatch({ type: FETCH_RATINGS_BY_USER_SUCCESS, payload: db })
+      dispatch({ type: FETCH_RATINGS_SUCCESS, payload: db })
     })
   }
-  // return function (dispatch) {
-  //   dispatch({ type: FETCH_RATINGS });
-
-  //   database.ref('ratings').orderByChild('slug').equalTo(slug).once('value', snap => {
-  //     const db = snap.val();
-  //     dispatch({ type: FETCH_RATINGS_SUCCESS, payload: db })
-  //   })
-  //     .catch((err) => {
-  //       dispatch({ type: FETCH_RATINGS_FAILURE, error: err })
-  //     })
-  // }
 }
 
 export function fetchRatingsByUser(email) {
@@ -86,9 +76,6 @@ export function fetchRatingsByUser(email) {
       const db = snap.val();
       dispatch({ type: FETCH_RATINGS_BY_USER_SUCCESS, payload: db })
     })
-      .catch((err) => {
-        dispatch({ type: FETCH_RATINGS_BY_USER_FAILURE, error: err })
-      })
   }
 }
 

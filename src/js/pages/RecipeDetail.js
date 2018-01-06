@@ -31,7 +31,7 @@ export default class RecipeDetail extends React.Component {
   }
 
   ratingChanged(star) {
-    this.setState({star: star})
+    this.setState({ star: star })
   }
 
   handleChange(event) {
@@ -77,8 +77,8 @@ export default class RecipeDetail extends React.Component {
       renderedRatings.push(<RatingTable rating={ratings[key]} key={key} />)
     })
 
-    if(renderedRatings.length === 0) {
-      renderedRatings ='Bisher keine Bewertungen abgegeben';
+    if (renderedRatings.length === 0) {
+      renderedRatings = 'Bisher keine Bewertungen abgegeben';
     }
 
     return (
