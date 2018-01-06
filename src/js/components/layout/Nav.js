@@ -77,9 +77,9 @@ export default class Nav extends React.Component {
               <li class={"nav-item " + recipesClass}>
                 <Link to="recipes" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Rezepte</Link>
               </li>
-              <li class={"nav-item " + coursesClass}>
+              {/* <li class={"nav-item " + coursesClass}>
                 <Link to="courses" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kurse</Link>
-              </li>
+              </li> */}
               <li class={"nav-item " + contactClass}>
                 <Link to="contact" class="nav-link" onClick={this.toggleCollapse.bind(this)}>Kontakt</Link>
               </li>

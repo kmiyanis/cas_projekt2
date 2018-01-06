@@ -29,9 +29,6 @@ export function fetchFeaturedRecipes() {
       const db = snap.val();
       dispatch({ type: FETCH_RECIPES_SUCCESS, payload: db })
     })
-      .catch((err) => {
-        dispatch({ type: FETCH_RECIPES_FAILURE, error: err })
-      })
   }
 }
 
@@ -43,15 +40,11 @@ export function fetchRecipe(slug) {
       const db = snapshotToArray(snap);
       dispatch({ type: FETCH_RECIPE_SUCCESS, payload: db[0] })
     })
-    // .catch((err) => {
-    // 	dispatch({ type: FETCH_RECIPE_FAILURE, error: err })
-    // });
   }
 }
 
-// export function fetchRecipes() {
 export function fetchRecipes() {
-  return database.ref('/').once('value', snap => {
+  return database.ref('/').on('value', snap => {
     const db = snap.val();
     dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: snapshotToArray(db.recipes) })
   });
