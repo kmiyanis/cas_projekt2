@@ -441,9 +441,8 @@ footer .container {
 	-moz-appearance: textfield;
 }
 .shipping {
-	padding: rem(8px) rem(10px) rem(16px) 0;
+	padding: rem(16px) rem(10px) rem(16px) rem(10px);
 	border-bottom:1px solid rgba(52,58,64,0.5);
-	text-align: right;
 }
 .checkout-content{
 	background: $white;
@@ -488,13 +487,7 @@ footer .container {
 		text-overflow: ellipsis;
 		overflow: hidden;
 
-		a {
-			color: $black;
 
-			&:hover {
-				color: $red1;
-			}
-		}
 	}
 
 	.price {
@@ -563,6 +556,19 @@ footer .container {
 			background: url(../img/cd-icon-arrow-next.svg) no-repeat center center;
 			opacity: 0;
 			transition: opacity .2s;
+		}
+	}
+}
+
+.cd-product-title {
+	a {
+		color: $black;
+		display: inline-block;
+		transition:0.3s;
+
+		&:hover {
+			color: $red1;
+			transform: translate3d(5px,0,0);
 		}
 	}
 }
@@ -695,7 +701,7 @@ footer .container {
 
 .order-total {
 	text-align: right;
-	padding:rem(8px) rem(10px);
+	padding:rem(16px) rem(10px);
 	@include font-h4();
 
 }
@@ -779,4 +785,8 @@ footer .container {
 		display: block;
 	}
 
+}
+.flex-row {
+	display: flex;
+	justify-content: space-between;
 }

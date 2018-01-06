@@ -41,12 +41,12 @@ export default class CartTable extends React.Component {
           {cart.items.map((item, index) => (
             <div class="product" key={item.productId}>
               <div class="product-image">
-                <a href="#0">
+                <Link to={"/shop/product/" + item.productId}>
                   <img src={item.product.picture} alt={item.product.title} />
-                </a>
+                </Link>
               </div>
               <div class="product-details">
-                <h3 class="cd-product-title"><a>{item.product.title}</a></h3>
+                <h3 class="cd-product-title"><Link to={"/shop/product/" + item.productId}>{item.product.title}</Link></h3>
                 <span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
                 <div class="actions">
                   <div class="quantity-pill">

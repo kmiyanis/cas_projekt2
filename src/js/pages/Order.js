@@ -64,20 +64,20 @@ export default class Order extends React.Component {
                   {cart.items.map((item, index) => (
                     <div class="product" key={item.productId}>
                       <div class="product-image">
-                        <a href="#0">
+                        <Link to={"/shop/product/" + item.productId}>
                           <img src={item.product.picture} alt={item.product.title} />
-                        </a>
+                        </Link>
                       </div>
                       <div class="product-details">
-                        <h3 class="cd-product-title"><a>{item.quantity} x {item.product.title}</a></h3>
+                        <h3 class="cd-product-title"><Link to={"/shop/product/" + item.productId}>{item.quantity} x {item.product.title}</Link></h3>
 
                         <span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
                         <span class="product-price">CHF {item.product.price}</span>
                       </div>
                     </div>
                   ))}
-                  <p class="shipping">versandkosten CHF 8</p>
-                  <p class="order-total">Total: CHF {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 8).toFixed(2)}</p>
+                  <div class="flex-row shipping"><p class="flex-row__item">Versandkosten</p><p class="flex-row__item"> CHF 8</p></div>
+                  <div class="flex-row"><p class="order-total">Total</p> <p class="order-total">CHF {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 8).toFixed(2)}</p></div>
                 </div>
                 <br /><br />
                 {loggedin ? (

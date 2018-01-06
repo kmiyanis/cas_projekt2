@@ -27,14 +27,14 @@ export default class CartTable extends React.Component {
 						{cart.items.map((item, index) => (
 							<li class="product" key={item.productId}>
 								<div class="product-image">
-									<a href="#0">
+									<Link to={"/shop/product/" + item.productId}>
 										<img src={item.product.picture} alt={item.product.title} />
 
-									</a>
+									</Link>
 								</div>
 								<div class="product-details">
-									<h3 class="cd-product-title"><a>{item.product.title}</a></h3>
-									<span class="price">{(item.product.price * item.quantity).toFixed(2)}</span>
+									<h3 class="cd-product-title"><Link to={"/shop/product/" + item.productId}>{item.product.title}</Link></h3>
+									<span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
 									<div class="actions">
 										<div class="quantity-pill">
 											<button onClick={this.onclick.bind(this, 'sub', item)} class="quantity-pill__left" title="-1">
@@ -50,8 +50,8 @@ export default class CartTable extends React.Component {
 												value={item.quantity}
 
 											/>
-											<button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right" title="+1"
-											><i class="fa fa-plus" aria-hidden="true"></i>
+											<button onClick={this.onclick.bind(this, 'add', item)} class="quantity-pill__right" title="+1">
+												<i class="fa fa-plus" aria-hidden="true"></i>
 											</button>
 										</div>
 										<a onClick={() => this.removeFromCart(item)} class="delete-item"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

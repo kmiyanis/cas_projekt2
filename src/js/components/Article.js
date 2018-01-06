@@ -94,13 +94,13 @@ export default class Article extends React.Component {
 
             <HomeArticle>
                 <HomeTeaserTitle>{title}  </HomeTeaserTitle>
-                <HomeTeaserImg><Link  to={"/shop/" + this.props._id}><img class="img--block" src={picture} alt="Foto Gemmaicha mit Maccha"/></Link></HomeTeaserImg>
+                <HomeTeaserImg><Link  to={"/shop/product/" + this.props._id}><img class="img--block" src={picture} alt={title} /></Link></HomeTeaserImg>
                 <div class="home-teaser__text-block">
                     <HomeTeaserLead>{lead} </HomeTeaserLead>
                     <p>{text} </p>
                 </div>
                 <div class="home-teaser__footer">
-                    <Link class="box__link" to={"/shop/" + this.props._id}>Detail Site</Link>
+                    <Link class="box__link" to={"/shop/product/" + this.props._id}>Detail Site</Link>
                     <div class="home__cart-plus icon__cart-plus" onClick={() => this.addToCart(this.props)} >
                         <FontAwesome  name="cart-plus"/>
                     </div>

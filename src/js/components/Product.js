@@ -34,13 +34,13 @@ export default class Product extends React.Component {
                     <FontAwesome spin name="star"/> Miyas empfelung
                 </div>
                 }
-                <Link to={"/shop/" + this.props._id}>
+                <Link to={"/shop/product/" + this.props._id}>
                     <div class="grid__img-box"><img class="grid__img" src={picture} alt={title}/></div>
                 </Link>
 
                 <div class="grid__text-block">
                     <h2 class="grid__title">
-                        <Link to={"/shop/" + this.props._id}>{title}</Link>
+                        <Link to={"/shop/product/" + this.props._id}>{title}</Link>
                     </h2>
                     <p class="grid__preis">100g CHF {price}</p>
                     <p class="grid__text">{text}</p>

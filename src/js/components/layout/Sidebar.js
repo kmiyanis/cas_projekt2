@@ -16,13 +16,14 @@ export default class Sidebar extends React.Component {
     constructor() {
         super()
         this.state = {
-            collapsed: true,
+            collapsed: true
         };
     }
-
+/*
     filterCat(c) {
         alert('filter by ' + c.name)
-    }
+        this.setState({filter: c.name});
+    }*/
 
     toggleCollapse() {
         const collapsed = !this.state.collapsed;
@@ -35,7 +36,8 @@ export default class Sidebar extends React.Component {
 
     render() {
         const { categories, fetched } = this.props;
-        const SiderbarLinks = categories.map((c) => <a onClick={() => this.filterCat(c)} class="filternav__item" key={c._id}>{c.name}</a>);
+        //const SiderbarLinks = categories.map((c) => <a onClick={() => this.filterCat(c)} class="filternav__item" key={c._id}>{c.name}</a>);
+        const SiderbarLinks = categories.map((c) => <Link to={"/shop/" + c._id} class="filternav__item" key={c._id}>{c.name}</Link>);
         return (
 
             <div class="filternav">
