@@ -18,7 +18,10 @@ export default class Shop extends React.Component {
     this.props.dispatch(fetchProducts())
     //this.props.dispatch(fetchCategories())
   }
-
+    componentDidMount() {
+        this.props.dispatch(fetchProducts())
+        //this.props.dispatch(fetchCategories())
+    }
   render() {
 
     const cat = this.props.params.filter;
@@ -33,19 +36,22 @@ export default class Shop extends React.Component {
       }
     }
 
-    if(cat === undefined) {
-        console.log('cat undefined');
-        const mappedProducts = Object.keys(products).map((key, index) => {
-            return <Product key={products[key]._id} {...products[key]} />;
-        });
-    } else {
-        console.log('cat is' + cat);
-        const mappedProducts = Object.keys(products)
-            .filter(p => p.categoryId == cat)
-            .map((key, index) => {
-            return <Product key={products[key]._id} {...products[key]} />;
-        });
-    }
+      const mappedProducts = Object.keys(products).map((key, index) => {
+          return <Product key={products[key]._id} {...products[key]} />;
+      });
+
+      const mappedProductsFilter = Object.keys(products)
+          .filter(
+              function(key) {
+                  if(products[key].categoryId == cat) {
+                    return true
+                  }
+              }
+          )
+          .map((key, index) => {
+              return <Product key={products[key]._id} {...products[key]} />;
+          });
+
     /*
       const mappedProducts = Object.keys(products).map((key, index) => {
           return <Product key={products[key]._id} {...products[key]} />;
@@ -53,11 +59,10 @@ export default class Shop extends React.Component {
 */
     return (
       <div>
-
           {fetched ? (
             "Loading..."
           ) : (
-              <div class="shop__content grid">{mappedProducts}</div>
+              <div class="shop__content grid">{cat ? mappedProductsFilter : mappedProducts }</div>
           )}
 
       </div>

@@ -42,7 +42,7 @@ export default class Sidebar extends React.Component {
 
             <div class="filternav">
                 <span class="filternav__title">Anzeige: </span>
-                <a class="filternav__item checked" href="">Alle</a>
+                <Link to={"/shop/"} class="filternav__item checked">Alle</Link>
                     {SiderbarLinks}
 
             </div>
