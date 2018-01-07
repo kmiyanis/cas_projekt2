@@ -41,13 +41,7 @@ export default class Shop extends React.Component {
       });
 
       const mappedProductsFilter = Object.keys(products)
-          .filter(
-              function(key) {
-                  if(products[key].categoryId == cat) {
-                    return true
-                  }
-              }
-          )
+          .filter(key => products[key].categoryId == cat)
           .map((key, index) => {
               return <Product key={products[key]._id} {...products[key]} />;
           });
