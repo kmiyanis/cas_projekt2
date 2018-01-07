@@ -45,7 +45,7 @@ export default class MyOrders extends React.Component {
       return (
         <div>
           <h1 class="title">Meine Bestellungen</h1>
-          <b>Bisher noch keine Bestellung ausgeführt</b>
+          <div class="content content--bg-white"><p>Bisher noch keine Bestellung ausgeführt</p></div>
         </div>
       )
     }

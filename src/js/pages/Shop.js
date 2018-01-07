@@ -8,19 +8,15 @@ import { fetchProducts, fetchCategories } from "../actions/productsActions";
   return {
     products: store.products.products,
     productsFetched: store.products.fetched,
-   // categories: store.products.categories,
-    //categoriesFetched: store.products.fetched,
   };
 })
 
 export default class Shop extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchProducts())
-    //this.props.dispatch(fetchCategories())
   }
     componentDidMount() {
         this.props.dispatch(fetchProducts())
-        //this.props.dispatch(fetchCategories())
     }
   render() {
 

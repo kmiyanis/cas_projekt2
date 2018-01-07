@@ -53,7 +53,7 @@ export default class MyRatings extends React.Component {
       return (
         <div>
           <h1 class="title">Meine Bewertungen</h1>
-          <b>Bisher noch keine Bewertungen abgegeben</b>
+          <div class="content content--bg-white"><p>Bisher noch keine Bewertungen abgegeben</p></div>
         </div>
       )
     }

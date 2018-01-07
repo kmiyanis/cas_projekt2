@@ -89,7 +89,7 @@ export default class Article extends React.Component {
             cart,
             categoryId,
         } = this.props;
-        console.log(cart);
+
         return (
 
             <HomeArticle>

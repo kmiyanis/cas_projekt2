@@ -32,7 +32,6 @@ export default class CartTable extends React.Component {
     this.props.dispatch(userActions.login());
   }
 
-
   render() {
     const { cart, user, loggedin } = this.props;
     return (
@@ -79,7 +78,7 @@ export default class CartTable extends React.Component {
             :
               <div>
                 <button class="checkout__login" onClick={() => this.loginHandler(this.props)}><em>Log In</em></button>
-                <Link to="#" class="checkout"><em>Ohne Registrierung fortfahren</em></Link>
+                <Link to="/checkout/order" class="checkout"><em>Ohne Registrierung fortfahren</em></Link>
               </div>
           }
         </div>

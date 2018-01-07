@@ -99,13 +99,13 @@
 	text-decoration: none;
 	transition: 0.3s;
 	text-transform: uppercase;
+	padding-left: 0;
 
 	@include respond-to($desktop-s ) {
 		text-transform: none;
 		transform: translate3d(5px, 0, 0);
 	}
 }
-
 
 .navbar-collapse.show {
 	.nav-item {
@@ -129,8 +129,10 @@
 	}
 
 	.user__item {
-		@include respond-to($desktop-s ) {
-			border-top:0;
+		border-bottom:1px solid $red1;
+		display: block;
+		&:last-of-type {
+			border-bottom:0;
 		}
 	}
 	.user-profile__name {
@@ -140,8 +142,6 @@
 	}
 	.user-item__link {
 		padding: rem(8px) 0;
-		display: inline-block;
-		border-bottom:1px solid $red1;
 		display: inline-block;
 		width: 100%;
 

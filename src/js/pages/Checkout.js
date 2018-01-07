@@ -34,7 +34,7 @@ export default class Checkout extends React.Component {
       return (
         <div>
           <h1 class="title">Checkout</h1>
-          <b>Keine Artikel im Warenkorb</b>
+			<div class="content content--bg-white"><p>Keine Artikel im Warenkorb</p></div>
         </div>
       )
     }

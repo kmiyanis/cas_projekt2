@@ -42,7 +42,7 @@ export default class Order extends React.Component {
       return (
         <div>
           <h1 class="title">Checkout</h1>
-          <b>Keine Artikel im Warenkorb</b>
+          <div class="content content--bg-white"><p>Keine Artikel im Warenkorb</p></div>
         </div>
       )
     }
@@ -79,7 +79,9 @@ export default class Order extends React.Component {
                   <div class="flex-row shipping"><p class="flex-row__item">Versandkosten</p><p class="flex-row__item"> CHF 8</p></div>
                   <div class="flex-row"><p class="order-total">Total</p> <p class="order-total">CHF {cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 8).toFixed(2)}</p></div>
                 </div>
-                <br /><br />
+              </div>
+
+              <div class="checkout-content">
                 {loggedin ? (
                   <OrderForm user={user} cart={cart} />
                 ) : (

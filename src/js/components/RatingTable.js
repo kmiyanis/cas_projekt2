@@ -9,7 +9,7 @@ export default class RatingTable extends React.Component {
   render() {
     var divStyle = {
       marginBottom: '1rem',
-      borderBottom: '1px solid #000',
+      borderBottom: '1px solid #C42E2E',
       width: '100%'
     };
 
@@ -23,7 +23,7 @@ export default class RatingTable extends React.Component {
         <br /><br />
         <ReactStars
           count={5}
-          size={24}
+          size={16}
           color2={'#ffd700'}
           value={rating.star}
           edit={false}

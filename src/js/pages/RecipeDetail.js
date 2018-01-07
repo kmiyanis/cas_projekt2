@@ -94,11 +94,11 @@ export default class RecipeDetail extends React.Component {
             </div>
           )}
         </div>
-        <br /><br /><br />
+        <br /><br />
         <div class="content content--bg-white grid">
           {renderedRatings}
         </div>
-        <br /><br /><br />
+        <br />
         {this.props.ratingSuccessfull &&
           <div class="content content--bg-green grid">
             Vielen Dank für Ihre Bewertung!
@@ -111,7 +111,7 @@ export default class RecipeDetail extends React.Component {
                 half={false}
                 count={5}
                 onChange={this.ratingChanged.bind(this)}
-                size={24}
+                size={16}
                 color2={'#ffd700'}
                 name="star"
                 value={this.state.star}
@@ -119,7 +119,7 @@ export default class RecipeDetail extends React.Component {
               <br /><br />
               <textarea name="txt" value={this.state.txt} onChange={this.handleChange} />
               <br /><br />
-              <input type="submit" value="Bewertung abschicken" />
+              <input class="submit-btn" type="submit" value="Bewertung abschicken" />
             </form>
             :
             <button class="checkout__login" onClick={() => this.loginHandler(this.props)}><em>Für eine Bewertung bitte anmelden</em></button>

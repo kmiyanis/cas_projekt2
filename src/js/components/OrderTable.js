@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router";
 
 export default class OrderTable extends React.Component {
   render() {
@@ -9,7 +10,7 @@ export default class OrderTable extends React.Component {
     const { cart, order } = this.props;
     return (
       <div class="checkout-content myorders" style={divStyle}>
-        Bestellung vom &nbsp; {Date(order.created_at).toString()}
+          <h2 class="subtitle">Bestellung vom &nbsp; {Date(order.created_at).toString()}</h2>
         <div class="checkout__products">
           {cart.items.map((item, index) => (
             <div class="product" key={item.productId}>
@@ -20,8 +21,8 @@ export default class OrderTable extends React.Component {
               </div>
               <div class="product-details">
                 <h3 class="cd-product-title"><Link to={"/shop/product/" + item.productId}>{item.quantity} x {item.product.title}</Link></h3>
-                    <span class="product-price">CHF {item.product.price}</span>
                   <span class="price">CHF {(item.product.price * item.quantity).toFixed(2)}</span>
+                  <span class="product-price">CHF {item.product.price}</span>
               </div>
             </div>
           ))}

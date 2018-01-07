@@ -36,6 +36,8 @@ export default class Product extends React.Component {
             categoryId,
         } = this.props;
         return (
+            <div>
+            <h1 class="title">{title}</h1>
             <div class="detail__content">
 
                 <div class="detail__img-block"><img class="img--block" src={picture}
@@ -43,11 +45,11 @@ export default class Product extends React.Component {
 
                 <div class="detail__text-block">
                     {featured &&
-                    <div class="card-header">
-                        <FontAwesome spin name="star" /> Featured
+                    <div class="featured">
+                        <span class="featured__icon"><img src="/assets/img/sakura.svg" /></span>Miyas Empfelung
                     </div>
                     }
-                    <h1 class="detail__title">{title}</h1>
+
                     <p class="detail__text">{text} </p>
 
                     <div class="detail__preis">100g CHF {price}</div>
@@ -56,6 +58,7 @@ export default class Product extends React.Component {
                     </button>
 
                 </div>
+            </div>
             </div>
         );
     }

@@ -104,20 +104,22 @@ export default class OrderForm extends React.Component {
             };
 
             return (
-                <div>
-                    Vielen Dank für Ihre Bestellung!
+                <div class="order-success">
+                    <p class="order-success__title">Vielen Dank für Ihre Bestellung!</p>
+                    <img class="order-success__img" src="/assets/img/fukusuke.svg" />
                 </div>
             )
         }
 
         return (
             <form onSubmit={this.handleSubmit(this.props.cart)} class="order-form">
+                <h2 class="subtitle">Ihre Angabe</h2>
                 <div className="panel panel-default">
                     <FormErrors formErrors={this.state.formErrors}/>
                 </div>
                 <filedset>
                     <label>
-                        <span class="label-text"> Vorname:</span>
+                        <span class="label-text"> Vorname:<span class="required">*</span></span>
                         <input
                             type="text"
                             name="firstname"
@@ -127,7 +129,7 @@ export default class OrderForm extends React.Component {
                         />
                     </label>
                     <label>
-                        <span class="label-text"> Nachname:</span>
+                        <span class="label-text"> Nachname:<span class="required">*</span></span>
                         <input
                             type="text"
                             class="input--text"
@@ -139,7 +141,7 @@ export default class OrderForm extends React.Component {
                 </filedset>
                 <filedset>
                     <label>
-                        <span class="label-text">Strasse:</span>
+                        <span class="label-text">Strasse:<span class="required">*</span></span>
                         <input
                             type="text"
                             class="input--text"
@@ -150,7 +152,7 @@ export default class OrderForm extends React.Component {
                     </label>
 
                     <label>
-                        <span class="label-text"> PLZ:</span>
+                        <span class="label-text"> PLZ:<span class="required">*</span></span>
                         <input
                             type="text"
                             class="input--text"
@@ -160,7 +162,7 @@ export default class OrderForm extends React.Component {
                         />
                     </label>
                     <label>
-                        <span class="label-text">Ort:</span>
+                        <span class="label-text">Ort:<span class="required">*</span></span>
                         <input
                             type="text"
                             name="town"
@@ -172,7 +174,7 @@ export default class OrderForm extends React.Component {
                 </filedset>
                 <filedset>
                     <label>
-                        <span class="label-text"> E-Mail:</span>
+                        <span class="label-text"> E-Mail:<span class="required">*</span></span>
                         <input
                             type="text"
                             name="email"
@@ -182,7 +184,7 @@ export default class OrderForm extends React.Component {
                         />
                     </label>
                     <label>
-                        <span class="label-text">Phone:</span>
+                        <span class="label-text">Phone:<span class="required">*</span></span>
                         <input
                             type="text"
                             name="phone"
