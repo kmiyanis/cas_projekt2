@@ -1,5 +1,16 @@
 {
   "articles" : {
+    "socken_00" : {
+      "_id" : "socken_00",
+      "categoryId" : 66,
+      "featured" : false,
+      "home" : true,
+      "lead" : "Seiden 5 Zehensocken ist sehr angenehm zu tragen und dazu noch kräftig entgiften.",
+      "picture" : "assets/img/socken/socken_home.jpg",
+      "price" : 67.93,
+      "text" : "Zwischen den Zehen geben die Ausscheidungsprodukte ab. Wenn man diese produkt durch die Socken entfernt, kann der Korper mehr auscheiden.",
+      "title" : "Fuss warm Kopf kalt Doktor arm."
+    },
     "gemmacha-mit-maccha_01" : {
       "_id" : "gemmacha-mit-maccha_01",
       "categoryId" : 175,
@@ -22,6 +33,17 @@
       "text" : "Es gibt 2 verschiedene Maccha Klasse. Erste ist Usucha (Dünne Tee in Teezeremonie), andere ist Koicha (Dicke Tee in Teezeremonie). Da diese unterschiedliche Konsistent sind, ist der Tee Karakter auch verschieden. Koicha Qualität ist weniger bitter und sehr aromatisch. Usucha Qualität ist frisch. ",
       "title" : "Maccha ist jetzt hip und trendy? "
     },
+    "nierenwaermer_00" : {
+      "_id" : "nierenwaermer_00",
+      "categoryId" : 175,
+      "featured" : false,
+      "home" : true,
+      "lead" : "Nieren sind kältempfindlich, schwäche Nieren macht einem rutscht das Herz in die Hose",
+      "picture" : "assets/img/nierenwaermer/nierenwaermer_home.jpg",
+      "price" : 67.93,
+      "text" : "Dünne seidige Nierenwärmer schutzt Ihnen wie eine zweite Haut und nicht nur warme geben sodern fordert Auscheidung.",
+      "title" : "Von Ruderin bis zum Rider "
+    },
     "sencha_01" : {
       "_id" : "sencha_01",
       "categoryId" : 175,
@@ -32,28 +54,6 @@
       "price" : 67.93,
       "text" : "Der Grüntee ist sehr gut für das Gesundheit dank ihrer Katekin (Bitterstoff), Vitamin C. Sie möchten gerne für Ihre Gesundheit trinken und dabei sicher sein, der Tee Pestizide frei ist. Jawohl! Dieser Tee ist Bio Qualität und dazu noch sehr aromatisch und wundervoll. ",
       "title" : "Für Sie muss Grüntee \"Bio\" sein, aber muss er auch gut Schmecken? "
-    },
-    "nierenwaermer" : {
-      "_id" : "nierenwaermer",
-      "categoryId" : 175,
-      "featured" : false,
-      "home" : true,
-      "lead" : "Nieren sind kältempfindlich, schwäche Nieren macht einem rutscht das Herz in die Hose",
-      "picture" : "assets/img/nierenwaermer/nierenwaermer_home.jpg",
-      "price" : 67.93,
-      "text" : "Dünne seidige Nierenwärmer schutzt Ihnen wie eine zweite Haut und nicht nur warme geben sodern fordert Auscheidung.",
-      "title" : "Von Ruderin bis zum Rider "
-    },
-     "Socken" : {
-      "_id" : "socken_01",
-      "categoryId" : 66,
-      "featured" : false,
-      "home" : true,
-      "lead" : "Seiden 5 Zehensocken ist sehr angenehm zu tragen und dazu noch kräftig entgiften.",
-      "picture" : "assets/img/socken/socken_home.jpg",
-      "price" : 67.93,
-      "text" : "Zwischen den Zehen geben die Ausscheidungsprodukte ab. Wenn man diese produkt durch die Socken entfernt, kann der Korper mehr auscheiden.",
-      "title" : "Fuss warm Kopf kalt Doktor arm."
     }
   },
   "orders" : {
@@ -377,7 +377,7 @@
       "categoryId" : 66,
       "featured" : true,
       "picture" : "assets/img/socken/powerassist_blue.jpg",
-      "price" :22,
+      "price" : 22,
       "text" : "Vorteilhahf zum Sports & Wanderung.",
       "title" : "5 Zehen Socken aus Seide und Elastan"
     },
@@ -449,6 +449,28 @@
       "price" : 67.93,
       "text" : "Der Grüntee ist sehr gut für das Gesundheit dank ihrer Katekin (Bitterstoff), Vitamin C. Sie möchten gerne für Ihre Gesundheit trinken und dabei sicher sein, der Tee Pestizide frei ist. Jawohl! Dieser Tee ist Bio Qualität und dazu noch sehr aromatisch und wundervoll. ",
       "title" : "Sencha aus Shizuoka"
+    },
+    "socken_00" : {
+      "_id" : "socken_00",
+      "categoryId" : 66,
+      "featured" : false,
+      "home" : true,
+      "lead" : "Seiden 5 Zehensocken ist sehr angenehm zu tragen und dazu noch kräftig entgiften.",
+      "picture" : "assets/img/socken/socken_home.jpg",
+      "price" : 67.93,
+      "text" : "Zwischen den Zehen geben die Ausscheidungsprodukte ab. Wenn man diese produkt durch die Socken entfernt, kann der Korper mehr auscheiden.",
+      "title" : "Fuss warm Kopf kalt Doktor arm."
+    },
+    "nierenwaermer_00" : {
+      "_id" : "nierenwaermer_00",
+      "categoryId" : 175,
+      "featured" : false,
+      "home" : true,
+      "lead" : "Nieren sind kältempfindlich, schwäche Nieren macht einem rutscht das Herz in die Hose",
+      "picture" : "assets/img/nierenwaermer/nierenwaermer_home.jpg",
+      "price" : 67.93,
+      "text" : "Dünne seidige Nierenwärmer schutzt Ihnen wie eine zweite Haut und nicht nur warme geben sodern fordert Auscheidung.",
+      "title" : "Von Ruderin bis zum Rider "
     }
   },
   "products_categories" : {

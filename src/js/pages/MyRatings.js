@@ -43,8 +43,8 @@ export default class MyRatings extends React.Component {
       loggedin
     } = this.props;
 
-
-    let renderedRatings = []
+/*
+    let renderedRatings = [];
     Object.keys(ratings).map(function (key) {
       renderedRatings.push(<RatingTable rating={ratings[key]} _id={key} key={key} admin={true} onClick={() => this.handleClick(key)} />)
     }.bind(this))
@@ -57,14 +57,28 @@ export default class MyRatings extends React.Component {
         </div>
       )
     }
+ */
+console.log('fetched',fetched);
+      console.log('ratings',ratings);
+    if(ratings !== null && ratings.length > 0 && fetched) {
+        let renderedRatings = [];
+        Object.keys(ratings).map(function (key) {
+            renderedRatings.push(<RatingTable rating={ratings[key]} _id={key} key={key} admin={true} onClick={() => this.handleClick(key)} />)
+        }.bind(this))
 
-    return (
-      <div>
-        <h1 class="title">Meine Bewertungen</h1>
-        {renderedRatings}
-      </div>
-    )
-
-
+      return (
+        <div>
+          <h1 class="title">Meine Bewertungen</h1>
+          {renderedRatings}
+        </div>
+      )
+    } else {
+        return (
+            <div>
+              <h1 class="title">Meine Bewertungen</h1>
+              <div class="content content--bg-white"><p>Bisher noch keine Bewertungen abgegeben</p></div>
+            </div>
+        )
+    }
   }
 }

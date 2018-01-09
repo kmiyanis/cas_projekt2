@@ -46,17 +46,29 @@ body {
 }
 .box__link {
 	color: $red1;
-	border-bottom:2px solid $red1;
 	margin:rem(24px) 0;
 	display: inline-block;
 	transform: translate3d(0,0,0);
 	text-decoration: none;
-	transition:0.3s;
-	&:hover {
-		border-bottom:2px solid $red1;
-		text-decoration: none;
-		color: $red1;
-		transform: translate3d(5px,0,0);
+	transition: all .3s;
+
+	&:before {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 0%;
+		content: '.';
+		color: transparent;
+		background: $red1;
+		height: 1px;
+		transition: all .3s;
+		pointer-events: none;
+	}
+
+	&:hover:before {
+		width: 100%;
 	}
 	&:after {
 		content:'->';
@@ -456,7 +468,28 @@ footer .container {
 	display: inline-block;
 	color:$white;
 	font-weight: bold;
-	opacity: 0.8;
+	position: relative;
+text-decoration: none;
+	padding:  0 rem(5px);
+	&:after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 0%;
+		content: '.';
+		color: transparent;
+		background: $white;
+		height: 1px;
+		transition: all .5s;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
 }
 .filternav__item.checked {
 	opacity: 1;
@@ -724,7 +757,7 @@ footer .container {
 	float:right;
 	cursor: pointer;
 	position: absolute;
-	left:calc(100% - 70px);
+	left:calc(100% - 90px);
 	top:0;
 	.fa-cart-plus {
 		text-align: center;
