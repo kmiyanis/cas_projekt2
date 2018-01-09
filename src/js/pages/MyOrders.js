@@ -36,25 +36,35 @@ export default class MyOrders extends React.Component {
     } = this.props;
 
 
-    if(orders !== null && orders.length > 0 && fetched) {
-      const renderedOrders = [];
-      Object.keys(orders).map(function (key) {
-          renderedOrders.push(<OrderTable order={orders[key]} cart={orders[key].cart} key={key} />)
-      })
-      return (
-        <div>
-          <h1 class="title">Meine Bestellungen</h1>
+    const renderedOrders = [];
+    Object.keys(orders).map(function (key) {
+      renderedOrders.push(<OrderTable order={orders[key]} cart={orders[key].cart} key={key} />)
+    })
+    const h1 = <h1 class="title">Meine Bestellungen</h1>
+    if (fetched) {
+      if (renderedOrders.length > 0) {
+        return (
+          <div>
+            {h1}
             {renderedOrders}
-        </div>
-      )
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            {h1}
+            <div class="content content--bg-white"><p>Bisher noch keine Bestellung ausgeführt</p></div>
+          </div>
+        )
+      }
     } else {
-
       return (
         <div>
-          <h1 class="title">Meine Bestellungen</h1>
-          <div class="content content--bg-white"><p>Bisher noch keine Bestellung ausgeführt</p></div>
+          {h1}
+          <div class="content content--bg-white"><p>Loading...</p></div>
         </div>
       )
     }
-  }
+
+}
 }

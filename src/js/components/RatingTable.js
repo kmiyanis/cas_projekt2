@@ -3,9 +3,6 @@ import ReactStars from 'react-stars'
 import { deleteRating } from '../actions/recipesActions';
 
 export default class RatingTable extends React.Component {
-  handleClick() {
-    console.log('aa')
-  }
   render() {
     var divStyle = {
       marginBottom: '1rem',
