@@ -48,13 +48,13 @@ export default class Nav extends React.Component {
         const {location, user, loggedin} = this.props;
         const {collapsed} = this.state;
         const indexClass = location.pathname === "/" ? "active" : "";
-        const recipesClass = location.pathname.match(/^\/recipes/) ? "active" : "";
+        const recipesClass = location.pathname.match(/^\/recipes/) ? "active" : location.pathname.match(/^\/recipe/) ? "active" : "";
         const shopClass = location.pathname.match(/^\/shop/) ? "active" : "";
         const coursesClass = location.pathname.match(/^\/courses/) ? "active" : "";
         const contactClass = location.pathname.match(/^\/contact/) ? "active" : "";
         const checkoutClass = location.pathname.match(/^\/checkout/) ? "active" : "";
-       // const myorderClass = location.pathname.match(/^\/myorders/) ? "active" : "";
-       // const myratingClass = location.pathname.match(/^\/myratings/) ? "active" : "";
+        const myorderClass = location.pathname.match(/^\/myorders/) ? "active" : "";
+        const myratingClass = location.pathname.match(/^\/myratings/) ? "active" : "";
         const navClass = collapsed ? "collapsed" : "open";
         const navUlClass = collapsed ? "" : "show";
         const expanded = collapsed ? false : true;
@@ -106,11 +106,11 @@ export default class Nav extends React.Component {
                                                 class="user-profile__name">{user.displayName}</span></a>
                                         </li>
                                         <li class="user__item">
-                                            <Link to="/myorders" class="user-item__link"
+                                            <Link to="/myorders" class={'user-item__link ' + myorderClass}
                                                   onClick={this.toggleCollapse.bind(this)}>Meine Bestellungen</Link>
                                         </li>
                                         <li class="user__item">
-                                            <Link to="/myratings" class="user-item__link"
+                                            <Link to="/myratings" class={'user-item__link ' + myratingClass}
                                                   onClick={this.toggleCollapse.bind(this)}>Meine Bewertungen</Link>
                                         </li>
                                     </ul>

@@ -17,7 +17,7 @@ export default class Layout extends React.Component {
                 <Nav location={location}/>
                 {/* <CartMini /> */}
                 <main class="main main--overview" role="main">
-                    <Sidebar />
+                    <Sidebar location={location} />
 
                     {this.props.children}
 

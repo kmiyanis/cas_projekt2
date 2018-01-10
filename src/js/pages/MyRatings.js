@@ -44,10 +44,13 @@ export default class MyRatings extends React.Component {
     } = this.props;
 
     let renderedRatings = [];
-    Object.keys(ratings).map(function (key) {
-      renderedRatings.push(<RatingTable rating={ratings[key]} _id={key} key={key} admin={true} onClick={() => this.handleClick(key)} />)
-    }.bind(this))
-    
+
+    if (ratings != null) {
+      Object.keys(ratings).map(function (key) {
+          renderedRatings.push(<RatingTable rating={ratings[key]} _id={key} key={key} admin={true} onClick={() => this.handleClick(key)} />)
+      }.bind(this))
+    }
+
     if (fetched) {
       if (renderedRatings.length > 0) {
         return (

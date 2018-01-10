@@ -37,9 +37,12 @@ export default class MyOrders extends React.Component {
 
 
     const renderedOrders = [];
-    Object.keys(orders).map(function (key) {
-      renderedOrders.push(<OrderTable order={orders[key]} cart={orders[key].cart} key={key} />)
-    })
+    if(orders != null) {
+      Object.keys(orders).map(function (key) {
+        renderedOrders.push(<OrderTable order={orders[key]} cart={orders[key].cart} key={key} />)
+      })
+    }
+
     const h1 = <h1 class="title">Meine Bestellungen</h1>
     if (fetched) {
       if (renderedOrders.length > 0) {
@@ -66,5 +69,5 @@ export default class MyOrders extends React.Component {
       )
     }
 
-}
+  }
 }
