@@ -30,8 +30,9 @@ export default class Sidebar extends React.Component {
   }
 
   setActiveClass(catname) {
-    var rgxp = new RegExp(catname);
-    let isActive = this.props.location.pathname.match(rgxp) ? " checked" : "";
+    let _location = this.props.location.pathname.split('/shop/');
+    let rgxp = new RegExp(catname);
+    let isActive = (catname === 'all' && _location[1] === '') ? " checked" : _location[1].match(rgxp) ? " checked" : "";
     return isActive;
   }
 
@@ -44,7 +45,7 @@ export default class Sidebar extends React.Component {
     return (
 
       <div class="filternav">
-        <Link to={"/shop/"} class={"filternav__item" }>Alle</Link>
+        <Link to={"/shop/"} class={"filternav__item"  + this.setActiveClass('all')}>Alle</Link>
         {SiderbarLinks}
 
       </div>
