@@ -20,9 +20,9 @@ export default class CartTable extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.props.dispatch(userActions.fetch())
-  }
+  // componentWillMount() {
+  //   this.props.dispatch(userActions.fetch())
+  // }
 
   removeFromCart(product) {
     this.props.dispatch(removeFromCart(product.productId));

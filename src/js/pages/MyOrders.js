@@ -23,7 +23,7 @@ export default class MyOrders extends React.Component {
         this.props.dispatch(fetchOrders(user.email))
       }
     });
-    this.props.dispatch(userActions.fetch())
+    // this.props.dispatch(userActions.fetch())
   }
 
 

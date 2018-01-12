@@ -7,10 +7,15 @@ import promise from "redux-promise-middleware"
 
 import reducer from "./reducers"
 
+import * as userActions from "./actions/userActions"
+
 const middleware = applyMiddleware(promise(), thunk)
 
 // export default createStore(reducer, middleware)
-export default createStore(reducer, composeWithDevTools(
+const store = createStore(reducer, composeWithDevTools(
     applyMiddleware(promise(), thunk),
     // other store enhancers if any
 ));
+store.dispatch(userActions.fetch());
+
+export default store;
