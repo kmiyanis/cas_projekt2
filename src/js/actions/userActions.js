@@ -40,30 +40,20 @@ export function fetch() {
 
 export function login(credentials) {
   return function (dispatch) {
-    dispatch({ type: LOGGED_IN_USER });
+    dispatch({ type: LOGIN_USER });
     auth.signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(response => {
         dispatch({ type: LOGGED_IN_USER_SUCCESS })
-
         dispatch({ type: GET_LOCAL_USER });
         let userId = auth.currentUser.uid;
         database.ref('/users/' + userId).once('value').then(function (snapshot) {
           dispatch({ type: GET_LOCAL_USER_SUCCESS, payload: snapshot.val() })
         });
-
       })
       .catch(error => {
         dispatch({ type: LOGGED_IN_USER_FAILURE, payload: error })
       });
   }
-
-  // return function (dispatch) {
-  //   dispatch({ type: LOGIN_USER });
-  //   auth.signInWithPopup(provider)
-  //     .then((result) => {
-  //       dispatch({ type: LOGGED_IN_USER, payload: result.additionalUserInfo.profile })
-  //     });
-  // }
 }
 
 export function logout() {
@@ -86,12 +76,11 @@ export function createAccount(credentials) {
           lastname: credentials.lastname,
           email: credentials.email,
         }, () => {
-          dispatch({ type: CREATE_LOCAL_USER_SUCCESS });
+          dispatch({ type: CREATE_LOCAL_USER_SUCCESS, payload: credentials });
         })
           .catch(error => {
             dispatch({ type: CREATE_LOCAL_USER_FAILURE, payload: error })
           });
-
         dispatch({ type: CREATE_USER_SUCCESS });
       })
       .catch(error => {

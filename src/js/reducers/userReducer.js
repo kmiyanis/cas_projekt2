@@ -72,7 +72,7 @@ export default function (state = {
     case GET_LOCAL_USER_FAILURE:
     case CREATE_LOCAL_USER_FAILURE:
     case LOGGED_IN_USER_FAILURE:
-      return { ...state, created: false, error: action.payload }
+      return { ...state, loggedin: false, created: false, error: action.payload }
     default:
       return state;
   }
