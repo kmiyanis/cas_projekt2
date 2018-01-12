@@ -20,6 +20,8 @@ import RecipeDetail from "./pages/RecipeDetail";
 import Order from "./pages/Order";
 import MyOrders from "./pages/MyOrders";
 import MyRatings from "./pages/MyRatings";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 
 class App extends Component {
@@ -41,6 +43,8 @@ class App extends Component {
             <Route path="contact" name="contact" component={Contact}></Route>
             <Route path="myorders" name="myorders" component={MyOrders}></Route>
             <Route path="myratings" name="myorders" component={MyRatings}></Route>
+            <Route path="signup" name="signup" component={SignUp}></Route>
+            <Route path="login" name="login" component={Login}></Route>
           </Route>
         </Router>
       </Provider>

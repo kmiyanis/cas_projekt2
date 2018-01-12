@@ -62,7 +62,7 @@ export default class RecipeDetail extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchRecipe(this.props.params.recipe))
     this.props.dispatch(fetchRatings(this.props.params.recipe))
-    this.props.dispatch(userActions.fetch())
+    // this.props.dispatch(userActions.fetch())
   }
 
   loginHandler() {

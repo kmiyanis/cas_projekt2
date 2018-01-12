@@ -28,7 +28,7 @@ export default class MyRatings extends React.Component {
         this.props.dispatch(fetchRatingsByUser(user.email))
       }
     });
-    this.props.dispatch(userActions.fetch())
+    // this.props.dispatch(userActions.fetch())
   }
 
   handleClick(_id) {

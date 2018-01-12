@@ -21,7 +21,7 @@ import * as userActions from "../actions/userActions"
 
 export default class Order extends React.Component {
   componentWillMount() {
-    this.props.dispatch(userActions.fetch())
+    // this.props.dispatch(userActions.fetch())
     this.props.dispatch(fetchProducts())
     this.props.dispatch(fetchCart())
   }

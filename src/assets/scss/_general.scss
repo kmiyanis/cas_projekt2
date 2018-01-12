@@ -145,6 +145,26 @@ body {
 			padding: rem(30px);
 		}
 	}
+	&.content--bg-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+		max-width:none;
+		padding:rem(20px);
+		@include respond-to($desktop-s ) {
+			padding: rem(30px);
+		}
+	}
+	&.content--bg-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    max-width:none;
+		padding:rem(20px);
+		@include respond-to($desktop-s ) {
+			padding: rem(30px);
+		}
+	}
 }
 
 .title,
