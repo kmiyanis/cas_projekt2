@@ -54,7 +54,7 @@ export default class CartTable extends React.Component {
 												<i class="fa fa-plus" aria-hidden="true"></i>
 											</button>
 										</div>
-										<a onClick={() => this.removeFromCart(item)} class="delete-item"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+										<a onClick={() => this.removeFromCart(item)} class="delete-item"><i class="fa fa-trash-o" aria-hidden="true" role="presentation"></i></a>
 									</div>
 								</div>
 							</li>
