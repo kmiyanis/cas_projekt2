@@ -105,6 +105,13 @@ export default class OrderForm extends React.Component {
       if (inputField && window.scrollTo) {
         window.scrollTo(0, inputField.offsetTop - 100)
       }
+
+      for (let error of prevState.formErrors) {
+        this.refs[error[1]].className = 'input--text'
+      }
+      for (let error of this.state.formErrors) {
+        this.refs[error[1]].className = this.refs[error[1]].className + ' input--error'
+      }
     }
   }
 
@@ -130,7 +137,7 @@ export default class OrderForm extends React.Component {
 
         <filedset>
           <label>
-            <span class="label-text"> Vorname:<span class="required">*</span></span>
+            <span class="label-text"> Vorname:</span>
             <input
               type="text"
               name="firstname"
@@ -141,7 +148,7 @@ export default class OrderForm extends React.Component {
             />
           </label>
           <label>
-            <span class="label-text"> Nachname:<span class="required">*</span></span>
+            <span class="label-text"> Nachname:</span>
             <input
               type="text"
               class="input--text"
@@ -154,7 +161,7 @@ export default class OrderForm extends React.Component {
         </filedset>
         <filedset>
           <label>
-            <span class="label-text">Strasse:<span class="required">*</span></span>
+            <span class="label-text">Strasse:</span>
             <input
               type="text"
               class="input--text"
@@ -166,7 +173,7 @@ export default class OrderForm extends React.Component {
           </label>
 
           <label>
-            <span class="label-text"> PLZ:<span class="required">*</span></span>
+            <span class="label-text"> PLZ:</span>
             <input
               type="text"
               class="input--text"
@@ -177,7 +184,7 @@ export default class OrderForm extends React.Component {
             />
           </label>
           <label>
-            <span class="label-text">Ort:<span class="required">*</span></span>
+            <span class="label-text">Ort:</span>
             <input
               type="text"
               name="town"
@@ -190,7 +197,7 @@ export default class OrderForm extends React.Component {
         </filedset>
         <filedset>
           <label>
-            <span class="label-text"> E-Mail:<span class="required">*</span></span>
+            <span class="label-text"> E-Mail:</span>
             <input
               type="text"
               name="email"
@@ -201,7 +208,7 @@ export default class OrderForm extends React.Component {
             />
           </label>
           <label>
-            <span class="label-text">Phone:<span class="required">*</span></span>
+            <span class="label-text">Phone:</span>
             <input
               type="text"
               name="phone"

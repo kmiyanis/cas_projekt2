@@ -824,6 +824,7 @@ text-decoration: none;
 	font-weight: bold;
 	transition:0.3s;
 	position: relative;
+	cursor: pointer;
 	&:after {
 		transform: translateX(0);
 		right: 15px;
@@ -844,6 +845,9 @@ text-decoration: none;
 			opacity: 1;
 			transition: opacity .3s .1s;
 		}
+		.input-checkout-btn {
+			padding-right: 50px;
+		}
 	}
 	.input-checkout-btn {
 		color:$white;
@@ -856,9 +860,7 @@ text-decoration: none;
 		appearance: none;
 		border: 0;
 		transition:0.3s;
-		&:hover {
-			padding-right: 30px;
-		}
+
 	}
 }
 .submit-btn,
@@ -914,7 +916,7 @@ text-decoration: none;
 	}
 }
 .required {
-	color:$red1;
+	color:$black;
 }
 .notice {
 	margin-bottom: rem(24px);
@@ -924,6 +926,10 @@ text-decoration: none;
 	border:1px solid rgba(52,58,64,0.5);
 	@include respond-to($desktop-s) {
 		max-width:rem(300px);
+	}
+
+	&.input--error {
+		border:1px solid $red1;
 	}
 }
 .input--text-sml {
