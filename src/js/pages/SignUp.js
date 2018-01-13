@@ -81,7 +81,7 @@ export default class SignUp extends React.Component {
 
   renderAuthenticationError() {
     if (this.props.authenticationError) {
-      return <div className="content content--bg-error grid">{this.props.authenticationError.message}</div>;
+      return <div className="content content--bg-error">{this.props.authenticationError.message}</div>;
     }
     return <div></div>;
   }
@@ -89,7 +89,7 @@ export default class SignUp extends React.Component {
   renderFormErrors() {
     if (this.state.formErrors.length > 0) {
       const renderedErrors = this.state.formErrors.map((e, i) => <li key={i}>{e}</li>);
-      return <div className="content content--bg-warning grid"><ul>{renderedErrors}</ul></div>;
+      return <div className="content content--bg-warning"><ul>{renderedErrors}</ul></div>;
     }
     return <div></div>;
   }
@@ -173,7 +173,9 @@ export default class SignUp extends React.Component {
             </label>
           </filedset>
           <div class="checkout__bottom">
-            <input type="submit" class="checkout-btn" value="Registrieren" />
+            <div class="input-checkout-btn-wrap">
+              <input type="submit" class="input-checkout-btn" value="Registrieren"/>
+            </div>
           </div>
         </form>
       </div>

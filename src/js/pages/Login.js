@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect } from "react-router";
+import {connect} from 'react-redux';
+import {Link, Redirect} from "react-router";
 import * as userActions from "../actions/userActions"
 import FormErrors from "../components/FormErrors";
 
@@ -44,7 +44,7 @@ export default class Login extends React.Component {
       errors.push("Bitte ein Passwort angeben.");
     }
 
-    this.setState({ formErrors: errors })
+    this.setState({formErrors: errors})
 
     return errors
   }
@@ -70,7 +70,9 @@ export default class Login extends React.Component {
   renderFormErrors() {
     if (this.state.formErrors.length > 0) {
       const renderedErrors = this.state.formErrors.map((e, i) => <li key={i}>{e}</li>);
-      return <div className="content content--bg-warning grid"><ul>{renderedErrors}</ul></div>;
+      return <div className="content content--bg-warning grid">
+        <ul>{renderedErrors}</ul>
+      </div>;
     }
     return <div></div>;
   }
@@ -81,39 +83,47 @@ export default class Login extends React.Component {
     }
 
     return (
-      <div class="checkout-content">
-        <form onSubmit={this.handleSubmit()} class="order-form">
-          <h2 class="subtitle">Login</h2>
-          {this.renderAuthenticationError()}
-          {this.renderFormErrors()}
-          <filedset>
-            <label>
-              <span class="label-text"> E-Mail:<span class="required">*</span></span>
-              <input
-                type="text"
-                name="email"
-                class="input--text"
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-            </label>
-            <label>
-              <span class="label-text">Passwort:<span class="required">*</span></span>
-              <input
-                type="password"
-                name="password"
-                class="input--text"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </filedset>
-          <div class="checkout__bottom">
-            <input type="submit" class="checkout-btn" value="Login" />
-          </div>
-          <Link to="/signup">Registrieren</Link>
-        </form>
+      <div>
+        <div class="checkout-content">
+          <form onSubmit={this.handleSubmit()} class="order-form">
+            <h2 class="subtitle">Login</h2>
+            {this.renderAuthenticationError()}
+            {this.renderFormErrors()}
+            <filedset>
+              <label>
+                <span class="label-text"> E-Mail:<span class="required">*</span></span>
+                <input
+                  type="text"
+                  name="email"
+                  class="input--text"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+              </label>
+              <label>
+                <span class="label-text">Passwort:<span class="required">*</span></span>
+                <input
+                  type="password"
+                  name="password"
+                  class="input--text"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </label>
+            </filedset>
+            <div class="checkout__bottom">
+              <div class="input-checkout-btn-wrap">
+                <input type="submit" class="input-checkout-btn" value="Login"/>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="checkout-content">
+          <h2 class="subtitle">User Registrieren</h2>
+          <Link class="checkout" to="/signup"><em>Registrieren</em></Link>
+        </div>
       </div>
+
     );
   }
 }
