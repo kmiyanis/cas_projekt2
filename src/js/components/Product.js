@@ -31,7 +31,7 @@ export default class Product extends React.Component {
 
                 { featured &&
                 <div class="grid__header">
-                    <span class="featured__icon"><img src="/assets/img/sakura.svg" /></span>Miyas Empfelung
+                    <span class="featured__icon"><img src="/assets/img/sakura.svg" /></span>Miyas Empfehlung
                 </div>
                 }
                 <Link to={"/shop/product/" + this.props._id}>

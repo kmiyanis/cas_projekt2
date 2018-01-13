@@ -14,7 +14,7 @@ export default class RatingTable extends React.Component {
 
     return (
       <div class="checkout-content myratings" style={divStyle}>
-        {rating.name}
+        {rating.firstname}&nbsp;{rating.lastname}
         <br />
         am &nbsp;{Date(rating.created_at).toString()}
         <br /><br />

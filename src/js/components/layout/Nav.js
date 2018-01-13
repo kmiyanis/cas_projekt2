@@ -120,6 +120,18 @@ export default class Nav extends React.Component {
                       <Link to="/myratings" class="user-item__link"
                         onClick={this.toggleCollapse.bind(this)}>Meine Bewertungen</Link>
                     </li>
+                    {user.role === "ADMIN" &&
+                      <section>
+                        <li class="user__item">
+                          <Link to="/myratings" class="user-item__link"
+                            onClick={this.toggleCollapse.bind(this)}></Link>
+                        </li>
+                        <li class="user__item">
+                          <Link to="/admin/users" class="user-item__link"
+                            onClick={this.toggleCollapse.bind(this)}>User Verwaltung</Link>
+                        </li>
+                      </section>
+                    }
                   </ul>
                 </li>
                 :

@@ -52,7 +52,8 @@ export default class RecipeDetail extends React.Component {
         ...this.state,
         slug: slug,
         email: this.props.user.email,
-        name: this.props.user.displayName,
+        firstname: this.props.user.firstname,
+        lastname: this.props.user.lastname,
       }
       this.props.dispatch(addRating(rating));
     }
@@ -62,7 +63,6 @@ export default class RecipeDetail extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchRecipe(this.props.params.recipe))
     this.props.dispatch(fetchRatings(this.props.params.recipe))
-    // this.props.dispatch(userActions.fetch())
   }
 
   loginHandler() {
