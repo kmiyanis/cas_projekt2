@@ -24,7 +24,7 @@ const FooterLink = styled.a`
         position:absolute;
         left: 0;
         right: 0;
-        content: '.';
+        content: '';
 		color: transparent;
         margin: auto;
         width: 0%;

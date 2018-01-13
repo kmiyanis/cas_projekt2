@@ -32,7 +32,13 @@ export default class Sidebar extends React.Component {
   setActiveClass(catname) {
     let _location = this.props.location.pathname.split('/shop/');
     let rgxp = new RegExp(catname);
-    let isActive = (catname === 'all' && _location[1] === '') ? " checked" : _location[1].match(rgxp) ? " checked" : "";
+    let isActive = '';
+    if(_location.length <= 1) {
+        isActive = catname === 'all' ? " checked" : "";
+    } else {
+      isActive = (catname === 'all' && ( _location[1] === '')) ? " checked" : _location[1].match(rgxp) ? " checked" : "";
+    }
+
     return isActive;
   }
 

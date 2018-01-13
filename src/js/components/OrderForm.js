@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import FormErrors from "./FormErrors";
-import { addOrder } from "../actions/orderActions"
+import {addOrder} from "../actions/orderActions"
 
 @connect((store) => {
   return {
@@ -13,16 +13,7 @@ export default class OrderForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: '',
-      lastname: '',
-      street: '',
-      town: '',
-      zip: '',
-      email: '',
-      phone: '',
-      formErrors: { email: '', default: '' },
-      emailValid: false,
-      formValid: false
+      formErrors: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -36,38 +27,48 @@ export default class OrderForm extends React.Component {
 
     this.setState({
       [name]: value
-    },
-      () => {
-        this.validateField(name, value)
-      }
-    );
-  }
-
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-
-    switch (fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' ist nicht korrekt';
-        break;
-      // case 'password':
-      //   passwordValid = value.length >= 6;
-      //   fieldValidationErrors.password = passwordValid ? '' : ' is too short';
-      //   break;
-      default:
-        fieldValidationErrors.default = value.length > 0 ? '' : ' darf nicht leer sein'
-        break;
-    }
-    this.setState({
-      formErrors: fieldValidationErrors,
-      emailValid: emailValid,
-    }, this.validateForm);
+    });
   }
 
   validateForm() {
-    this.setState({ formValid: this.state.emailValid });
+    const errors = [];
+
+    if (!this.state.firstname) {
+      errors.push(["Bitte einen Vornamen angeben.", "firstname"]);
+    }
+
+    if (!this.state.lastname) {
+      errors.push(["Bitte einen Nachnamen angeben.", "lastname"]);
+    }
+
+    if (!this.state.street) {
+      errors.push(["Bitte eine Adresse angeben.", "street"]);
+    }
+
+    if (!this.state.zip) {
+      errors.push(["Bitte eine Postleitzahl angeben.", "zip"]);
+    } else if (!/[0-9]/i.test(this.state.zip)) {
+      errors.push(["Invalid Postleitzahl", "zip"]);
+    }
+
+    if (!this.state.town) {
+      errors.push(["Bitte einen Ort angeben.", "town"]);
+    }
+
+    if (!this.state.email) {
+      errors.push(["Bitte eine E-Mail angeben.", "email"]);
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.email)) {
+      errors.push(["Invalid email address", "email"]);
+    }
+
+    if (!this.state.phone) {
+      errors.push(["Bitte eine Telefon Number angeben.", "phone"]);
+    } else if (!/[0-9._%+-]/i.test(this.state.phone)) {
+      errors.push(["Invalid Telefon Number", "phone"]);
+    }
+
+    this.setState({formErrors: errors})
+    return errors
   }
 
   handleSubmit(cart) {
@@ -78,35 +79,45 @@ export default class OrderForm extends React.Component {
         ...this.state,
         cart
       }
-      // don't need all the state's data
-      delete order.formErrors;
-      delete order.formValid;
-      delete order.emailValid;
 
-      this.props.dispatch(addOrder(order));
+      const errors = this.validateForm()
+      if (errors.length === 0) {
+        this.props.dispatch(addOrder(order));
+      }
+    }
+  }
+
+  renderFormErrors() {
+    if (this.state.formErrors.length > 0) {
+      const renderedErrors = this.state.formErrors.map((e, i) => <li key={i}>{e[0]}</li>);
+      return <div className="content content--bg-warning grid">
+        <ul>{renderedErrors}</ul>
+      </div>;
+    }
+    return <div></div>;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.formErrors.length > 0 && this.state.formErrors.length != prevState.formErrors.length) {
+      const inputname = this.state.formErrors[0][1];
+      const inputField = this.refs[inputname];
+      inputField.focus();
+      if (inputField && window.scrollTo) {
+        window.scrollTo(0, inputField.offsetTop - 100)
+      }
     }
   }
 
   render() {
     if (this.props.orderSuccessfull) {
       this.state = {
-        firstname: '',
-        lastname: '',
-        street: '',
-        town: '',
-        zip: '',
-        date: '',
-        email: '',
-        phone: '',
-        formErrors: { email: '', default: '' },
-        emailValid: false,
-        formValid: false
+        formErrors: [],
       };
 
       return (
         <div class="order-success">
           <p class="order-success__title">Vielen Dank für Ihre Bestellung!</p>
-          <img class="order-success__img" src="/assets/img/fukusuke.svg" />
+          <img class="order-success__img" src="/assets/img/fukusuke.svg"/>
         </div>
       )
     }
@@ -114,9 +125,9 @@ export default class OrderForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit(this.props.cart)} class="order-form">
         <h2 class="subtitle">Ihre Angabe</h2>
-        <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
+        <p class="notice">Alle Felder sind Pflichtfelder. Bitte füllen Sie sie aus.</p>
+        {this.renderFormErrors()}
+
         <filedset>
           <label>
             <span class="label-text"> Vorname:<span class="required">*</span></span>
@@ -125,6 +136,7 @@ export default class OrderForm extends React.Component {
               name="firstname"
               class="input--text"
               value={this.state.firstname}
+              ref="firstname"
               onChange={this.handleInputChange}
             />
           </label>
@@ -134,6 +146,7 @@ export default class OrderForm extends React.Component {
               type="text"
               class="input--text"
               name="lastname"
+              ref="lastname"
               value={this.state.lastname}
               onChange={this.handleInputChange}
             />
@@ -146,6 +159,7 @@ export default class OrderForm extends React.Component {
               type="text"
               class="input--text"
               name="street"
+              ref="street"
               value={this.state.street}
               onChange={this.handleInputChange}
             />
@@ -157,6 +171,7 @@ export default class OrderForm extends React.Component {
               type="text"
               class="input--text"
               name="zip"
+              ref="zip"
               value={this.state.zip}
               onChange={this.handleInputChange}
             />
@@ -166,6 +181,7 @@ export default class OrderForm extends React.Component {
             <input
               type="text"
               name="town"
+              ref="town"
               class="input--text"
               value={this.state.town}
               onChange={this.handleInputChange}
@@ -178,6 +194,7 @@ export default class OrderForm extends React.Component {
             <input
               type="text"
               name="email"
+              ref="email"
               class="input--text"
               value={this.state.email}
               onChange={this.handleInputChange}
@@ -188,6 +205,7 @@ export default class OrderForm extends React.Component {
             <input
               type="text"
               name="phone"
+              ref="phone"
               class="input--text"
               value={this.state.phone}
               onChange={this.handleInputChange}
@@ -195,7 +213,9 @@ export default class OrderForm extends React.Component {
           </label>
         </filedset>
         <div class="checkout__bottom">
-          <input type="submit" class="checkout-btn" value="Bestellen" disabled={!this.state.formValid} />
+          <div class="input-checkout-btn-wrap">
+            <input type="submit" class="input-checkout-btn" value="Bestellen"/>
+          </div>
         </div>
       </form>
     );
