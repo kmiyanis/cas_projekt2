@@ -131,7 +131,26 @@
 		text-transform: none;
 	}
 }
-
+.user-item__spacer {
+	position: relative;
+  z-index: 1;
+  border-top: 1px solid $white;
+	&:after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		content: '.';
+		color: transparent;
+		background: $black;
+		height: 100%;
+		transition: all 1s;
+		pointer-events: none;
+		z-index: -1;
+    opacity: 0;
+  }
+}
+  
 .user-item__link {
 	position: relative;
 	z-index: 1;

@@ -8,6 +8,10 @@ import {
   FETCH_CATEGORIES,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
+  UDPATE_PRODUCT,
+  UDPATE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_SUCCESS,
 } from "../actions/actionTypes";
 
 
@@ -16,13 +20,17 @@ export default function reducer(state = {
   categories: [],
   fetching: false,
   fetched: false,
+  updated: false,
   error: null,
+  deleted: null,
 }, action) {
 
   switch (action.type) {
+    case UDPATE_PRODUCT:
     case FETCH_PRODUCT:
     case FETCH_CATEGORIES:
     case FETCH_PRODUCTS:
+    case DELETE_PRODUCT:
       {
         return { ...state, fetching: true }
       }
@@ -38,6 +46,21 @@ export default function reducer(state = {
           ...state,
           fetching: false,
           fetched: true,
+          product: action.payload,
+        }
+      }
+    case DELETE_PRODUCT_SUCCESS:
+      {
+        return {
+          fetching: false,
+          deleted: true,
+        }
+      }
+    case UDPATE_PRODUCT_SUCCESS:
+      {
+        return {
+          ...state,
+          updated: true,
           product: action.payload,
         }
       }

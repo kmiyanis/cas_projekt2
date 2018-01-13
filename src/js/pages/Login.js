@@ -1,7 +1,6 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { Redirect } from "react-router";
+import { Link, Redirect } from "react-router";
 import * as userActions from "../actions/userActions"
 import FormErrors from "../components/FormErrors";
 
@@ -56,7 +55,6 @@ export default class Login extends React.Component {
       const errors = this.validateForm()
       if (errors.length === 0) {
         this.props.dispatch(userActions.login(this.state));
-        this.props.history.push('/shop')
       }
     }
   }
@@ -78,10 +76,9 @@ export default class Login extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
-    // if (this.props.loggedin) {
-    //   return <Redirect to="/shop" />
-    // }
+    if (this.props.loggedin) {
+      this.props.history.push('/shop')
+    }
 
     return (
       <div class="checkout-content">
@@ -114,6 +111,7 @@ export default class Login extends React.Component {
           <div class="checkout__bottom">
             <input type="submit" class="checkout-btn" value="Login" />
           </div>
+          <Link to="/signup">Registrieren</Link>
         </form>
       </div>
     );

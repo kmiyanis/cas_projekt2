@@ -13,9 +13,10 @@ var config = {
 firebase.initializeApp(config);
 
 export const provider = new firebase.auth.GoogleAuthProvider();
-export const auth = firebase.auth();
 
+export const auth = firebase.auth();
 export const database = firebase.database();
+export const storage = firebase.storage();
 
 export const snapshotToArray = snapshot => {
     let returnArr = [];

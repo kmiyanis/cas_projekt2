@@ -46,7 +46,7 @@ export default class Product extends React.Component {
                 <div class="detail__text-block">
                     {featured &&
                     <div class="featured">
-                        <span class="featured__icon"><img src="/assets/img/sakura.svg" /></span>Miyas Empfelung
+                        <span class="featured__icon"><img src="/assets/img/sakura.svg" /></span>Miyas Empfehlung
                     </div>
                     }
 

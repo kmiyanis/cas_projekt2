@@ -1,12 +1,12 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as userActions from "../actions/userActions"
 import FormErrors from "../components/FormErrors";
 
 @connect((store) => {
   return {
-    authenticationError: store.user.error
+    authenticationError: store.user.error,
+    userCreated: store.user.created
   };
 })
 export default class SignUp extends React.Component {
@@ -95,15 +95,17 @@ export default class SignUp extends React.Component {
   }
 
   render() {
-    if (this.props.orderSuccessfull) {
+    if (this.props.userCreated) {
       this.state = {
         formErrors: [],
       };
 
       return (
-        <div class="order-success">
-          <p class="order-success__title">Vielen Dank für Ihre Registrierung!</p>
-          <img class="order-success__img" src="/assets/img/fukusuke.svg" />
+        <div class="checkout-content">
+          <div class="order-success">
+            <p class="order-success__title">Vielen Dank für Ihre Registrierung!</p>
+            <img class="order-success__img" src="/assets/img/fukusuke.svg" />
+          </div>
         </div>
       )
     }

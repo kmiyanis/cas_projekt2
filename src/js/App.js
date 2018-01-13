@@ -22,6 +22,10 @@ import MyOrders from "./pages/MyOrders";
 import MyRatings from "./pages/MyRatings";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import AdminUsers from "./pages/admin/Users";
+import AdminProducts from "./pages/admin/Products";
+import AdminProduct from "./pages/admin/Product";
+import AdminNewProduct from "./pages/admin/ProductFormNew";
 
 
 class App extends Component {
@@ -45,6 +49,10 @@ class App extends Component {
             <Route path="myratings" name="myorders" component={MyRatings}></Route>
             <Route path="signup" name="signup" component={SignUp}></Route>
             <Route path="login" name="login" component={Login}></Route>
+            <Route path="admin/users" name="admin/users" component={AdminUsers}></Route>
+            <Route path="admin/products" name="admin/products" component={AdminProducts}></Route>
+            <Route path="admin/products/new" name="admin/newProduct" component={AdminNewProduct}></Route>
+            <Route path="admin/products/:product" name="admin/editProduct" component={AdminProduct}></Route>
           </Route>
         </Router>
       </Provider>

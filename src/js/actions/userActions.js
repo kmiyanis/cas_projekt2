@@ -16,6 +16,10 @@ import {
   GET_LOCAL_USER,
   GET_LOCAL_USER_SUCCESS,
   GET_LOCAL_USER_FAILURE,
+  FETCH_ALL_USERS,
+  FETCH_ALL_USERS_SUCCESS,
+  MAKE_ADMIN,
+  MAKE_USER,
 } from "../actions/actionTypes";
 
 
@@ -38,32 +42,33 @@ export function fetch() {
   }
 }
 
-export function login(credentials) {
+export function fetchAllUsers() {
   return function (dispatch) {
-    dispatch({ type: LOGGED_IN_USER });
+    dispatch({ type: FETCH_ALL_USERS });
+    database.ref('/users/').on('value', snap => {
+      const db = snap.val();
+      dispatch({ type: FETCH_ALL_USERS_SUCCESS, payload: db })
+    })
+  }
+}
+
+export function login(credentials) {
+
+  return function (dispatch) {
+    dispatch({ type: LOGIN_USER });
     auth.signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(response => {
         dispatch({ type: LOGGED_IN_USER_SUCCESS })
-
         dispatch({ type: GET_LOCAL_USER });
         let userId = auth.currentUser.uid;
         database.ref('/users/' + userId).once('value').then(function (snapshot) {
           dispatch({ type: GET_LOCAL_USER_SUCCESS, payload: snapshot.val() })
         });
-
       })
       .catch(error => {
         dispatch({ type: LOGGED_IN_USER_FAILURE, payload: error })
       });
   }
-
-  // return function (dispatch) {
-  //   dispatch({ type: LOGIN_USER });
-  //   auth.signInWithPopup(provider)
-  //     .then((result) => {
-  //       dispatch({ type: LOGGED_IN_USER, payload: result.additionalUserInfo.profile })
-  //     });
-  // }
 }
 
 export function logout() {
@@ -86,12 +91,11 @@ export function createAccount(credentials) {
           lastname: credentials.lastname,
           email: credentials.email,
         }, () => {
-          dispatch({ type: CREATE_LOCAL_USER_SUCCESS });
+          dispatch({ type: CREATE_LOCAL_USER_SUCCESS, payload: credentials });
         })
           .catch(error => {
             dispatch({ type: CREATE_LOCAL_USER_FAILURE, payload: error })
           });
-
         dispatch({ type: CREATE_USER_SUCCESS });
       })
       .catch(error => {
@@ -99,3 +103,31 @@ export function createAccount(credentials) {
       });
   }
 }
+
+export function deleteUser(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_ADMIN });
+    database.ref('/users/' + _id).update({
+      deleted: true,
+    });
+  }
+}
+
+export function makeAdmin(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_ADMIN });
+    database.ref('/users/' + _id).update({
+      role: 'ADMIN',
+    });
+  }
+}
+
+export function makeUser(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_USER });
+    database.ref('/users/' + _id).update({
+      role: 'USER',
+    });
+  }
+}
+

@@ -37,7 +37,9 @@ export default class MyOrders extends React.Component {
 
 
     const renderedOrders = [];
-    if(orders != null) {
+
+    if (orders != null) {
+
       Object.keys(orders).map(function (key) {
         renderedOrders.push(<OrderTable order={orders[key]} cart={orders[key].cart} key={key} />)
       })
@@ -52,22 +54,20 @@ export default class MyOrders extends React.Component {
             {renderedOrders}
           </div>
         )
-      } else {
-        return (
-          <div>
-            {h1}
-            <div class="content content--bg-white"><p>Bisher noch keine Bestellung ausgeführt</p></div>
-          </div>
-        )
       }
-    } else {
       return (
         <div>
           {h1}
-          <div class="content content--bg-white"><p>Loading...</p></div>
+          <div class="content content--bg-white"><p>Bisher noch keine Bestellung ausgeführt</p></div>
         </div>
       )
     }
 
+    return (
+      <div>
+        {h1}
+        <div class="content content--bg-white"><p>Loading...</p></div>
+      </div>
+    )
   }
 }
