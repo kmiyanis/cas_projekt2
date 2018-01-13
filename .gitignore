@@ -2,3 +2,5 @@
 /.idea
 /src/hot
 /src/js/ApiKeys.js
+/src/assets/css/main.css
+/src/index.min.js
