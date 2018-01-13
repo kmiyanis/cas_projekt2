@@ -16,6 +16,10 @@ import {
   GET_LOCAL_USER,
   GET_LOCAL_USER_SUCCESS,
   GET_LOCAL_USER_FAILURE,
+  FETCH_ALL_USERS,
+  FETCH_ALL_USERS_SUCCESS,
+  MAKE_ADMIN,
+  MAKE_USER,
 } from "../actions/actionTypes";
 
 
@@ -38,7 +42,18 @@ export function fetch() {
   }
 }
 
+export function fetchAllUsers() {
+  return function (dispatch) {
+    dispatch({ type: FETCH_ALL_USERS });
+    database.ref('/users/').on('value', snap => {
+      const db = snap.val();
+      dispatch({ type: FETCH_ALL_USERS_SUCCESS, payload: db })
+    })
+  }
+}
+
 export function login(credentials) {
+
   return function (dispatch) {
     dispatch({ type: LOGIN_USER });
     auth.signInWithEmailAndPassword(credentials.email, credentials.password)
@@ -88,3 +103,31 @@ export function createAccount(credentials) {
       });
   }
 }
+
+export function deleteUser(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_ADMIN });
+    database.ref('/users/' + _id).update({
+      deleted: true,
+    });
+  }
+}
+
+export function makeAdmin(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_ADMIN });
+    database.ref('/users/' + _id).update({
+      role: 'ADMIN',
+    });
+  }
+}
+
+export function makeUser(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_USER });
+    database.ref('/users/' + _id).update({
+      role: 'USER',
+    });
+  }
+}
+

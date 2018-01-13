@@ -22,6 +22,7 @@ import MyOrders from "./pages/MyOrders";
 import MyRatings from "./pages/MyRatings";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import AdminUser from "./pages/admin/Users";
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
             <Route path="myratings" name="myorders" component={MyRatings}></Route>
             <Route path="signup" name="signup" component={SignUp}></Route>
             <Route path="login" name="login" component={Login}></Route>
+            <Route path="admin/user" name="admin/user" component={AdminUser}></Route>
           </Route>
         </Router>
       </Provider>
