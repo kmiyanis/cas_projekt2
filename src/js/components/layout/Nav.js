@@ -32,18 +32,6 @@ export default class Nav extends React.Component {
     this.setState({ collapsed });
   }
 
-  // componentWillMount() {
-  //     this.props.dispatch(userActions.fetch())
-  // }
-
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.user.loading === false && nextProps.user.email === undefined) {
-  //     this.props.history.replace('/Login');
-  //   }
-  // }
-
-
   render() {
     const { location, user, loggedin } = this.props;
     const { collapsed } = this.state;
@@ -97,7 +85,6 @@ export default class Nav extends React.Component {
               </li>
               {user ?
                 <li class="nav-item">
-                  {/* <img class="user-profile__img" src={user.photoURL} width="25" height="25"/> */}
                   <a class="nav-link" href="#">
                     <span>
                       <i class="fa fa-user" aria-hidden="true"></i>
@@ -130,6 +117,10 @@ export default class Nav extends React.Component {
                           <Link to="/admin/users" class="user-item__link"
                             onClick={this.toggleCollapse.bind(this)}>User Verwaltung</Link>
                         </li>
+                        <li class="user__item">
+                          <Link to="/admin/products" class="user-item__link"
+                            onClick={this.toggleCollapse.bind(this)}>Produkte Verwaltung</Link>
+                        </li>
                       </section>
                     }
                   </ul>
@@ -145,30 +136,5 @@ export default class Nav extends React.Component {
       </header>
     );
 
-    //    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    //        <div class="container">
-    //          <div class="navbar-header">
-    //            <button type="button" class="navbar-toggle" onClick={this.toggleCollapse.bind(this)} >
-    //              <span class="sr-only">Toggle navigation</span>
-    //              <span class="icon-bar"></span>
-    //              <span class="icon-bar"></span>
-    //              <span class="icon-bar"></span>
-    //            </button>
-    //          </div>
-    //          <div class={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
-    //            <ul class="nav navbar-nav">
-    //              <li class={featuredClass}>
-    //                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Featured</IndexLink>
-    //              </li>
-    //              <li class={archivesClass}>
-    //                <Link to="archives" onClick={this.toggleCollapse.bind(this)}>Archives</Link>
-    //              </li>
-    //              <li class={settingsClass}>
-    //                <Link to="settings" onClick={this.toggleCollapse.bind(this)}>Settings</Link>
-    //              </li>
-    //            </ul>
-    //          </div>
-    //        </div>
-    //      </nav>
   }
 }
