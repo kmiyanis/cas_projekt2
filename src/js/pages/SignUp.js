@@ -51,7 +51,7 @@ export default class SignUp extends React.Component {
       errors.push("Bitte ein Passwort angeben.");
     }
 
-    if (this.state.password && this.state.password.length < 7) {
+    if (this.state.password && this.state.password.length < 6) {
       errors.push("Bitte ein Passwort mit mindestens 6 Zeichen angeben.");
     }
 
@@ -104,7 +104,7 @@ export default class SignUp extends React.Component {
         <div class="checkout-content">
           <div class="order-success">
             <p class="order-success__title">Vielen Dank für Ihre Registrierung!</p>
-            <img class="order-success__img" src="/assets/img/fukusuke.svg" />
+            <img class="order-success__img" src="/assets/img/torii.svg" />
           </div>
         </div>
       )

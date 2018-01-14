@@ -53,8 +53,9 @@ class App extends Component {
             <Route path="login" name="login" component={Login}></Route>
             <Route path="admin/users" name="admin/users" component={AdminUsers}></Route>
             <Route path="admin/products" name="admin/products" component={AdminProducts}></Route>
-            <Route path="admin/products/new" name="admin/newProduct" component={AdminNewProduct}></Route>
-            <Route path="admin/products/:product" name="admin/editProduct" component={AdminProduct}></Route>
+            <Route path="admin/products/:filter" name="admin/products" component={AdminProducts}></Route>
+            <Route path="admin/products/add/new" name="admin/newProduct" component={AdminNewProduct}></Route>
+            <Route path="admin/products/edit/:product" name="admin/editProduct" component={AdminProduct}></Route>
           </Route>
         </Router>
       </Provider>

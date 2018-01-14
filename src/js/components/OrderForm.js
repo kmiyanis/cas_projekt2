@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux"
 import FormErrors from "./FormErrors";
-import {Link, Redirect} from "react-router";
 import {addOrder} from "../actions/orderActions"
 
 @connect((store) => {
@@ -84,7 +83,8 @@ export default class OrderForm extends React.Component {
       const errors = this.validateForm()
       if (errors.length === 0) {
         this.props.dispatch(addOrder(order));
-        this.props.history.push('/checkout/orderSuccess')
+        //this.props.history.push('/checkout/order')
+        //this.props.history.push('/checkout/orderSuccess')
       }
     }
   }
@@ -115,19 +115,24 @@ export default class OrderForm extends React.Component {
         this.refs[error[1]].className = this.refs[error[1]].className + ' input--error'
       }
     }
-
   }
-
 
   render() {
     if (this.props.orderSuccessfull) {
       this.state = {
         formErrors: [],
       };
+
+      return (
+        <div class="order-success">
+          <p class="order-success__title">Vielen Dank für Ihre Bestellung!</p>
+          <img class="order-success__img" src="/assets/img/fukusuke.svg"/>
+        </div>
+      )
     }
 
     return (
-      <form onSubmit={this.handleSubmit(this.props.cart)} name="order-adress" class="order-form">
+      <form onSubmit={this.handleSubmit(this.props.cart)} class="order-form">
         <h2 class="subtitle">Ihre Angabe</h2>
         <p class="notice">Alle Felder sind Pflichtfelder. Bitte füllen Sie sie aus.</p>
         {this.renderFormErrors()}

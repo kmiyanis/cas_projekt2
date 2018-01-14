@@ -10,7 +10,7 @@ const FooterLink = styled.a`
 	text-decoration:none;
 	border-bottom:1px solid #FFFFFF;
 	position:relative;
-	transition: all .5s;
+	transition: all .3s;
 	display:inline-block;
 	&:hover {
 	    text-decoration:none;
@@ -30,7 +30,7 @@ const FooterLink = styled.a`
         width: 0%;
         background: #FFFFFF;
         height: 1px;
-        transition: all .5s;
+        transition: all .3s;
     }
 `;
 export default class Footer extends React.Component {

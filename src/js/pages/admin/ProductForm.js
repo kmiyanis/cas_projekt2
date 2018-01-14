@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchProduct, updateProduct, deleteProduct } from "../../actions/productsActions"
+import {Link} from "react-router";
 
 @connect((store) => {
   return {
@@ -86,10 +87,10 @@ export default class Product extends React.Component {
 
   render() {
     const { product, categories } = this.props;
-    console.log(this.props.deleted)
+
     if (!product) {
       return (
-        <div class="content content--bg-green grid">
+        <div class="content content--bg-green">
           Produkt wurde gelöscht!
         </div>
       ) 
@@ -125,7 +126,7 @@ export default class Product extends React.Component {
           <filedset>
             <label>
               <span class="label-text"> Text:<span class="required">*</span></span>
-              <textarea name="text" value={this.state.text} onChange={this.handleInputChange} />
+              <textarea class="textarea" name="text" value={this.state.text} onChange={this.handleInputChange} rows="4" />
             </label>
           </filedset>
           <filedset>
@@ -160,14 +161,19 @@ export default class Product extends React.Component {
             </label>
           </filedset>
           {this.props.updated &&
-            <div class="content content--bg-green grid">
+            <div class="content content--bg-green">
               Produkt wurde aktualisiert!
           </div>
           }
           <div class="checkout__bottom">
-            <input type="submit" class="checkout-btn" value="Produkt speichern" />
+            <div class="input-checkout-btn-wrap">
+              <input type="submit" class="input-checkout-btn" value="Produkt speichern"/>
+            </div>
+
           </div>
-          <a href="#" onClick={(e) => this.deleteProduct(e, product._id)}>Produkt löschen</a>
+            <a href="#" class="checkout__login" onClick={(e) => this.deleteProduct(e, product._id)}><em>Produkt löschen</em></a>
+          <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Back to Produkt Category Übersicht</Link>
+          <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>
         </form>
       </div>
     );

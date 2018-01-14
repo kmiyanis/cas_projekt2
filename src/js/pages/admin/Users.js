@@ -27,6 +27,7 @@ export default class Users extends React.Component {
   }
 
   deleteUser(_id) {
+    console.log('_id',_id);
     this.props.dispatch(userActions.deleteUser(_id));
   }
 

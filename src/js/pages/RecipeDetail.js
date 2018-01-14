@@ -84,7 +84,7 @@ export default class RecipeDetail extends React.Component {
     return (
       <div>
         <h1 class="title">{recipe.name}</h1>
-        <div class="content content--bg-white grid">
+        <div class="content content--bg-white">
           {recipe && recipe.steps && recipe.steps.map((step, i) =>
             <div class="content__row" key={i}>
               <div class="content__img-col">
@@ -95,16 +95,16 @@ export default class RecipeDetail extends React.Component {
           )}
         </div>
         <br /><br />
-        <div class="content content--bg-white grid">
+        <div class="content content--bg-white">
           {renderedRatings}
         </div>
         <br />
         {this.props.ratingSuccessfull &&
-          <div class="content content--bg-green grid">
+          <div class="content content--bg-green">
             Vielen Dank für Ihre Bewertung!
           </div>
         }
-        <div class="content content--bg-white grid">
+        <div class="content content--bg-white">
           {loggedin && user ?
             <form onSubmit={this.handleSubmit(recipe.slug)}>
               <ReactStars
@@ -117,9 +117,12 @@ export default class RecipeDetail extends React.Component {
                 value={this.state.star}
               />
               <br /><br />
-              <textarea name="txt" value={this.state.txt} onChange={this.handleChange} />
+
+              <textarea name="txt" rows="4" class="textarea" placeholder={this.state.star == 0 ? this.state.txt : ''} value={this.state.star == 0 ? '' : this.state.txt} onChange={this.handleChange} />
               <br /><br />
-              <input class="submit-btn" type="submit" value="Bewertung abschicken" />
+              <div class="input-checkout-btn-wrap">
+                <input type="submit" class="input-checkout-btn" value="Bewertung abschicken"/>
+              </div>
             </form>
             :
             <button class="checkout__login" onClick={() => this.loginHandler(this.props)}><em>Für eine Bewertung bitte anmelden</em></button>

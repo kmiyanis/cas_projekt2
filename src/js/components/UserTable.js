@@ -18,7 +18,7 @@ export default class UserTable extends React.Component {
         {user.deleted ?
           <button class="checkout__login" onClick={this.props.activateUser}><em>User wiederherstellen</em></button>
           :
-          <button class="checkout__login" onClick={this.props.delteUser}><em>User löschen</em></button>
+          <button class="checkout__login" onClick={this.props.deleteUser}><em>User löschen</em></button>
         }
       </div>
     );

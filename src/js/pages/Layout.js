@@ -14,7 +14,7 @@ export default class Layout extends React.Component {
             <div>
                 <PageBg/>
                 <Nav location={location} rol="navigation"/>
-                {/* <CartMini /> */}
+
                 <main class="main" role="main">
 
                     {this.props.children}

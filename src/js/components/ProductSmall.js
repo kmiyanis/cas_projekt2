@@ -37,8 +37,8 @@ export default class Product extends React.Component {
           <p class="grid__text">{text}</p>
         </div>
 
-        <Link to={"/admin/products/" + this.props._id}>
-          <button class="icon__cart-plus grid__button checkout__login"><em>editeren</em></button>
+        <Link to={"/admin/products/edit/" + this.props._id}>
+          <button class="checkout-btn"><em>editeren</em></button>
         </Link>
       </div>
     );

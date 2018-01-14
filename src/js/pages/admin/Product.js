@@ -23,7 +23,7 @@ export default class ProductDetail extends React.Component {
   render() {
     const { product, fetched, categories } = this.props;
     return (
-      <div>
+      <div class="admin">
         {product && categories && fetched ? <ProductForm {...product} categories={categories} /> : null}
       </div>
     )

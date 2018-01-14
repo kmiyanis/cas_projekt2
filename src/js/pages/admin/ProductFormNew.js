@@ -1,8 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
-import { updateProduct } from "../../actions/productsActions"
-import { fetchCategories } from "../../actions/productsActions"
+import {updateProduct} from "../../actions/productsActions"
+import {fetchCategories} from "../../actions/productsActions"
 
 @connect((store) => {
   return {
@@ -62,7 +62,7 @@ export default class ProductFormNew extends React.Component {
       errors.push("Bitte ein Bild angeben.");
     }
 
-    this.setState({ formErrors: errors })
+    this.setState({formErrors: errors})
 
     return errors
   }
@@ -89,86 +89,97 @@ export default class ProductFormNew extends React.Component {
   renderFormErrors() {
     if (this.state.formErrors.length > 0) {
       const renderedErrors = this.state.formErrors.map((e, i) => <li key={i}>{e}</li>);
-      return <div className="content content--bg-warning grid"><ul>{renderedErrors}</ul></div>;
+      return <div className="content content--bg-warning grid">
+        <ul>{renderedErrors}</ul>
+      </div>;
     }
     return <div></div>;
   }
 
   render() {
-    const { categories } = this.props;
+    const {categories} = this.props;
     return (
-      <div class="checkout-content">
-        <form onSubmit={this.handleSubmit()} class="order-form">
-          <h2 class="subtitle">Produkt erstellen</h2>
-          {this.renderFormErrors()}
-          <filedset>
-            <label>
-              <span class="label-text"> Titel:<span class="required">*</span></span>
-              <input
-                type="text"
-                name="title"
-                class="input--text"
-                value={this.state.title}
-                onChange={this.handleInputChange}
-              />
-            </label>
-            <label>
-              <span class="label-text"> Preis:<span class="required">*</span></span>
-              <input
-                type="text"
-                class="input--text"
-                name="price"
-                value={this.state.price}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </filedset>
-          <filedset>
-            <label>
-              <span class="label-text"> Text:<span class="required">*</span></span>
-              <textarea name="text" value={this.state.text} onChange={this.handleInputChange} />
-            </label>
-          </filedset>
-          <filedset>
-            <label>
-              <span class="label-text"> Featured:<span class="required">*</span></span>
-              <input
-                name="featured"
-                type="checkbox"
-                checked={this.state.featured}
-                onChange={this.handleInputChange} />
-            </label>
-          </filedset>
-          <filedset>
-            <label>
-              <span class="label-text"> Bild:<span class="required">*</span></span>
-              <input
-                type="file"
-                ref={input => {
-                  this.fileInput = input;
-                }}
-              />
-            </label>
-          </filedset>
-          <filedset>
-            <label>
-              <span class="label-text"> Kategorie:<span class="required">*</span></span>
-              <select name="categoryId" value={this.state.categoryId} onChange={this.handleInputChange}>
-                {Object.keys(categories).map((c) => {
-                  return <option key={c} value={categories[c].key}>{categories[c].name}</option>
-                })}
-              </select>
-            </label>
-          </filedset>
-          {this.props.updated &&
+      <div class="admin">
+        <div class="checkout-content">
+          <form onSubmit={this.handleSubmit()} class="order-form">
+            <h2 class="subtitle">Produkt erstellen</h2>
+            {this.renderFormErrors()}
+            <filedset>
+              <label>
+                <span class="label-text"> Titel:<span class="required">*</span></span>
+                <input
+                  type="text"
+                  name="title"
+                  class="input--text"
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                />
+              </label>
+              <label>
+                <span class="label-text"> Preis:<span class="required">*</span></span>
+                <input
+                  type="text"
+                  class="input--text"
+                  name="price"
+                  value={this.state.price}
+                  onChange={this.handleInputChange}
+                />
+              </label>
+            </filedset>
+            <filedset>
+              <label>
+                <span class="label-text"> Text:<span class="required">*</span></span>
+                <textarea class="textarea" name="text" value={this.state.text} onChange={this.handleInputChange}
+                          rows="4"/>
+              </label>
+            </filedset>
+            <filedset>
+              <label>
+                <span class="label-text"> Featured:<span class="required">*</span></span>
+                <input
+                  name="featured"
+                  type="checkbox"
+                  checked={this.state.featured}
+                  onChange={this.handleInputChange}/>
+              </label>
+            </filedset>
+            <filedset>
+              <label>
+                <span class="label-text"> Bild:<span class="required">*</span></span>
+                <input
+                  type="file"
+                  ref={input => {
+                    this.fileInput = input;
+                  }}
+                />
+              </label>
+            </filedset>
+            <filedset>
+              <label>
+                <span class="label-text"> Kategorie:<span class="required">*</span></span>
+                <select name="categoryId" value={this.state.categoryId} onChange={this.handleInputChange}>
+                  {Object.keys(categories).map((c) => {
+                    return <option key={c} value={categories[c].key}>{categories[c].name}</option>
+                  })}
+                </select>
+              </label>
+            </filedset>
+            {this.props.updated &&
             <div class="content content--bg-green grid">
               Produkt wurde erstellt!
-          </div>
-          }
-          <div class="checkout__bottom">
-            <input type="submit" class="checkout-btn" value="Produkt speichern" />
-          </div>
-        </form>
+            </div>
+            }
+            <div class="checkout__bottom">
+
+              <div class="input-checkout-btn-wrap">
+                <input type="submit" class="input-checkout-btn" value="Produkt speichern"/>
+              </div>
+              <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Back to Produkt Category Übersicht</Link>
+              <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>
+            </div>
+
+          </form>
+        </div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-
+import AdminSidebar from "./AdminSidebar";
 import ProductSmall from "../../components/ProductSmall";
 import { fetchProducts, fetchCategories } from "../../actions/productsActions";
 
@@ -19,7 +19,7 @@ export default class Products extends React.Component {
 
   render() {
     const cat = this.props.params.filter;
-    const { products, fetched, params } = this.props;
+    const { products, fetched, params, location } = this.props;
 
     if (products.length === 0 && !fetched) {
       if (fetched) {
@@ -40,9 +40,10 @@ export default class Products extends React.Component {
       });
 
       return (
-      <div>
-        <h1>Produkte Admin</h1>
-        <Link to="/admin/products/new">Produkt erstellen</Link>
+      <div class="admin">
+        <h1 class="title">Produkte Admin</h1>
+        <AdminSidebar location={location} />
+        <Link class="btn-white" to="/admin/products/add/new"><em>Produkt erstellen</em></Link><br />
         {fetched ? (
           "Loading..."
         ) : (

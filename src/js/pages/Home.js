@@ -59,7 +59,6 @@ export default class Home extends React.Component {
       <div>
         <Nav location={location} />
         <PageBg />
-        {/* <CartMini /> */}
         <HomeMain class="main" role="main">
           <div class="content">
             <HomeTitle>Tee ist wie Wein<br />Tee ist Geschmacksache<br />ich bin gespannt, ob meine Geschmack
