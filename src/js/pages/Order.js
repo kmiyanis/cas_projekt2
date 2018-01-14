@@ -83,9 +83,9 @@ export default class Order extends React.Component {
 
               <div class="checkout-content">
                 {loggedin ? (
-                  <OrderForm user={user} cart={cart} />
+                  <OrderForm user={user} cart={cart} history={this.props.history} />
                 ) : (
-                  <OrderForm cart={cart} />
+                  <OrderForm cart={cart} history={this.props.history} />
                 )}
               </div>
             </div>

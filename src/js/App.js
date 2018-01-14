@@ -18,6 +18,7 @@ import ProductDetail from './pages/ProductDetail';
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
 import Order from "./pages/Order";
+import OrderSuccess from "./pages/OrderSuccess";
 import MyOrders from "./pages/MyOrders";
 import MyRatings from "./pages/MyRatings";
 import SignUp from "./pages/SignUp";
@@ -41,6 +42,7 @@ class App extends Component {
           <Route path="/" component={Layout} login={this.login} logout={this.logout}>
             <Route path="checkout" name="checkout" component={Checkout}></Route>
             <Route path="checkout/order" name="checkout" component={Order}></Route>
+            <Route path="checkout/orderSuccess" name="orderSuccess" component={OrderSuccess}></Route>
             <Route path="shop/product/:product" name="ProductDetail" component={ProductDetail}></Route>
             <Route path="recipes" name="recipes" component={Recipes}></Route>
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>

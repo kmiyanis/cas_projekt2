@@ -21,7 +21,6 @@ export default class Shop extends React.Component {
   render() {
 
     const cat = this.props.params.filter;
-    console.log('filter',cat);
     const { products, fetched, params } = this.props;
 
     if (products.length === 0 && !fetched) {

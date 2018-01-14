@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from "react-router";
+import {Link, History} from "react-router";
 import * as userActions from "../actions/userActions"
 import FormErrors from "../components/FormErrors";
 
@@ -20,6 +20,7 @@ export default class Login extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
 
   handleInputChange(event) {
     const target = event.target;
@@ -55,6 +56,7 @@ export default class Login extends React.Component {
       const errors = this.validateForm()
       if (errors.length === 0) {
         this.props.dispatch(userActions.login(this.state));
+        this.props.history.goBack()
       }
     }
   }
@@ -62,7 +64,7 @@ export default class Login extends React.Component {
 
   renderAuthenticationError() {
     if (this.props.authenticationError) {
-      return <div className="content content--bg-error grid">{this.props.authenticationError.message}</div>;
+      return <div className="content content--bg-error">{this.props.authenticationError.message}</div>;
     }
     return <div></div>;
   }
@@ -70,7 +72,7 @@ export default class Login extends React.Component {
   renderFormErrors() {
     if (this.state.formErrors.length > 0) {
       const renderedErrors = this.state.formErrors.map((e, i) => <li key={i}>{e}</li>);
-      return <div className="content content--bg-warning grid">
+      return <div className="content content--bg-warning">
         <ul>{renderedErrors}</ul>
       </div>;
     }
@@ -78,10 +80,6 @@ export default class Login extends React.Component {
   }
 
   render() {
-    if (this.props.loggedin) {
-      this.props.history.push('/shop')
-    }
-
     return (
       <div>
         <div class="checkout-content">

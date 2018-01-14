@@ -5,6 +5,7 @@ import {
   FETCH_ORDERS,
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAILURE,
+  ORDER_COMPLETED
 } from "../actions/actionTypes";
 
 
@@ -66,6 +67,17 @@ export default function reducer(state = {
           orders: action.payload
         }
       }
+
+    case ORDER_COMPLETED:
+    {
+      return {
+        ...state,
+        pushing: false,
+        pushed: false,
+      }
+    }
+
+
   }
 
   return state

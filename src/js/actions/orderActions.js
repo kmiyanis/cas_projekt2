@@ -9,6 +9,7 @@ import {
   FETCH_ORDERS,
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAILURE,
+  ORDER_COMPLETED
 } from "./actionTypes";
 
 
@@ -46,5 +47,12 @@ export function fetchOrders(email) {
     //   .catch((err) => {
     //     dispatch({ type: FETCH_ORDERS_FAILURE, error: err })
     //   })
+  }
+}
+
+export function completeOrder() {
+  return function (dispatch) {
+    dispatch({ type: ORDER_COMPLETED });
+
   }
 }
