@@ -8,9 +8,7 @@ import {completeOrder} from "../actions/orderActions"
 })
 
 export default class OrderSuccess extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(completeOrder());
-  }
+
 
   render() {
     return (

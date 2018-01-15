@@ -10,7 +10,7 @@ export default class OrderTable extends React.Component {
     const { cart, order } = this.props;
     return (
       <div class="checkout-content myorders" style={divStyle}>
-          <h2 class="subtitle">Bestellung vom &nbsp; {Date(order.created_at).toString()}</h2>
+          <h2 class="subtitle">Bestellung vom &nbsp; {new Date(order.createdAt).toDateString()}</h2>
         <div class="checkout__products">
           {cart.items.map((item, index) => (
             <div class="product" key={item.productId}>

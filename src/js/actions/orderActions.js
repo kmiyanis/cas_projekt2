@@ -20,6 +20,8 @@ export function addOrder(order) {
     database.ref('/orders').push(order, () => {
       dispatch({ type: ADD_ORDER_SUCCESS })
       emptyCart();
+      // dispatch({ type: ORDER_COMPLETED})
+
     })
       // .catch((err) => {
       //   dispatch({ type: ADD_ORDER_FAILURE, error: err })
