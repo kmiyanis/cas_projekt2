@@ -5,11 +5,9 @@ import {Link} from "react-router";
 
 @connect((store) => {
   return {
-
     product: store.products.product,
     updated: store.products.updated,
     deleted: store.products.deleted,
-
   };
 })
 export default class ProductForm extends React.Component {
@@ -146,7 +144,7 @@ export default class ProductForm extends React.Component {
             <label>
               <span class="label-text"> Bild:<span class="required">*</span></span>
               <span class="imgpreview">
-<img src={product.picture} />
+<img src={this.state.picture} />
               </span>
               <input
                 type="file"
@@ -160,8 +158,8 @@ export default class ProductForm extends React.Component {
             <label>
               <span class="label-text"> Kategorie:<span class="required">*</span></span>
               <select name="categoryId" value={this.state.categoryId} onChange={this.handleInputChange}>
-                {Object.keys(categories).map((c) => {
-                  return <option value={categories[c].key}>{categories[c].name}</option>
+                {Object.keys(categories).map((c,i) => {
+                  return <option key={i} value={categories[c].key}>{categories[c].name}</option>
                 })}
               </select>
             </label>
@@ -177,7 +175,7 @@ export default class ProductForm extends React.Component {
             </div>
 
           </div>
-          {console.log(this.state.categoryId)}
+
             <a href="#" class="checkout__login" onClick={(e) => this.deleteProduct(e, product._id)}><em>Produkt löschen</em></a>
           <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Produkt Category Übersicht</Link>
           <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>

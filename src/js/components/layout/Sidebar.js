@@ -9,7 +9,7 @@ import Cart from '../Cart';
 @connect((store, props) => {
   return {
     categories: store.products.categories,
-    categoriesFetched: store.products.fetched,
+    categoriesFetched: store.products.catFetched,
   };
 })
 export default class Sidebar extends React.Component {

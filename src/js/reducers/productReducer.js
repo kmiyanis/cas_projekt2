@@ -13,17 +13,24 @@ import {
   UDPATE_PRODUCT_COMPLETED,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
+  EMPTY_PRODUCT
 } from "../actions/actionTypes";
 
 
 export default function reducer(state = {
   products: [],
+  product: null,
   categories: [],
   fetching: false,
   fetched: false,
   updated: false,
   error: null,
   deleted: null,
+  catFetching: false,
+  catFetched: false,
+  catUpdated: false,
+  catError: null,
+  catDeleted: null,
 }, action) {
 
   switch (action.type) {
@@ -35,12 +42,13 @@ export default function reducer(state = {
       {
         return { ...state, fetching: true }
       }
+
     case FETCH_PRODUCT_FAILURE:
     case FETCH_PRODUCTS_FAILURE:
-    case FETCH_CATEGORIES_FAILURE:
       {
         return { ...state, fetching: false, error: action.payload }
       }
+
     case FETCH_PRODUCT_SUCCESS:
       {
         return {
@@ -70,7 +78,7 @@ export default function reducer(state = {
       return {
         ...state,
         updated: false,
-        products: []
+        product: null
       }
     }
     case FETCH_PRODUCTS_SUCCESS:
@@ -82,38 +90,32 @@ export default function reducer(state = {
           products: action.payload,
         }
       }
+    case EMPTY_PRODUCT:
+    {
+      return {
+        ...state,
+        product: [],
+        fetched: false,
+      }
+    }
+    case FETCH_CATEGORIES:
+    {
+      return { ...state, catFetching: true }
+    }
+    case FETCH_CATEGORIES_FAILURE:
+    {
+      return { ...state, catFetching:false, catError: action.payload }
+    }
     case FETCH_CATEGORIES_SUCCESS:
       {
         return {
           ...state,
-          fetching: false,
-          fetched: true,
+          catFetching: false,
+          catFetched: true,
           categories: action.payload,
         }
       }
-    // case "ADD_PRODUCT": {
-    //     return {
-    //         ...state,
-    //         products: [...state.products, action.payload],
-    //     }
-    // }
-    // case "UPDATE_PRODUCT": {
-    //     const { id, text } = action.payload
-    //     const newProducts = [...state.products]
-    //     const productToUpdate = newProducts.findIndex(product => product.id === id)
-    //     newProducts[productToUpdate] = action.payload;
 
-    //     return {
-    //         ...state,
-    //         products: newProducts,
-    //     }
-    // }
-    // case "DELETE_PRODUCT": {
-    //     return {
-    //         ...state,
-    //         products: state.products.filter(product => product.id !== action.payload),
-    //     }
-    // }
   }
 
   return state

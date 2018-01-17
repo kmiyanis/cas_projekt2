@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 import AdminSidebar from "./AdminSidebar";
 import ProductSmall from "../../components/ProductSmall";
-import { fetchProducts, fetchCategories } from "../../actions/productsActions";
+import { emptyProduct, fetchProducts, fetchCategories } from "../../actions/productsActions";
 
 @connect((store) => {
   return {
@@ -15,6 +15,7 @@ import { fetchProducts, fetchCategories } from "../../actions/productsActions";
 export default class Products extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchProducts())
+    this.props.dispatch(emptyProduct())
   }
 
   render() {

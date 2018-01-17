@@ -35,9 +35,12 @@ const FooterLink = styled.a`
 `;
 export default class Footer extends React.Component {
   render() {
+
+    const {location} = this.props;
+
     return (
       <footer>
-        <CartMini />
+        <CartMini location={location} />
         <div class="container">
           <ul class="footer__info">
               <li  class="footer-info__item">MIYA JAPAN TEE</li>

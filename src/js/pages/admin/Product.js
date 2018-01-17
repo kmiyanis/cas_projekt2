@@ -1,8 +1,8 @@
 import React from "react"
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
-import { fetchProduct } from "../../actions/productsActions"
-import { fetchCategories } from "../../actions/productsActions"
+import {fetchProduct} from "../../actions/productsActions"
+import {fetchCategories} from "../../actions/productsActions"
 
 import ProductForm from "./ProductForm";
 
@@ -10,23 +10,34 @@ import ProductForm from "./ProductForm";
   return {
     product: store.products.product,
     fetched: store.products.fetched,
+    catFetched: store.products.catFetched,
     categories: store.products.categories,
   };
 })
 
 export default class ProductDetail extends React.Component {
   componentWillMount() {
-    this.props.dispatch(fetchCategories())
     this.props.dispatch(fetchProduct(this.props.params.product))
+    this.props.dispatch(fetchCategories())
   }
 
   render() {
-    const { product, fetched, categories } = this.props;
-    console.log('product in product.js',product);
-    return (
-      <div>
-        {product && categories && fetched ? <ProductForm {...product} categories={categories} /> : null}
-      </div>
-    )
+    const {product, fetched, categories, catFetched} = this.props;
+
+    if (product && categories && fetched && catFetched) {
+      return (
+        <div>
+          <ProductForm {...product} categories={categories}/>
+        </div>
+      )
+    } else {
+      return (
+        <div class="admin">
+          <div class="content content--bg-error">
+            Leider konnte gesuchte Produkte oder Kategorie nicht gefunden werden!
+          </div>
+        </div>
+      )
+    }
   }
 }

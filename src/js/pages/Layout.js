@@ -20,7 +20,7 @@ export default class Layout extends React.Component {
                     {this.props.children}
 
                 </main>
-                <Footer />
+                <Footer location={location} />
             </div>
         );
     }

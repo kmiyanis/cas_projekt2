@@ -17,6 +17,7 @@ import {
   UDPATE_PRODUCT_FAILURE,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
+  EMPTY_PRODUCT,
 } from "./actionTypes";
 
 
@@ -49,6 +50,7 @@ export function fetchProduct(slug) {
     dispatch({ type: FETCH_PRODUCT });
 
     database.ref(`/products/${slug}`).on('value', snap => {
+      console.log('fetchProduct snap.val()',snap.val());
       dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: snap.val() })
     });
   }
@@ -96,5 +98,10 @@ export function deleteProduct(_id) {
     database.ref('/products/' + _id).set(null, () => {
       dispatch({ type: DELETE_PRODUCT_SUCCESS })
     });
+  }
+}
+export function emptyProduct() {
+  return function (dispatch) {
+    dispatch({ type: EMPTY_PRODUCT });
   }
 }

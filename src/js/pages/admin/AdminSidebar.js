@@ -7,7 +7,7 @@ import {fetchCategories} from "../../actions/productsActions"
 @connect((store, props) => {
   return {
     categories: store.products.categories,
-    categoriesFetched: store.products.fetched,
+    categoriesFetched: store.products.catFetched,
   };
 })
 export default class AdminSidebar extends React.Component {

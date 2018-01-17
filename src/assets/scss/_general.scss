@@ -194,7 +194,15 @@ body {
 		}
 	}
 }
-
+.box-bg-error {
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	padding:rem(20px);
+	@include respond-to($desktop-s ) {
+		padding: rem(20px) rem(30px);
+		margin-bottom: rem(30px);
+	}
+}
 .title,
 .home__title {
 	color: white;
