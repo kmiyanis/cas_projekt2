@@ -16,7 +16,7 @@ export default class RatingTable extends React.Component {
       <div class="checkout-content myratings" style={divStyle}>
         {rating.firstname}&nbsp;{rating.lastname}
         <br />
-        am &nbsp;{Date(rating.created_at).toString()}
+        am &nbsp;{new Date(rating.createdAt).toDateString()}
         <br /><br />
         <ReactStars
           count={5}
@@ -29,7 +29,6 @@ export default class RatingTable extends React.Component {
         Bewertung: {rating.txt}
         {admin && 
           <div class="edit-actions">
-            <hr />
             <button class="checkout__login" onClick={this.props.onClick}><em>Bewertung löschen</em></button>
           </div>
         }

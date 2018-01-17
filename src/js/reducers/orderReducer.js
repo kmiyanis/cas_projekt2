@@ -42,6 +42,7 @@ export default function reducer(state = {
     case ORDER_COMPLETED: {
       return {
         ...state,
+        pushing: false,
         pushed: false,
       }
     }

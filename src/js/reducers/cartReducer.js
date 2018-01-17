@@ -46,6 +46,7 @@ export default (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				fetched: true,
+        cart: { items : [] }
 			}
 
 		case FETCH_CART_FAILURE:

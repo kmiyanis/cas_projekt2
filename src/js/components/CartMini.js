@@ -50,7 +50,6 @@ export default class CartMini extends React.Component {
             cart,
             fetched
         } = this.props;
-
         return (
             <div
                 class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>

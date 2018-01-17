@@ -56,7 +56,7 @@ export default class Login extends React.Component {
       const errors = this.validateForm()
       if (errors.length === 0) {
         this.props.dispatch(userActions.login(this.state));
-        this.props.history.goBack()
+       // this.props.history.goBack()
       }
     }
   }

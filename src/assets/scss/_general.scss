@@ -1068,3 +1068,19 @@ select:-webkit-autofill:focus {
 .mgL {
 	margin-left: rem(20px);
 }
+.edit-actions {
+	border-top:1px solid rgba(52,58,64,0.5);
+	margin-top: rem(20px);
+	padding-top: rem(20px);
+}
+.imgpreview {
+	width: rem(200px);
+	height: rem(100px);
+	display: block;
+	margin-bottom:rem(15px);
+
+	img {
+		width: 100%;
+		display: block;
+	}
+}

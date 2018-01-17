@@ -9,7 +9,7 @@ import { addToCart } from "../actions/cartActions"
   return {};
 })
 
-export default class Product extends React.Component {
+export default class ProductSmall extends React.Component {
   addToCart = (product) => {
     this.props.dispatch(addToCart(product._id, 1));
   }
@@ -37,7 +37,7 @@ export default class Product extends React.Component {
           <p class="grid__text">{text}</p>
         </div>
 
-        <Link to={"/admin/products/edit/" + this.props._id}>
+        <Link to={"/admin/product/" + this.props._id}>
           <button class="checkout-btn"><em>editeren</em></button>
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-
+import { Link } from "react-router";
 import {updateProduct} from "../../actions/productsActions"
 import {fetchCategories} from "../../actions/productsActions"
 

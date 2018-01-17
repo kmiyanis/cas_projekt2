@@ -63,6 +63,7 @@ export function login(credentials) {
         let userId = auth.currentUser.uid;
         database.ref('/users/' + userId).once('value').then(function (snapshot) {
           dispatch({ type: GET_LOCAL_USER_SUCCESS, payload: snapshot.val() })
+
         });
       })
       .catch(error => {

@@ -22,8 +22,9 @@ export default class ProductDetail extends React.Component {
 
   render() {
     const { product, fetched, categories } = this.props;
+    console.log('product in product.js',product);
     return (
-      <div class="admin">
+      <div>
         {product && categories && fetched ? <ProductForm {...product} categories={categories} /> : null}
       </div>
     )

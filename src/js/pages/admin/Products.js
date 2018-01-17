@@ -43,7 +43,7 @@ export default class Products extends React.Component {
       <div class="admin">
         <h1 class="title">Produkte Admin</h1>
         <AdminSidebar location={location} />
-        <Link class="btn-white" to="/admin/products/add/new"><em>Produkt erstellen</em></Link><br />
+        <Link class="btn-white" to="/admin/addProduct"><em>Produkt erstellen</em></Link><br />
         {fetched ? (
           "Loading..."
         ) : (

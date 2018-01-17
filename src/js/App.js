@@ -42,7 +42,7 @@ class App extends Component {
           <Route path="/" component={Layout} login={this.login} logout={this.logout}>
             <Route path="checkout" name="checkout" component={Checkout}></Route>
             <Route path="checkout/order" name="checkout" component={Order}></Route>
-            <Route path="checkout/orderSuccess" name="orderSuccess" component={OrderSuccess}></Route>
+            <Route path="checkout/order/orderSuccess" name="orderSuccess" component={OrderSuccess}></Route>
             <Route path="shop/product/:product" name="ProductDetail" component={ProductDetail}></Route>
             <Route path="recipes" name="recipes" component={Recipes}></Route>
             <Route path="recipe/:recipe" name="recipedetail" component={RecipeDetail}></Route>
@@ -54,8 +54,8 @@ class App extends Component {
             <Route path="admin/users" name="admin/users" component={AdminUsers}></Route>
             <Route path="admin/products" name="admin/products" component={AdminProducts}></Route>
             <Route path="admin/products/:filter" name="admin/products" component={AdminProducts}></Route>
-            <Route path="admin/products/add/new" name="admin/newProduct" component={AdminNewProduct}></Route>
-            <Route path="admin/products/edit/:product" name="admin/editProduct" component={AdminProduct}></Route>
+            <Route path="admin/addProduct" name="admin/newProduct" component={AdminNewProduct}></Route>
+            <Route path="admin/product/:product" name="admin/editProduct" component={AdminProduct}></Route>
           </Route>
         </Router>
       </Provider>

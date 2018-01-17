@@ -13,6 +13,7 @@ import {
   FETCH_CATEGORIES_FAILURE,
   UDPATE_PRODUCT,
   UDPATE_PRODUCT_SUCCESS,
+  UDPATE_PRODUCT_COMPLETED,
   UDPATE_PRODUCT_FAILURE,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
@@ -78,6 +79,10 @@ export function updateProduct(_product, file, action) {
     dispatch({ type: UDPATE_PRODUCT });
     database.ref('/products/' + product._id).set(product, () => {
       dispatch({ type: UDPATE_PRODUCT_SUCCESS, payload: product });
+
+    }).then(() => {
+      dispatch({ type: ORDER_COMPLETED })
+
     }).catch((err) => {
       dispatch({ type: UDPATE_PRODUCT_FAILURE, error: err })
     })

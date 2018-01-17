@@ -9,7 +9,8 @@ import {
   FETCH_ORDERS,
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAILURE,
-  ORDER_COMPLETED
+  ORDER_COMPLETED,
+  EMPTY_CART_SUCCESS
 } from "./actionTypes";
 
 
@@ -20,10 +21,13 @@ export function addOrder(order) {
     database.ref('/orders').push(order, () => {
       dispatch({ type: ADD_ORDER_SUCCESS })
       emptyCart();
-      // dispatch({ type: ORDER_COMPLETED})
+      dispatch({ type: EMPTY_CART_SUCCESS })
 
-    })
-      // .catch((err) => {
+    }).then(() => {
+      dispatch({ type: ORDER_COMPLETED })
+    });
+
+    // .catch((err) => {
       //   dispatch({ type: ADD_ORDER_FAILURE, error: err })
 
       // })

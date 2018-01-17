@@ -10,6 +10,7 @@ import {
   FETCH_CATEGORIES_FAILURE,
   UDPATE_PRODUCT,
   UDPATE_PRODUCT_SUCCESS,
+  UDPATE_PRODUCT_COMPLETED,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
 } from "../actions/actionTypes";
@@ -64,6 +65,14 @@ export default function reducer(state = {
           product: action.payload,
         }
       }
+    case UDPATE_PRODUCT_COMPLETED:
+    {
+      return {
+        ...state,
+        updated: false,
+        products: []
+      }
+    }
     case FETCH_PRODUCTS_SUCCESS:
       {
         return {

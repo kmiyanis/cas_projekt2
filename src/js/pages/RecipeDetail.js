@@ -117,9 +117,8 @@ export default class RecipeDetail extends React.Component {
                 value={this.state.star}
               />
               <br /><br />
-
-              <textarea name="txt" rows="4" class="textarea" placeholder={this.state.star == 0 ? this.state.txt : ''} value={this.state.star == 0 ? '' : this.state.txt} onChange={this.handleChange} />
-              <br /><br />
+              <textarea name="txt" rows="4" class="textarea" value={this.state.txt} onChange={this.handleChange} />
+               <br /><br />
               <div class="input-checkout-btn-wrap">
                 <input type="submit" class="input-checkout-btn" value="Bewertung abschicken"/>
               </div>

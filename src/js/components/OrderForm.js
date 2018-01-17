@@ -84,7 +84,7 @@ export default class OrderForm extends React.Component {
       if (errors.length === 0) {
         this.props.dispatch(addOrder(order));
         //this.props.history.push('/checkout/order')
-        //this.props.history.push('/checkout/orderSuccess')
+        this.props.history.push('/checkout/order/orderSuccess')
       }
     }
   }
@@ -122,13 +122,13 @@ export default class OrderForm extends React.Component {
       this.state = {
         formErrors: [],
       };
-
+/*
       return (
         <div class="order-success">
           <p class="order-success__title">Vielen Dank für Ihre Bestellung!</p>
           <img class="order-success__img" src="/assets/img/fukusuke.svg"/>
         </div>
-      )
+      )*/
     }
 
     return (

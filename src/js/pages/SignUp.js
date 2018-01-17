@@ -114,7 +114,6 @@ export default class SignUp extends React.Component {
       <div class="checkout-content">
         <form onSubmit={this.handleSubmit()} class="order-form">
           <h2 class="subtitle">Registrierung</h2>
-          {this.renderAuthenticationError()}
           {this.renderFormErrors()}
           <filedset>
             <label>

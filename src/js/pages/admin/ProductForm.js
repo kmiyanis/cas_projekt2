@@ -5,12 +5,14 @@ import {Link} from "react-router";
 
 @connect((store) => {
   return {
+
     product: store.products.product,
     updated: store.products.updated,
     deleted: store.products.deleted,
+
   };
 })
-export default class Product extends React.Component {
+export default class ProductForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,6 +99,7 @@ export default class Product extends React.Component {
     }
 
     return (
+      <div class="admin">
       <div class="checkout-content">
         <form onSubmit={this.handleSubmit(product._id)} class="order-form">
           <h2 class="subtitle">Produkt editieren</h2>
@@ -142,6 +145,9 @@ export default class Product extends React.Component {
           <filedset>
             <label>
               <span class="label-text"> Bild:<span class="required">*</span></span>
+              <span class="imgpreview">
+<img src={product.picture} />
+              </span>
               <input
                 type="file"
                 ref={input => {
@@ -171,10 +177,12 @@ export default class Product extends React.Component {
             </div>
 
           </div>
+          {console.log(this.state.categoryId)}
             <a href="#" class="checkout__login" onClick={(e) => this.deleteProduct(e, product._id)}><em>Produkt löschen</em></a>
-          <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Back to Produkt Category Übersicht</Link>
+          <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Produkt Category Übersicht</Link>
           <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>
         </form>
+      </div>
       </div>
     );
   }
