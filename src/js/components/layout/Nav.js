@@ -107,8 +107,9 @@ export default class Nav extends React.Component {
                       <Link to="/myratings" class={'user-item__link ' + myratingClass}
                             onClick={this.toggleCollapse.bind(this)}>Meine Bewertungen</Link>
                     </li>
+                  <li>
                     {user.role === "ADMIN" &&
-                    <section>
+                    <ul class="nav-admin">
                       <li class="user__item">
                         <Link to="/myratings" class="user-item__link"
                               onClick={this.toggleCollapse.bind(this)}></Link>
@@ -121,8 +122,9 @@ export default class Nav extends React.Component {
                         <Link to="/admin/products" class="user-item__link"
                               onClick={this.toggleCollapse.bind(this)}>Produkte Verwaltung</Link>
                       </li>
-                    </section>
+                    </ul>
                     }
+                  </li>
                   </ul>
                 </li>
                 :
