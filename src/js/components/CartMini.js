@@ -20,6 +20,7 @@ export default class CartMini extends React.Component {
 
     this.state = {
       opened: false,
+      inAdmin:false,
     };
     this.toggleClass = this.toggleClass.bind(this);
     console.log('location', this.props.location);
@@ -37,10 +38,9 @@ export default class CartMini extends React.Component {
     this.props.dispatch(fetchProducts())
     this.props.dispatch(fetchCart())
 
-    let isAdmin = this.props.location.pathname.includes('admin');
-    console.log('isAdmin',isAdmin);
-    if (isAdmin) {
-      this.setState({opened: false})
+    let inAdmin = this.props.location.pathname.includes('admin');
+    if (inAdmin) {
+      this.setState({inAdmin: true})
     }
   }
 
@@ -57,10 +57,10 @@ export default class CartMini extends React.Component {
       cart,
       fetched
     } = this.props;
-    console.log('this.state.opened',this.state.opened);
+
     return (
       <div
-        class={`cd-cart-container ${this.state.opened ? 'cart-open' : 'empty'} ${cart.items.length === 0 ? 'empty' : ''}`}>
+        class={`cd-cart-container ${this.state.opened ? 'cart-open' : ''} ${this.state.inAdmin ? 'hide' : ''} ${cart.items.length === 0 ? 'empty' : ''}`}>
         <a onClick={this.toggleClass} class="cd-cart-trigger">
           Warenkorb
           <ul class="count">

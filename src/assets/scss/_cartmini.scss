@@ -39,7 +39,7 @@ Main Components
 	-webkit-backface-visibility: hidden;
 	will-change: transform;
 	backface-visibility: hidden;
-
+	.hide &,
 	.empty & {
 		/* hide cart */
 		transform: translateY(150px);

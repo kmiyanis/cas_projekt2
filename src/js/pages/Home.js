@@ -68,7 +68,7 @@ export default class Home extends React.Component {
 
 
         </HomeMain>
-        <Footer />
+        <Footer location={location} />
       </div>
     );
   }
