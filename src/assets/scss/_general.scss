@@ -194,15 +194,26 @@ body {
 		}
 	}
 }
-.box-bg-error {
+.box--bg-error {
 	background-color: #f8d7da;
 	border-color: #f5c6cb;
+	color: #721c24;
 	padding:rem(20px);
 	@include respond-to($desktop-s ) {
 		padding: rem(20px) rem(30px);
-		margin-bottom: rem(30px);
 	}
 }
+.box--bg-green {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+	max-width:none;
+	padding:rem(20px);
+	@include respond-to($desktop-s ) {
+		padding: rem(30px);
+	}
+}
+
 .title,
 .home__title {
 	color: white;
@@ -1083,7 +1094,7 @@ select:-webkit-autofill:focus {
 }
 .imgpreview {
 	width: rem(200px);
-	height: rem(100px);
+
 	display: block;
 	margin-bottom:rem(15px);
 

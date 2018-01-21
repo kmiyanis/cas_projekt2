@@ -3,31 +3,33 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 import AdminSidebar from "./AdminSidebar";
 import ProductSmall from "../../components/ProductSmall";
-import { emptyProduct, fetchProducts, fetchCategories } from "../../actions/productsActions";
+import { updateProductCompleted, emptyProduct, fetchProducts,deleteeProductCompleted } from "../../actions/productsActions";
 
 @connect((store) => {
   return {
     products: store.products.products,
-    productsFetched: store.products.fetched,
+    fetched: store.products.fetched,
   };
 })
 
 export default class Products extends React.Component {
   componentWillMount() {
-    this.props.dispatch(fetchProducts())
     this.props.dispatch(emptyProduct())
+    this.props.dispatch(updateProductCompleted())
+    this.props.dispatch(deleteeProductCompleted())
   }
-
+  componentDidMount() {
+    this.props.dispatch(fetchProducts())
+  }
   render() {
     const cat = this.props.params.filter;
     const { products, fetched, params, location } = this.props;
 
-    if (products.length === 0 && !fetched) {
-      if (fetched) {
-        return <p class="alert-message">No items!</p>;
-      } else {
-        return <p class="message-loader">Loading...</p>;
-      }
+    if (!products || products.length === 0) {
+      return <p class="message-loader">Loading...</p>;
+    }
+    if (fetched && products.length === 0) {
+      return <p class="alert-message">No items!</p>;
     }
 
     const mappedProducts = Object.keys(products).map((key, index) => {
@@ -45,8 +47,9 @@ export default class Products extends React.Component {
         <h1 class="title">Produkte Admin</h1>
         <AdminSidebar location={location} />
         <Link class="btn-white" to="/admin/addProduct"><em>Produkt erstellen</em></Link><br />
-        {fetched ? (
-          "Loading..."
+
+        {!fetched ? (
+          <p class="message-loader">Loading...</p>
         ) : (
             <div class="shop__content grid">{cat ? mappedProductsFilter : mappedProducts}</div>
           )}

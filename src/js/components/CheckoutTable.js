@@ -77,7 +77,7 @@ export default class CartTable extends React.Component {
             <Link to="/checkout/order" class="checkout"><em>Checkout - CHF <span>{cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}</span></em></Link>
             :
               <div>
-                <button class="checkout__login" onClick={() => this.loginHandler(this.props)}><em>Log In</em></button>
+                <Link to="/login" class="checkout__login"><em>Login</em></Link>
                 <Link to="/checkout/order" class="checkout"><em>Ohne Registrierung fortfahren</em></Link>
               </div>
           }

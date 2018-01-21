@@ -47,6 +47,8 @@ export default class ProductForm extends React.Component {
 
     if (!this.state.price) {
       errors.push("Bitte einen Preis angeben.");
+    } else if (isNaN(this.state.price)) {
+      errors.push("Preis sollte number sein.");
     }
 
     if (!this.state.text) {
@@ -58,9 +60,9 @@ export default class ProductForm extends React.Component {
     return errors
   }
 
-  deleteProduct(e, _id) {
+  deleteProduct(e, _id, title) {
     e.preventDefault();
-    this.props.dispatch(deleteProduct(_id));
+    this.props.dispatch(deleteProduct(_id, title));
   }
 
   handleSubmit(_id) {
@@ -87,14 +89,6 @@ export default class ProductForm extends React.Component {
 
   render() {
     const { product, categories } = this.props;
-
-    if (!product) {
-      return (
-        <div class="content content--bg-green">
-          Produkt wurde gelöscht!
-        </div>
-      ) 
-    }
 
     return (
       <div class="admin">
@@ -158,6 +152,7 @@ export default class ProductForm extends React.Component {
             <label>
               <span class="label-text"> Kategorie:<span class="required">*</span></span>
               <select name="categoryId" value={this.state.categoryId} onChange={this.handleInputChange}>
+                <option value=""></option>
                 {Object.keys(categories).map((c,i) => {
                   return <option key={i} value={categories[c].key}>{categories[c].name}</option>
                 })}
@@ -176,9 +171,9 @@ export default class ProductForm extends React.Component {
 
           </div>
 
-            <a href="#" class="checkout__login" onClick={(e) => this.deleteProduct(e, product._id)}><em>Produkt löschen</em></a>
-          <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Produkt Category Übersicht</Link>
-          <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>
+            <a href="#" class="checkout__login" onClick={(e) => this.deleteProduct(e, product._id, this.state.title)}><em>Produkt löschen</em></a>
+          <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">&#x3C;&#x3C; Produkt Category Übersicht</Link>
+          <Link to="/admin/products" class="link--inline mgL">&#x3C;&#x3C; Produkt Übersicht</Link>
         </form>
       </div>
       </div>

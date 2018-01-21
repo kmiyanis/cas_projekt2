@@ -22,6 +22,7 @@ export default class ProductFormNew extends React.Component {
       categoryId: '',
       featured: '',
       picture: '',
+      filekey: new Date(),
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -52,6 +53,8 @@ export default class ProductFormNew extends React.Component {
 
     if (!this.state.price) {
       errors.push("Bitte einen Preis angeben.");
+    } else if (isNaN(this.state.price)) {
+      errors.push("Preis sollte number sein.");
     }
 
     if (!this.state.text) {
@@ -73,6 +76,7 @@ export default class ProductFormNew extends React.Component {
       const errors = this.validateForm()
       if (errors.length === 0) {
         this.props.dispatch(updateProduct(this.state, this.fileInput.files[0], 'create'));
+
         this.setState({
           title: '',
           text: '',
@@ -80,6 +84,8 @@ export default class ProductFormNew extends React.Component {
           categoryId: '',
           featured: '',
           picture: '',
+          fileInput : '',
+          filekey: new Date(),
         })
       }
     }
@@ -135,7 +141,7 @@ export default class ProductFormNew extends React.Component {
             </filedset>
             <filedset>
               <label>
-                <span class="label-text"> Featured:<span class="required">*</span></span>
+                <span class="label-text"> Featured:</span>
                 <input
                   name="featured"
                   type="checkbox"
@@ -147,6 +153,7 @@ export default class ProductFormNew extends React.Component {
               <label>
                 <span class="label-text"> Bild:<span class="required">*</span></span>
                 <input
+                  key={this.state.filekey}
                   type="file"
                   ref={input => {
                     this.fileInput = input;
@@ -156,8 +163,9 @@ export default class ProductFormNew extends React.Component {
             </filedset>
             <filedset>
               <label>
-                <span class="label-text"> Kategorie:<span class="required">*</span></span>
+                <span class="label-text"> Kategorie:</span>
                 <select name="categoryId" value={this.state.categoryId} onChange={this.handleInputChange}>
+                  <option value=""></option>
                   {Object.keys(categories).map((c) => {
                     return <option key={c} value={categories[c].key}>{categories[c].name}</option>
                   })}
@@ -174,8 +182,7 @@ export default class ProductFormNew extends React.Component {
               <div class="input-checkout-btn-wrap">
                 <input type="submit" class="input-checkout-btn" value="Produkt speichern"/>
               </div>
-              <Link to={"/admin/products/" + this.state.categoryId} class="link--inline mgL">Back to Produkt Category Übersicht</Link>
-              <Link to="/admin/products" class="link--inline mgL">Back to Produkt Übersicht</Link>
+              <Link to="/admin/products" class="link--inline mgL">&#x3C;&#x3C; Produkt Übersicht</Link>
             </div>
 
           </form>

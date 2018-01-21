@@ -22,7 +22,7 @@ export default class Users extends React.Component {
       this.props.history.push('/')
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(userActions.fetchAllUsers())
   }
 
@@ -40,6 +40,11 @@ export default class Users extends React.Component {
     this.props.dispatch(userActions.makeUser(_id));
   }
 
+  activateUser(_id) {
+    console.log('activateUser user', _id)
+    this.props.dispatch(userActions.activateUser(_id));
+  }
+
   render() {
     const {
       loaded,
@@ -49,7 +54,12 @@ export default class Users extends React.Component {
     const renderedUsers = [];
     if (users != null) {
       Object.keys(users).map(function (key) {
-        renderedUsers.push(<UserTable user={users[key]} deleteUser={() => this.deleteUser(key)} makeUser={() => this.makeUser(key)} makeAdmin={() => this.makeAdmin(key)} key={key} />)
+        renderedUsers.push(<UserTable user={users[key]}
+                                      deleteUser={() => this.deleteUser(key)}
+                                      makeUser={() => this.makeUser(key)}
+                                      makeAdmin={() => this.makeAdmin(key)}
+                                      activateUser={() => this.activateUser(key)}
+                                      key={key} />)
       }.bind(this))
     }
 
@@ -57,7 +67,7 @@ export default class Users extends React.Component {
     if (loaded) {
       if (renderedUsers.length > 0) {
         return (
-          <div>
+          <div class="admin">
             {h1}
             {renderedUsers}
           </div>
@@ -66,7 +76,7 @@ export default class Users extends React.Component {
     }
 
     return (
-      <div>
+      <div class="admin">
         {h1}
         <div class="content content--bg-white"><p>Loading...</p></div>
       </div>

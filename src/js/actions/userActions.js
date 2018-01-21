@@ -132,3 +132,12 @@ export function makeUser(_id) {
   }
 }
 
+export function activateUser(_id) {
+  return function (dispatch) {
+    dispatch({ type: MAKE_ADMIN });
+    database.ref('/users/' + _id).update({
+      deleted: false,
+    });
+  }
+}
+

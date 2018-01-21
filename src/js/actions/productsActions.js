@@ -18,6 +18,8 @@ import {
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
   EMPTY_PRODUCT,
+  DELETE_PRODUCT_FAILURE,
+  DELETE_PRODUCT_COMPLETED,
 } from "./actionTypes";
 
 
@@ -82,26 +84,54 @@ export function updateProduct(_product, file, action) {
     database.ref('/products/' + product._id).set(product, () => {
       dispatch({ type: UDPATE_PRODUCT_SUCCESS, payload: product });
 
-    }).then(() => {
-      dispatch({ type: ORDER_COMPLETED })
-
     }).catch((err) => {
       dispatch({ type: UDPATE_PRODUCT_FAILURE, error: err })
     })
   }
 }
 
-export function deleteProduct(_id) {
+export function deleteProduct(_id,title) {
   return function (dispatch) {
     dispatch({ type: DELETE_PRODUCT });
-
-    database.ref('/products/' + _id).set(null, () => {
-      dispatch({ type: DELETE_PRODUCT_SUCCESS })
-    });
+console.log('deleteProduct _id',_id);
+    database.ref('/products/' + _id).set(null)
+      .then(() => {
+      dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: title })
+    })
+      /*
+      .catch((err) => {
+        dispatch({ type: DELETE_PRODUCT_FAILURE, error: err })
+      })
+      */
   }
 }
+
+export function deleteeProductCompleted() {
+  return function (dispatch) {
+    dispatch({ type: DELETE_PRODUCT_COMPLETED });
+  }
+}
+
+export function deleteRating(_id) {
+  return function (dispatch) {
+    dispatch({ type: DELETE_RATING });
+    database.ref('/ratings/' + _id).set(null, () => {
+      dispatch({ type: DELETE_RATING_SUCCESS })
+    })
+      .catch((err) => {
+        dispatch({ type: DELETE_RATING_FAILURE, error: err })
+      })
+  }
+}
+
+
 export function emptyProduct() {
   return function (dispatch) {
     dispatch({ type: EMPTY_PRODUCT });
+  }
+}
+export function updateProductCompleted() {
+  return function (dispatch) {
+    dispatch({ type: UDPATE_PRODUCT_COMPLETED });
   }
 }

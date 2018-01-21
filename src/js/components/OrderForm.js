@@ -6,6 +6,7 @@ import {addOrder} from "../actions/orderActions"
 @connect((store) => {
   return {
     orderSuccessfull: store.order.pushed,
+    user: store.user.user,
   };
 })
 
@@ -15,7 +16,8 @@ export default class OrderForm extends React.Component {
     this.state = {
       formErrors: []
     };
-
+console.log('props',props);
+    console.log('user',props.user);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

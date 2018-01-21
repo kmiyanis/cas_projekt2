@@ -1,22 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-import FontAwesome from "react-fontawesome";
-
-import { addToCart } from "../actions/cartActions"
 
 @connect((store) => {
   return {};
 })
 
 export default class ProductSmall extends React.Component {
-  addToCart = (product) => {
-    this.props.dispatch(addToCart(product._id, 1));
-  }
 
   render() {
     const {
-            productId,
+      productId,
       featured,
       price,
       picture,

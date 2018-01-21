@@ -60,14 +60,16 @@ export default function (state = {
     case LOGIN_USER:
       return {
         ...state,
-        loading: true
+        loading: true,
+
       };
     case LOGGED_IN_USER_SUCCESS:
     case LOGGED_IN_USER:
       return {
         ...state,
         loggedin: true,
-        user: action.payload
+        user: action.payload,
+        error: false
       };
     case LOGOUT_USER:
       return {

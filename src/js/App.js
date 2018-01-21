@@ -8,6 +8,7 @@ import store from "./store"
 
 import Layout from "./pages/Layout";
 import LayoutSidebar from "./pages/LayoutSidebar";
+import LayoutAdmin from "./pages/LayoutAdmin";
 
 import Featured from "./pages/Featured";
 import Contact from "./pages/Contact";
@@ -51,6 +52,8 @@ class App extends Component {
             <Route path="myratings" name="myorders" component={MyRatings}></Route>
             <Route path="signup" name="signup" component={SignUp}></Route>
             <Route path="login" name="login" component={Login}></Route>
+          </Route>
+          <Route path="/" component={LayoutAdmin} login={this.login} logout={this.logout}>
             <Route path="admin/users" name="admin/users" component={AdminUsers}></Route>
             <Route path="admin/products" name="admin/products" component={AdminProducts}></Route>
             <Route path="admin/products/:filter" name="admin/products" component={AdminProducts}></Route>

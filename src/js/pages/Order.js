@@ -21,7 +21,7 @@ import * as userActions from "../actions/userActions"
 
 export default class Order extends React.Component {
   componentWillMount() {
-    // this.props.dispatch(userActions.fetch())
+    //this.props.dispatch(userActions.fetch())
     this.props.dispatch(fetchProducts())
     this.props.dispatch(fetchCart())
   }
@@ -32,13 +32,13 @@ export default class Order extends React.Component {
 			products,
       productsFetched,
       cart,
-      fetched,
+      cartFetched,
       user,
       loggedin
     } = this.props;
-
-
-    if (cart.items.length === 0 && productsFetched) {
+    console.log('user',user);
+console.log('loggedin',loggedin);
+    if (cart.items.length === 0 && cartFetched) {
       return (
         <div>
           <h1 class="title">Checkout</h1>
@@ -55,7 +55,7 @@ export default class Order extends React.Component {
         `}} />
 
         <h1 class="title">Bestellung abschliessen</h1>
-        {products.length === 0 && !fetched ? (
+        {products.length === 0 && !productsFetched ? (
           ""
         ) : (
             <div>

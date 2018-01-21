@@ -13,7 +13,9 @@ import {
   UDPATE_PRODUCT_COMPLETED,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
-  EMPTY_PRODUCT
+  EMPTY_PRODUCT,
+  DELETE_PRODUCT_FAILURE,
+  DELETE_PRODUCT_COMPLETED,
 } from "../actions/actionTypes";
 
 
@@ -26,6 +28,7 @@ export default function reducer(state = {
   updated: false,
   error: null,
   deleted: null,
+  deletedproduct:null,
   catFetching: false,
   catFetched: false,
   catUpdated: false,
@@ -42,7 +45,7 @@ export default function reducer(state = {
       {
         return { ...state, fetching: true }
       }
-
+    case DELETE_PRODUCT_FAILURE:
     case FETCH_PRODUCT_FAILURE:
     case FETCH_PRODUCTS_FAILURE:
       {
@@ -63,8 +66,17 @@ export default function reducer(state = {
         return {
           fetching: false,
           deleted: true,
+          deletedproduct: action.payload,
         }
       }
+    case DELETE_PRODUCT_COMPLETED:
+    {
+      return {
+        ...state,
+        deleted: false,
+        deletedproduct: null
+      }
+    }
     case UDPATE_PRODUCT_SUCCESS:
       {
         return {

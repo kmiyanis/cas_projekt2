@@ -26,11 +26,11 @@ export default class Checkout extends React.Component {
 			products,
 			productsFetched,
 			cart,
-			fetched
+      cartFetched
     } = this.props;
     
 
-    if (cart.items.length === 0 && productsFetched) {
+    if (cart.items.length === 0 && cartFetched) {
       return (
         <div>
           <h1 class="title">Checkout</h1>
@@ -47,7 +47,7 @@ export default class Checkout extends React.Component {
         `}} />
 
 					<h1 class="title">Checkout</h1>
-          {products.length === 0 && !fetched ? (
+          {products.length === 0 && !productsFetched ? (
 						""
 					) : (
 						<CheckoutTable
