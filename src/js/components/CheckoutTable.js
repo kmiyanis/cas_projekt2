@@ -28,9 +28,6 @@ export default class CartTable extends React.Component {
     this.props.dispatch(removeFromCart(product.productId));
   }
 
-  loginHandler() {
-    this.props.dispatch(userActions.login());
-  }
 
   render() {
     const { cart, user, loggedin } = this.props;

@@ -36,8 +36,8 @@ export default class Order extends React.Component {
       user,
       loggedin
     } = this.props;
+    console.log('loggedin',loggedin);
     console.log('user',user);
-console.log('loggedin',loggedin);
     if (cart.items.length === 0 && cartFetched) {
       return (
         <div>
@@ -82,11 +82,7 @@ console.log('loggedin',loggedin);
               </div>
 
               <div class="checkout-content">
-                {loggedin ? (
-                  <OrderForm user={user} cart={cart} history={this.props.history} />
-                ) : (
-                  <OrderForm cart={cart} history={this.props.history} />
-                )}
+                <OrderForm user={user} cart={cart} history={this.props.history} />
               </div>
             </div>
           )}

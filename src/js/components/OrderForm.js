@@ -6,7 +6,7 @@ import {addOrder} from "../actions/orderActions"
 @connect((store) => {
   return {
     orderSuccessfull: store.order.pushed,
-    user: store.user.user,
+    //user: store.user.user,
   };
 })
 
@@ -14,10 +14,13 @@ export default class OrderForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formErrors: []
+      formErrors: [],
+      firstname: props.user ? props.user.firstname : '',
+      lastname: props.user ? props.user.lastname : '',
+      email: props.user ? props.user.email : '',
+
     };
-console.log('props',props);
-    console.log('user',props.user);
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -120,18 +123,13 @@ console.log('props',props);
   }
 
   render() {
+
     if (this.props.orderSuccessfull) {
       this.state = {
         formErrors: [],
       };
-/*
-      return (
-        <div class="order-success">
-          <p class="order-success__title">Vielen Dank für Ihre Bestellung!</p>
-          <img class="order-success__img" src="/assets/img/fukusuke.svg"/>
-        </div>
-      )*/
     }
+
 
     return (
       <form onSubmit={this.handleSubmit(this.props.cart)} class="order-form">
