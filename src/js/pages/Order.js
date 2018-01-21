@@ -26,7 +26,6 @@ export default class Order extends React.Component {
     this.props.dispatch(fetchCart())
   }
 
-
   render() {
     const {
 			products,
@@ -36,8 +35,7 @@ export default class Order extends React.Component {
       user,
       loggedin
     } = this.props;
-    console.log('loggedin',loggedin);
-    console.log('user',user);
+
     if (cart.items.length === 0 && cartFetched) {
       return (
         <div>

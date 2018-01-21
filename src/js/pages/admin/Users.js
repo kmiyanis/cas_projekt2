@@ -27,7 +27,6 @@ export default class Users extends React.Component {
   }
 
   deleteUser(_id) {
-    console.log('_id',_id);
     this.props.dispatch(userActions.deleteUser(_id));
   }
 
@@ -36,12 +35,10 @@ export default class Users extends React.Component {
   }
 
   makeUser(_id) {
-    console.log('make user', _id)
     this.props.dispatch(userActions.makeUser(_id));
   }
 
   activateUser(_id) {
-    console.log('activateUser user', _id)
     this.props.dispatch(userActions.activateUser(_id));
   }
 

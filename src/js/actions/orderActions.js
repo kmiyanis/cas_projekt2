@@ -27,10 +27,6 @@ export function addOrder(order) {
       dispatch({ type: ORDER_COMPLETED })
     });
 
-    // .catch((err) => {
-      //   dispatch({ type: ADD_ORDER_FAILURE, error: err })
-
-      // })
   }
 }
 
@@ -46,13 +42,6 @@ export function fetchOrders(email) {
         dispatch({ type: FETCH_ORDERS_FAILURE, error: err })
       })
 
-    // database.ref('/orders').orderByChild('email').equalTo(email).on('value', snap => {
-    //   console.log(snap)
-    //   dispatch({ type: FETCH_ORDERS_SUCCESS, payload: snapshotToArray(snap) })
-    // })
-    //   .catch((err) => {
-    //     dispatch({ type: FETCH_ORDERS_FAILURE, error: err })
-    //   })
   }
 }
 

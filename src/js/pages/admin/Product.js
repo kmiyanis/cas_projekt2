@@ -25,8 +25,6 @@ export default class ProductDetail extends React.Component {
   render() {
     const {product, fetched, categories, catFetched, deleted} = this.props;
 
-    console.log('deleted', deleted);
-    console.log('product', product);
     if (deleted) {
       return (
         <div class="admin">

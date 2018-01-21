@@ -23,9 +23,7 @@ export default class CartMini extends React.Component {
       inAdmin:false,
     };
     this.toggleClass = this.toggleClass.bind(this);
-    console.log('cart', props.cart);
-    console.log('products', props.products);
-    console.log('productsFetched', props.productsFetched);
+
   }
 
   toggleClass() {

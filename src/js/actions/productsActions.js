@@ -52,7 +52,6 @@ export function fetchProduct(slug) {
     dispatch({ type: FETCH_PRODUCT });
 
     database.ref(`/products/${slug}`).on('value', snap => {
-      console.log('fetchProduct snap.val()',snap.val());
       dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: snap.val() })
     });
   }
@@ -93,7 +92,7 @@ export function updateProduct(_product, file, action) {
 export function deleteProduct(_id,title) {
   return function (dispatch) {
     dispatch({ type: DELETE_PRODUCT });
-console.log('deleteProduct _id',_id);
+
     database.ref('/products/' + _id).set(null)
       .then(() => {
       dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: title })

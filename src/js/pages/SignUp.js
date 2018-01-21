@@ -151,7 +151,7 @@ export default class SignUp extends React.Component {
           </filedset>
           <filedset>
             <label>
-              <span class="label-text">Passwort:<span class="required">*</span></span>
+              <span class="label-text">Passwort:<span class="required">*</span> (min.6 Zeichen)</span>
               <input
                 type="password"
                 name="password"
@@ -159,6 +159,7 @@ export default class SignUp extends React.Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />
+
             </label>
             <label>
               <span class="label-text">Passwort:<span class="required">*</span></span>

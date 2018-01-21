@@ -400,7 +400,6 @@ footer .container {
 	line-height: rem(40px);
 	border:none;
 	position: relative;
-	/*transform: scale(1);*/
 	transition: 0.3s;
 	margin: rem(30px) auto;
 
@@ -412,8 +411,7 @@ footer .container {
 
 	&:hover,
 	&:focus{
-		//padding-right:rem(30px);
-		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		box-shadow: 3px 3px 20px 0 rgba(0,0,0,0.3);
 	}
 	em {
 		transform: translateX(0);
@@ -441,7 +439,6 @@ footer .container {
 		opacity: 0;
 		transition: opacity .2s;
 	}
-
 }
 .detail-button__icon {
 	color:$white;
@@ -449,7 +446,6 @@ footer .container {
 	font-size:rem(24px)
 }
 
-//button:focus{ outline: 1px solid $red1; }
 .grid {
 	display: flex;
 	flex-wrap: wrap;
@@ -537,7 +533,7 @@ footer .container {
 	color:$white;
 	font-weight: bold;
 	position: relative;
-text-decoration: none;
+	text-decoration: none;
 	padding:  0 rem(5px);
 	&:after {
 		position: absolute;
@@ -638,8 +634,6 @@ text-decoration: none;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
-
-
 	}
 
 	.price {
@@ -667,8 +661,6 @@ text-decoration: none;
 		}
 	}
 
-
-
 	.checkout {
 		color:$white;
 		background:$red1;
@@ -679,7 +671,7 @@ text-decoration: none;
 		transition: 0.3s;
 		transform: scale(1);
 		&:hover{
-			box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+			box-shadow: 3px 3px 20px 0 rgba(0,0,0,0.3);
 			transform: scale(1.2);
 			color:$white;
 		}
@@ -753,7 +745,7 @@ text-decoration: none;
 	margin-right: rem(20px);
 
 	&:hover{
-		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		box-shadow: 3px 3px 20px 0 rgba(0,0,0,0.3);
 	}
 	em {
 		transform: translateX(0);
@@ -817,8 +809,8 @@ text-decoration: none;
 	&:hover,
 	&:focus{
 		padding-right:rem(30px);
-		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
-		/*transform: scale(1.2);*/
+		box-shadow: 3px 3px 20px 0 rgba(0,0,0,0.3);
+
 		.fa {
 			transform: translate3d(60%,0,0);
 		}
@@ -928,10 +920,9 @@ text-decoration: none;
 	text-decoration: none;
 	font-weight: bold;
 	transition: 0.3s;
-	//transform: scale(1);
 	cursor: pointer;
 	&:hover{
-		box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.3);
+		box-shadow: 3px 3px 20px 0 rgba(0,0,0,0.3);
 		color:$white;
 	}
 
@@ -1062,7 +1053,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0px 1000px rgba(95,255,29,0.05) inset;
+	-webkit-box-shadow: 0 0 0 1000px rgba(95,255,29,0.05) inset;
 	transition: background-color 5000s ease-in-out 0s;
 }
 .admin {

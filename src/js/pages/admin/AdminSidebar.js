@@ -43,8 +43,7 @@ export default class AdminSidebar extends React.Component {
 
   render() {
     const {location, categories, categoriesFetched} = this.props;
-    console.log('categories',categories);
-    console.log('categoriesFetched',categoriesFetched);
+
     if(!categories || !categoriesFetched) {
       return <p class="message-loader">Loading...</p>;
     }

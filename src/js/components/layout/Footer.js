@@ -13,26 +13,27 @@ const FooterLink = styled.a`
 	transition: all .3s;
 	display:inline-block;
 	&:hover {
-	    text-decoration:none;
-        color:#FFFFFF;
+    text-decoration:none;
+    color:#FFFFFF;
 	}
 	&:hover:after {
-        width: 100%;
-    }
+    width: 100%;
+  }
 	&:after {
-        bottom: -3px;
-        position:absolute;
-        left: 0;
-        right: 0;
-        content: '';
+    bottom: -3px;
+    position:absolute;
+    left: 0;
+    right: 0;
+    content: '';
 		color: transparent;
-        margin: auto;
-        width: 0%;
-        background: #FFFFFF;
-        height: 1px;
-        transition: all .3s;
+    margin: auto;
+    width: 0%;
+    background: #FFFFFF;
+    height: 1px;
+    transition: all .3s;
     }
 `;
+
 export default class Footer extends React.Component {
   render() {
 
